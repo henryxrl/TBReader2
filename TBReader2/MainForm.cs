@@ -2,9 +2,9 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using System.Globalization;
 using System.Resources;
+using System.Windows.Forms;
 
 namespace TBReader2
 {
@@ -30,14 +30,17 @@ namespace TBReader2
 			rm = new ResourceManager("TBReader2.Resources.Lang", typeof(MainForm).Assembly);
 			setUILanguage();
 
-			TitleText = "<div align=\"left\">  " + rm.GetString("title", ci) + "</div>";
+			TitleText = "<div align=\"left\">  " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "</div>";
 			SettingsButtonText = rm.GetString("hotkey_button", ci);
 			SettingsButtonVisible = true;
 			SettingsButtonClick += FormHotKeysButtonClick;
 			HelpButtonText = rm.GetString("about_button", ci);
 			HelpButtonVisible = true;
 			HelpButtonClick += FormAboutButtonClick;
+		}
 
+		private void MainForm_Load(object sender, EventArgs e)
+		{
 			apt_label.Text = rm.GetString("apt_label", ci);
 			apt_start_label.Text = rm.GetString("apt_start_label", ci);
 			apt_end_label.Text = rm.GetString("apt_end_label", ci);
@@ -56,11 +59,16 @@ namespace TBReader2
 			openFileDialog.Multiselect = false;
 			openFileDialog.FilterIndex = 1;
 
+			/*
 			apt_label.ForeColor = themeColor;
 			apt_start_label.ForeColor = themeColor;
 			apt_end_label.ForeColor = themeColor;
-		}
+			*/
 
+			setHotKeys(false);
+			setAbout(false);
+		}
+		
 		void setUILanguage()
 		{
 			String curLang = System.Globalization.CultureInfo.CurrentCulture.ToString();
@@ -86,9 +94,9 @@ namespace TBReader2
 		private void setHotKeys(Boolean show)
 		{
 			SuspendLayout();
-			hky = new HotKeys(rm, ci);
+			hky = new HotKeys(rm, ci, themeColor);
 			hky.IsOpen = true;
-			hky.SetBounds(0, 0, 500, 500);
+			hky.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
 				hky.IsOpen = false;
 			Controls.Add(hky);
@@ -112,9 +120,9 @@ namespace TBReader2
 		private void setAbout(Boolean show)
 		{
 			SuspendLayout();
-			abt = new About(rm, ci);
+			abt = new About(rm, ci, themeColor);
 			abt.IsOpen = true;
-			abt.SetBounds(0, 0, 500, 500);
+			abt.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
 				abt.IsOpen = false;
 			Controls.Add(abt);
@@ -211,5 +219,6 @@ namespace TBReader2
 
 			overlay_cover.Hide();
 		}
+
 	}
 }

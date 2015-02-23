@@ -64,7 +64,7 @@ namespace TBReader2
 			// 
 			this.hotkey1_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey1_label, "hotkey1_label");
-			this.hotkey1_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey1_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey1_label.Name = "hotkey1_label";
 			// 
 			// hotkey1
@@ -92,7 +92,7 @@ namespace TBReader2
 			// 
 			this.hotkey2_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey2_label, "hotkey2_label");
-			this.hotkey2_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey2_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey2_label.Name = "hotkey2_label";
 			// 
 			// hotkey3
@@ -111,7 +111,7 @@ namespace TBReader2
 			// 
 			this.hotkey3_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey3_label, "hotkey3_label");
-			this.hotkey3_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey3_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey3_label.Name = "hotkey3_label";
 			// 
 			// hotkey4
@@ -130,7 +130,7 @@ namespace TBReader2
 			// 
 			this.hotkey4_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey4_label, "hotkey4_label");
-			this.hotkey4_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey4_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey4_label.Name = "hotkey4_label";
 			// 
 			// hotkey5
@@ -149,7 +149,7 @@ namespace TBReader2
 			// 
 			this.hotkey5_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey5_label, "hotkey5_label");
-			this.hotkey5_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey5_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey5_label.Name = "hotkey5_label";
 			// 
 			// hotkey6
@@ -168,7 +168,7 @@ namespace TBReader2
 			// 
 			this.hotkey6_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey6_label, "hotkey6_label");
-			this.hotkey6_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey6_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey6_label.Name = "hotkey6_label";
 			// 
 			// hotkey7
@@ -187,7 +187,7 @@ namespace TBReader2
 			// 
 			this.hotkey7_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey7_label, "hotkey7_label");
-			this.hotkey7_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey7_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey7_label.Name = "hotkey7_label";
 			// 
 			// hotkey8
@@ -206,7 +206,7 @@ namespace TBReader2
 			// 
 			this.hotkey8_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			resources.ApplyResources(this.hotkey8_label, "hotkey8_label");
-			this.hotkey8_label.ForeColor = System.Drawing.Color.Teal;
+			this.hotkey8_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey8_label.Name = "hotkey8_label";
 			// 
 			// HotKeys

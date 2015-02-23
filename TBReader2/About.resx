@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="about_pictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="about_pictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAEMgaVRYdFhNTDpjb20uYWRvYmUu
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACwwAAAsMAT9AIsgAAEMgaVRYdFhNTDpjb20uYWRvYmUu
         eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
         Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
         ZSA1LjYtYzAxNCA3OS4xNTY3OTcsIDIwMTQvMDgvMjAtMDk6NTM6MDIgICAgICAgICI+CiAgIDxyZGY6
@@ -490,7 +493,7 @@
   <data name="about_pictureBox.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxAAAAsQAa0jvXUAAEMgaVRYdFhNTDpjb20uYWRvYmUu
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACwwAAAsMAT9AIsgAAEMgaVRYdFhNTDpjb20uYWRvYmUu
         eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
         Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
         ZSA1LjYtYzAxNCA3OS4xNTY3OTcsIDIwMTQvMDgvMjAtMDk6NTM6MDIgICAgICAgICI+CiAgIDxyZGY6
@@ -853,7 +856,7 @@
 </value>
   </data>
   <data name="about_pictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 23</value>
+    <value>196, 18</value>
   </data>
   <data name="about_pictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 138</value>
@@ -874,23 +877,26 @@
   <data name="&gt;&gt;about_pictureBox.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="about_intro_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_intro_label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="about_intro_label.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9.75pt</value>
+    <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="about_intro_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 343</value>
+    <value>152, 330</value>
   </data>
   <data name="about_intro_label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>40, 17</value>
   </data>
   <data name="about_intro_label.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="about_intro_label.Text" xml:space="preserve">
-    <value>简介：</value>
+    <value>Intro</value>
   </data>
   <data name="&gt;&gt;about_intro_label.Name" xml:space="preserve">
     <value>about_intro_label</value>
@@ -904,23 +910,29 @@
   <data name="&gt;&gt;about_intro_label.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="about_email_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_email_label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="about_email_label.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9.75pt</value>
+    <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="about_email_label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="about_email_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 303</value>
+    <value>152, 290</value>
   </data>
   <data name="about_email_label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 17</value>
+    <value>50, 17</value>
   </data>
   <data name="about_email_label.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="about_email_label.Text" xml:space="preserve">
-    <value>Email：</value>
+    <value>E-mail</value>
   </data>
   <data name="&gt;&gt;about_email_label.Name" xml:space="preserve">
     <value>about_email_label</value>
@@ -934,23 +946,29 @@
   <data name="&gt;&gt;about_email_label.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="about_author_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_author_label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="about_author_label.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9.75pt</value>
+    <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="about_author_label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="about_author_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 263</value>
+    <value>152, 250</value>
   </data>
   <data name="about_author_label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>54, 17</value>
   </data>
   <data name="about_author_label.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="about_author_label.Text" xml:space="preserve">
-    <value>作者：</value>
+    <value>Author</value>
   </data>
   <data name="&gt;&gt;about_author_label.Name" xml:space="preserve">
     <value>about_author_label</value>
@@ -964,23 +982,26 @@
   <data name="&gt;&gt;about_author_label.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="about_version_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_version_label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="about_version_label.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9.75pt</value>
+    <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="about_version_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 223</value>
+    <value>152, 210</value>
   </data>
   <data name="about_version_label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>58, 17</value>
   </data>
   <data name="about_version_label.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="about_version_label.Text" xml:space="preserve">
-    <value>版本：</value>
+    <value>Version</value>
   </data>
   <data name="&gt;&gt;about_version_label.Name" xml:space="preserve">
     <value>about_version_label</value>
@@ -994,6 +1015,9 @@
   <data name="&gt;&gt;about_version_label.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="about_name.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_name.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1001,16 +1025,16 @@
     <value>Microsoft YaHei UI, 18pt, style=Bold</value>
   </data>
   <data name="about_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 168</value>
+    <value>178, 158</value>
   </data>
   <data name="about_name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 30</value>
+    <value>164, 30</value>
   </data>
   <data name="about_name.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="about_name.Text" xml:space="preserve">
-    <value>TBReader2</value>
+    <value>about_name</value>
   </data>
   <data name="&gt;&gt;about_name.Name" xml:space="preserve">
     <value>about_name</value>
@@ -1024,11 +1048,14 @@
   <data name="&gt;&gt;about_name.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="about_version.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_version.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="about_version.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 218</value>
+    <value>237, 205</value>
   </data>
   <data name="about_version.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 23</value>
@@ -1051,11 +1078,14 @@
   <data name="&gt;&gt;about_version.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="about_author.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_author.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="about_author.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 259</value>
+    <value>237, 246</value>
   </data>
   <data name="about_author.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 23</value>
@@ -1078,11 +1108,14 @@
   <data name="&gt;&gt;about_author.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="about_email.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_email.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="about_email.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 303</value>
+    <value>237, 290</value>
   </data>
   <data name="about_email.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 23</value>
@@ -1105,11 +1138,14 @@
   <data name="&gt;&gt;about_email.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="about_intro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_intro.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="about_intro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 343</value>
+    <value>237, 330</value>
   </data>
   <data name="about_intro.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 40</value>
@@ -1132,8 +1168,11 @@
   <data name="&gt;&gt;about_intro.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="about_ok_button.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="about_ok_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 420</value>
+    <value>190, 410</value>
   </data>
   <data name="about_ok_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 50</value>
@@ -1166,7 +1205,7 @@
     <value>Microsoft YaHei UI, 8.25pt</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
+    <value>500, 525</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>About</value>

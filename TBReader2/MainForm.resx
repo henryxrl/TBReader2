@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="txt_pictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txt_pictureBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -126,7 +129,7 @@
     <value>8, 8</value>
   </data>
   <data name="txt_pictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>464, 389</value>
+    <value>464, 385</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txt_pictureBox.TabIndex" type="System.Int32, mscorlib">
@@ -144,6 +147,9 @@
   <data name="&gt;&gt;txt_pictureBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="apt_start_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apt_start_label.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 442</value>
   </data>
@@ -168,11 +174,14 @@
   <data name="&gt;&gt;apt_start_label.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="apt_end_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apt_end_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 438</value>
+    <value>423, 439</value>
   </data>
   <data name="apt_end_label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 39</value>
+    <value>56, 29</value>
   </data>
   <data name="apt_end_label.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -190,8 +199,11 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;apt_end_label.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
+  <metadata name="apt_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apt_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
@@ -253,7 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;overlay_cover.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>312, 17</value>
@@ -261,11 +273,14 @@
   <metadata name="styleManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="apt_trackBar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apt_trackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="apt_trackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 409</value>
+    <value>0, 410</value>
   </data>
   <data name="apt_trackBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>482, 45</value>
@@ -1720,6 +1735,9 @@
         B////////////wAAAEAAAB/////////////AAAAAAAB/////////////8AAAAAAB//////////////4A
         AAAAD///////////////wAAAAH////////////////4AAA//////////
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TBReader</value>

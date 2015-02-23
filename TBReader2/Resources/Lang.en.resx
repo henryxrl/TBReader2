@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about_author_label" xml:space="preserve">
-    <value>Author:</value>
+    <value>Author</value>
   </data>
   <data name="about_button" xml:space="preserve">
     <value>&lt;b&gt;ABOUT&lt;/b&gt;</value>
   </data>
   <data name="about_email_label" xml:space="preserve">
-    <value>Email:</value>
+    <value>E-mail</value>
   </data>
   <data name="about_intro" xml:space="preserve">
     <value>Read TXT in title bar!&lt;br/&gt;Thank you for your support!</value>
   </data>
   <data name="about_intro_label" xml:space="preserve">
-    <value>Intro:</value>
+    <value>Intro</value>
   </data>
   <data name="about_version_label" xml:space="preserve">
-    <value>Version: </value>
+    <value>Version</value>
   </data>
   <data name="apt_end_label" xml:space="preserve">
     <value>30 (sec)</value>
@@ -188,8 +188,5 @@
   </data>
   <data name="pictureBox_string_2" xml:space="preserve">
     <value>OR... Double click here</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>TBReader2</value>
   </data>
 </root>

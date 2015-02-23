@@ -1,11 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevComponents.DotNetBar;
 using System.Globalization;
 using System.Resources;
 
@@ -13,7 +7,7 @@ namespace TBReader2
 {
 	public partial class HotKeys : DevComponents.DotNetBar.Controls.SlidePanel
 	{
-		public HotKeys(ResourceManager rm, CultureInfo ci)
+		public HotKeys(ResourceManager rm, CultureInfo ci, Color themeColor)
 		{
 			InitializeComponent();
 
@@ -26,6 +20,15 @@ namespace TBReader2
 			hotkey7.Text = rm.GetString("hotkey7", ci);
 			hotkey8.Text = rm.GetString("hotkey8", ci);
 			hotkeys_ok_button.Text = rm.GetString("ok_button", ci);
+
+			hotkey1_label.ForeColor = themeColor;
+			hotkey2_label.ForeColor = themeColor;
+			hotkey3_label.ForeColor = themeColor;
+			hotkey4_label.ForeColor = themeColor;
+			hotkey5_label.ForeColor = themeColor;
+			hotkey6_label.ForeColor = themeColor;
+			hotkey7_label.ForeColor = themeColor;
+			hotkey8_label.ForeColor = themeColor;
 		}
 
 		private void hotkeys_ok_button_Click(object sender, EventArgs e)

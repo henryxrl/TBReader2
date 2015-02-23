@@ -128,8 +128,8 @@
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Controls.Add(this.overlay_cover);
 			this.Controls.Add(this.apt_end_label);
+			this.Controls.Add(this.overlay_cover);
 			this.Controls.Add(this.apt_label);
 			this.Controls.Add(this.apt_start_label);
 			this.Controls.Add(this.apt_trackBar);
@@ -139,6 +139,7 @@
 			this.HelpButtonText = "Help";
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.apt_trackBar_Scroll);
 			((System.ComponentModel.ISupportInitialize)(this.txt_pictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.overlay_cover)).EndInit();
