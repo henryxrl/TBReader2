@@ -2,17 +2,13 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.Resources;
 using System.Windows.Forms;
 
 namespace TBReader2
 {
 	public partial class MainForm : DevComponents.DotNetBar.Metro.MetroForm
 	{
-		ResourceManager rm;	// declare Resource manager to access to specific cultureinfo
-		CultureInfo ci;	// declare culture info
-		Boolean isChinese;
+		String langCode;
 
 		Color themeColor = System.Drawing.Color.FromArgb(255, 62, 120, 143);
 
@@ -27,23 +23,22 @@ namespace TBReader2
 		{
 			InitializeComponent();
 
-			rm = new ResourceManager("TBReader2.Resources.Lang", typeof(MainForm).Assembly);
-			setUILanguage();
+			setUILanguageCode();
 
 			TitleText = "<div align=\"left\">  " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "</div>";
-			SettingsButtonText = rm.GetString("hotkey_button", ci);
+			SettingsButtonText = Properties.Resources.ResourceManager.GetString(langCode + "hotkey_button");
 			SettingsButtonVisible = true;
 			SettingsButtonClick += FormHotKeysButtonClick;
-			HelpButtonText = rm.GetString("about_button", ci);
+			HelpButtonText = Properties.Resources.ResourceManager.GetString(langCode + "about_button");
 			HelpButtonVisible = true;
 			HelpButtonClick += FormAboutButtonClick;
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			apt_label.Text = rm.GetString("apt_label", ci);
-			apt_start_label.Text = rm.GetString("apt_start_label", ci);
-			apt_end_label.Text = rm.GetString("apt_end_label", ci);
+			apt_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_label");
+			apt_start_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_start_label");
+			apt_end_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_end_label");
 
 			((Control)txt_pictureBox).AllowDrop = true;
 			txt_pictureBox.DragEnter += cover_pictureBox_DragEnter;
@@ -59,30 +54,25 @@ namespace TBReader2
 			openFileDialog.Multiselect = false;
 			openFileDialog.FilterIndex = 1;
 
-			/*
-			apt_label.ForeColor = themeColor;
-			apt_start_label.ForeColor = themeColor;
-			apt_end_label.ForeColor = themeColor;
-			*/
-
 			setHotKeys(false);
 			setAbout(false);
+
 		}
-		
-		void setUILanguage()
+
+		private void setUILanguageCode()
 		{
 			String curLang = System.Globalization.CultureInfo.CurrentCulture.ToString();
-			isChinese = curLang.Contains("zh") ? true : false;
+			Boolean isChinese = curLang.Contains("zh") ? true : false;
 			if (isChinese)	//in chinese
 			{
-				ci = CultureInfo.CreateSpecificCulture("zh");	//create culture for chinese
-			}          
+				langCode = "zh_";
+			}
 			else	//in english
 			{
-				ci = CultureInfo.CreateSpecificCulture("en");	//create culture for english
+				langCode = "en_";
 			}
 		}
-		
+
 		private void FormHotKeysButtonClick(object sender, EventArgs e)
 		{
 			if (hky == null)
@@ -94,7 +84,7 @@ namespace TBReader2
 		private void setHotKeys(Boolean show)
 		{
 			SuspendLayout();
-			hky = new HotKeys(rm, ci, themeColor);
+			hky = new HotKeys(langCode, themeColor);
 			hky.IsOpen = true;
 			hky.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
@@ -120,7 +110,7 @@ namespace TBReader2
 		private void setAbout(Boolean show)
 		{
 			SuspendLayout();
-			abt = new About(rm, ci, themeColor);
+			abt = new About(langCode, themeColor);
 			abt.IsOpen = true;
 			abt.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
@@ -146,7 +136,7 @@ namespace TBReader2
 				timerFlag = 0;	// auto read forward
 			}
 
-			String tooltip = aptTime.ToString() + " " + rm.GetString("apt_tooltip", ci);
+			String tooltip = aptTime.ToString() + " " + Properties.Resources.ResourceManager.GetString(langCode + "apt_tooltip");
 			toolTip.SetToolTip(apt_trackBar, tooltip);
 		}
 
@@ -185,7 +175,7 @@ namespace TBReader2
 
 				using (SolidBrush b = new SolidBrush(themeColor))
 				{
-					String s = rm.GetString("pictureBox_string_1", ci);
+					String s = Properties.Resources.ResourceManager.GetString(langCode + "pictureBox_string_1");
 					Font f = new Font("Microsoft YaHei UI", 25, FontStyle.Bold);
 					SizeF size = g.MeasureString(s, f);
 					Single px = txt_pictureBox.Width / 2 - size.Width / 2;
@@ -193,7 +183,7 @@ namespace TBReader2
 					g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 					g.DrawString(s, f, b, px, py);
 
-					s = rm.GetString("pictureBox_string_2", ci);
+					s = Properties.Resources.ResourceManager.GetString(langCode + "pictureBox_string_2");
 					f = new Font("Microsoft YaHei UI", 25, FontStyle.Bold);
 					size = g.MeasureString(s, f);
 					px = txt_pictureBox.Width / 2 - size.Width / 2;
@@ -210,8 +200,8 @@ namespace TBReader2
 		{
 			overlay_cover.Show();
 
-			openFileDialog.Title = rm.GetString("openFileDialog_title", ci);
-			openFileDialog.Filter = rm.GetString("openFileDialog_filter", ci);
+			openFileDialog.Title = Properties.Resources.ResourceManager.GetString(langCode + "openFileDialog_title");
+			openFileDialog.Filter = Properties.Resources.ResourceManager.GetString(langCode + "openFileDialog_filter");
 			if (openFileDialog.ShowDialog(this) == DialogResult.OK)
 			{
 				MessageBoxEx.Show(openFileDialog.FileName);

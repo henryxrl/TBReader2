@@ -1,25 +1,23 @@
 using System;
 using System.Drawing;
-using System.Globalization;
-using System.Resources;
 
 namespace TBReader2
 {
 	public partial class HotKeys : DevComponents.DotNetBar.Controls.SlidePanel
 	{
-		public HotKeys(ResourceManager rm, CultureInfo ci, Color themeColor)
+		public HotKeys(String langCode, Color themeColor)
 		{
 			InitializeComponent();
 
-			hotkey1.Text = rm.GetString("hotkey1", ci);
-			hotkey2.Text = rm.GetString("hotkey2", ci);
-			hotkey3.Text = rm.GetString("hotkey3", ci);
-			hotkey4.Text = rm.GetString("hotkey4", ci);
-			hotkey5.Text = rm.GetString("hotkey5", ci);
-			hotkey6.Text = rm.GetString("hotkey6", ci);
-			hotkey7.Text = rm.GetString("hotkey7", ci);
-			hotkey8.Text = rm.GetString("hotkey8", ci);
-			hotkeys_ok_button.Text = rm.GetString("ok_button", ci);
+			hotkey1.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey1");
+			hotkey2.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey2");
+			hotkey3.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey3");
+			hotkey4.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey4");
+			hotkey5.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey5");
+			hotkey6.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey6");
+			hotkey7.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey7");
+			hotkey8.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey8");
+			hotkeys_ok_button.Text = Properties.Resources.ResourceManager.GetString(langCode + "ok_button");
 
 			hotkey1_label.ForeColor = themeColor;
 			hotkey2_label.ForeColor = themeColor;

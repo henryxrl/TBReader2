@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,153 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="en_about_author_label" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="en_about_button" xml:space="preserve">
+    <value>&lt;b&gt;ABOUT&lt;/b&gt;</value>
+  </data>
+  <data name="en_about_email_label" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="en_about_intro" xml:space="preserve">
+    <value>Read TXT in title bar!&lt;br/&gt;Thank you for your support!</value>
+  </data>
+  <data name="en_about_intro_label" xml:space="preserve">
+    <value>Intro</value>
+  </data>
+  <data name="en_about_version_label" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="en_apt_end_label" xml:space="preserve">
+    <value>30 (sec)</value>
+  </data>
+  <data name="en_apt_label" xml:space="preserve">
+    <value>Auto Page Turn</value>
+  </data>
+  <data name="en_apt_start_label" xml:space="preserve">
+    <value>0 (sec)&lt;br/&gt;Manual</value>
+  </data>
+  <data name="en_apt_tooltip" xml:space="preserve">
+    <value>(sec)</value>
+  </data>
+  <data name="en_hotkey1" xml:space="preserve">
+    <value>Next Line</value>
+  </data>
+  <data name="en_hotkey2" xml:space="preserve">
+    <value>Previous Line</value>
+  </data>
+  <data name="en_hotkey3" xml:space="preserve">
+    <value>Bookmark current line</value>
+  </data>
+  <data name="en_hotkey4" xml:space="preserve">
+    <value>Jump through bookmarks</value>
+  </data>
+  <data name="en_hotkey5" xml:space="preserve">
+    <value>Jump to previous location&lt;br/&gt;(ONLY under bookmark view)</value>
+  </data>
+  <data name="en_hotkey6" xml:space="preserve">
+    <value>Toggle default title/current line</value>
+  </data>
+  <data name="en_hotkey7" xml:space="preserve">
+    <value>Toggle TBReader2 hide/show</value>
+  </data>
+  <data name="en_hotkey8" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="en_hotkey_button" xml:space="preserve">
+    <value>&lt;b&gt;HOTKEYS&lt;/b&gt;</value>
+  </data>
+  <data name="en_ok_button" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="en_openFileDialog_filter" xml:space="preserve">
+    <value>Text File|*.txt</value>
+  </data>
+  <data name="en_openFileDialog_title" xml:space="preserve">
+    <value>Choose a TXT file</value>
+  </data>
+  <data name="en_pictureBox_string_1" xml:space="preserve">
+    <value>Drag a TXT file here</value>
+  </data>
+  <data name="en_pictureBox_string_2" xml:space="preserve">
+    <value>OR... Double click here</value>
+  </data>
+  <data name="zh_about_author_label" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="zh_about_button" xml:space="preserve">
+    <value>&lt;b&gt;关于&lt;/b&gt;</value>
+  </data>
+  <data name="zh_about_email_label" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="zh_about_intro" xml:space="preserve">
+    <value>标题栏中看小说！&lt;br/&gt;谢谢支持！</value>
+  </data>
+  <data name="zh_about_intro_label" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="zh_about_version_label" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="zh_apt_end_label" xml:space="preserve">
+    <value>30 秒</value>
+  </data>
+  <data name="zh_apt_label" xml:space="preserve">
+    <value>自动翻页</value>
+  </data>
+  <data name="zh_apt_start_label" xml:space="preserve">
+    <value>0 秒&lt;br/&gt;手动翻页</value>
+  </data>
+  <data name="zh_apt_tooltip" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="zh_hotkey1" xml:space="preserve">
+    <value>下一行</value>
+  </data>
+  <data name="zh_hotkey2" xml:space="preserve">
+    <value>上一行</value>
+  </data>
+  <data name="zh_hotkey3" xml:space="preserve">
+    <value>添加当前行为书签</value>
+  </data>
+  <data name="zh_hotkey4" xml:space="preserve">
+    <value>循环跳转所有书签</value>
+  </data>
+  <data name="zh_hotkey5" xml:space="preserve">
+    <value>回到之前的位置&lt;br/&gt;（只在查看书签时有效）</value>
+  </data>
+  <data name="zh_hotkey6" xml:space="preserve">
+    <value>切换当前内容/真正标题</value>
+  </data>
+  <data name="zh_hotkey7" xml:space="preserve">
+    <value>显示/隐藏TBReader2</value>
+  </data>
+  <data name="zh_hotkey8" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="zh_hotkey_button" xml:space="preserve">
+    <value>&lt;b&gt;热键说明&lt;/b&gt;</value>
+  </data>
+  <data name="zh_ok_button" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="zh_openFileDialog_filter" xml:space="preserve">
+    <value>文本文件|*.txt</value>
+  </data>
+  <data name="zh_openFileDialog_title" xml:space="preserve">
+    <value>请选择TXT文件</value>
+  </data>
+  <data name="zh_pictureBox_string_1" xml:space="preserve">
+    <value>拖拽TXT文件到框内</value>
+  </data>
+  <data name="zh_pictureBox_string_2" xml:space="preserve">
+    <value>或者双击框内</value>
+  </data>
 </root>
