@@ -1,0 +1,17 @@
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.MainForm.resources
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.Properties.Resources.resources
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.csproj.GenerateResource.Cache
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\bin\Debug\TBReader2.exe.config
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\bin\Debug\TBReader2.exe
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\bin\Debug\TBReader2.pdb
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.exe
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.pdb
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.csprojResolveAssemblyReference.cache
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.About.resources
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.HotKeys.resources
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\bin\Debug\zh\TBReader2.resources.dll
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\bin\Debug\en\TBReader2.resources.dll
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\zh\TBReader2.resources.dll
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\en\TBReader2.resources.dll
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.Resources.Lang.zh.resources
+d:\users\henry\documents\visual studio 2012\Projects\TBReader2\TBReader2\obj\Debug\TBReader2.Resources.Lang.en.resources
