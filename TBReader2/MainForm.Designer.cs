@@ -135,6 +135,7 @@
 			this.Controls.Add(this.apt_trackBar);
 			this.Controls.Add(this.txt_pictureBox);
 			this.DoubleBuffered = true;
+			this.ForeColor = System.Drawing.Color.Black;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.HelpButtonText = "Help";
 			this.MaximizeBox = false;

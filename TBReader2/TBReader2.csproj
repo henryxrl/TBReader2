@@ -84,6 +84,23 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="AutoUpdate\AutoClosingMessageBox.cs" />
+    <Compile Include="AutoUpdate\AutoUpdatable.cs" />
+    <Compile Include="AutoUpdate\AutoUpdateAcceptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoUpdate\AutoUpdateAcceptForm.Designer.cs">
+      <DependentUpon>AutoUpdateAcceptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoUpdate\AutoUpdateDownloadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoUpdate\AutoUpdateDownloadForm.Designer.cs">
+      <DependentUpon>AutoUpdateDownloadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoUpdate\AutoUpdater.cs" />
+    <Compile Include="AutoUpdate\AutoUpdateXml.cs" />
+    <Compile Include="AutoUpdate\Hash.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +121,12 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\AutoUpdateAcceptForm.resx">
+      <DependentUpon>AutoUpdateAcceptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoUpdate\AutoUpdateDownloadForm.resx">
+      <DependentUpon>AutoUpdateDownloadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

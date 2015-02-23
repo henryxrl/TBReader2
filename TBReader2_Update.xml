@@ -1,0 +1,13 @@
+<?xml version="1.0"?> 
+<sharpUpdate> 
+    <update appID="TBReader2"> 
+        <version>2.0.0.4</version> 
+        <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url> 
+        <fileName>TBReader2.exe</fileName> 
+        <md5>504A076D46133AAF36DE7D90F840C036</md5>
+        <description>2015-02-26 Update:
+        1. New icon with a dimension of 768x768, supporting Win10
+        2. Implemented AutoUpdater</description> 
+        <launchArgs></launchArgs> 
+    </update> 
+</sharpUpdate>

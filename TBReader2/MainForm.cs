@@ -2,12 +2,47 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Reflection;
 using System.Windows.Forms;
+using AutoUpdate;
 
 namespace TBReader2
 {
-	public partial class MainForm : DevComponents.DotNetBar.Metro.MetroForm
+	public partial class MainForm : DevComponents.DotNetBar.Metro.MetroForm, AutoUpdatable
 	{
+		#region AutoUpdate
+		private AutoUpdater updater;
+		public string ApplicationName
+		{
+			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
+		}
+
+		public string ApplicationID
+		{
+			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
+		}
+
+		public Assembly ApplicationAssembly
+		{
+			get { return Assembly.GetExecutingAssembly(); }
+		}
+
+		public Icon ApplicationIcon
+		{
+			get { return this.Icon; }
+		}
+
+		public Uri UpdateXmlLocation
+		{
+			get { return new Uri("https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2_Update.xml"); }
+		}
+
+		public Form Context
+		{
+			get { return this; }
+		}
+		#endregion
+
 		String langCode;
 
 		Color themeColor = System.Drawing.Color.FromArgb(255, 62, 120, 143);
@@ -32,6 +67,8 @@ namespace TBReader2
 			HelpButtonText = Properties.Resources.ResourceManager.GetString(langCode + "about_button");
 			HelpButtonVisible = true;
 			HelpButtonClick += FormAboutButtonClick;
+
+			updater = new AutoUpdater(this);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -57,6 +94,7 @@ namespace TBReader2
 			setHotKeys(false);
 			setAbout(false);
 
+			updater.DoUpdate(true);
 		}
 
 		private void setUILanguageCode()

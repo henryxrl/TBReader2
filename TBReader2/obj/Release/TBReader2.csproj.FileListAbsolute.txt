@@ -9,3 +9,5 @@ D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Rel
 D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Release\TBReader2.exe
 D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Release\TBReader2.pdb
 D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Release\TBReader2.csprojResolveAssemblyReference.cache
+D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Release\AutoUpdate.AutoUpdateAcceptForm.resources
+D:\Users\Henry\Documents\Visual Studio 2012\Projects\TBReader2\TBReader2\obj\Release\AutoUpdate.AutoUpdateDownloadForm.resources
