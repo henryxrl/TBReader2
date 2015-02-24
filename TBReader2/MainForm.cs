@@ -12,6 +12,7 @@ namespace TBReader2
 	{
 		#region AutoUpdate
 		private AutoUpdater updater;
+		
 		public string ApplicationName
 		{
 			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
@@ -20,6 +21,11 @@ namespace TBReader2
 		public string ApplicationID
 		{
 			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
+		}
+
+		public Tools Tools
+		{
+			get { return tools; }
 		}
 
 		public Assembly ApplicationAssembly
@@ -43,9 +49,7 @@ namespace TBReader2
 		}
 		#endregion
 
-		String langCode;
-
-		Color themeColor = System.Drawing.Color.FromArgb(255, 62, 120, 143);
+		Tools tools = null;
 
 		private About abt = null;
 		private HotKeys hky = null;
@@ -57,14 +61,14 @@ namespace TBReader2
 		public MainForm()
 		{
 			InitializeComponent();
-
-			setUILanguageCode();
+			
+			setTools();
 
 			TitleText = "<div align=\"left\">  " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "</div>";
-			SettingsButtonText = Properties.Resources.ResourceManager.GetString(langCode + "hotkey_button");
+			SettingsButtonText = tools.getString("hotkey_button");
 			SettingsButtonVisible = true;
 			SettingsButtonClick += FormHotKeysButtonClick;
-			HelpButtonText = Properties.Resources.ResourceManager.GetString(langCode + "about_button");
+			HelpButtonText = tools.getString("about_button");
 			HelpButtonVisible = true;
 			HelpButtonClick += FormAboutButtonClick;
 
@@ -73,13 +77,14 @@ namespace TBReader2
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			apt_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_label");
-			apt_start_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_start_label");
-			apt_end_label.Text = Properties.Resources.ResourceManager.GetString(langCode + "apt_end_label");
+			apt_label.Text = tools.getString("apt_label");
+			apt_start_label.Text = tools.getString("apt_start_label");
+			apt_end_label.Text = tools.getString("apt_end_label");
 
 			((Control)txt_pictureBox).AllowDrop = true;
-			txt_pictureBox.DragEnter += cover_pictureBox_DragEnter;
-			txt_pictureBox.DragLeave += cover_pictureBox_DragLeave;
+			txt_pictureBox.DragEnter += txt_pictureBox_DragEnter;
+			txt_pictureBox.DragLeave += txt_pictureBox_DragLeave;
+			txt_pictureBox.DragDrop += txt_pictureBox_DragDrop;
 			txt_pictureBox.BackgroundImage = drawBackGroundImage();
 
 			overlay_cover.BackColor = Color.FromArgb(150, Color.Black);
@@ -97,8 +102,13 @@ namespace TBReader2
 			updater.DoUpdate(true);
 		}
 
-		private void setUILanguageCode()
+		private void setTools()
 		{
+			// themeColor
+			Color themeColor = styleManager.MetroColorParameters.BaseColor;
+
+			// langCode
+			String langCode;
 			String curLang = System.Globalization.CultureInfo.CurrentCulture.ToString();
 			Boolean isChinese = curLang.Contains("zh") ? true : false;
 			if (isChinese)	//in chinese
@@ -109,6 +119,9 @@ namespace TBReader2
 			{
 				langCode = "en_";
 			}
+
+			// set tools
+			tools = new Tools(themeColor, langCode);
 		}
 
 		private void FormHotKeysButtonClick(object sender, EventArgs e)
@@ -122,7 +135,7 @@ namespace TBReader2
 		private void setHotKeys(Boolean show)
 		{
 			SuspendLayout();
-			hky = new HotKeys(langCode, themeColor);
+			hky = new HotKeys(tools);
 			hky.IsOpen = true;
 			hky.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
@@ -148,7 +161,7 @@ namespace TBReader2
 		private void setAbout(Boolean show)
 		{
 			SuspendLayout();
-			abt = new About(langCode, themeColor);
+			abt = new About(tools);
 			abt.IsOpen = true;
 			abt.SetBounds(0, 0, this.Width, this.Height);
 			if (!show)
@@ -174,11 +187,11 @@ namespace TBReader2
 				timerFlag = 0;	// auto read forward
 			}
 
-			String tooltip = aptTime.ToString() + " " + Properties.Resources.ResourceManager.GetString(langCode + "apt_tooltip");
+			String tooltip = aptTime.ToString() + " " + tools.getString("apt_tooltip");
 			toolTip.SetToolTip(apt_trackBar, tooltip);
 		}
 
-		private void cover_pictureBox_DragEnter(object sender, DragEventArgs e)
+		private void txt_pictureBox_DragEnter(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			{
@@ -189,18 +202,36 @@ namespace TBReader2
 				e.Effect = DragDropEffects.None;
 		}
 
-		private void cover_pictureBox_DragLeave(object sender, EventArgs e)
+		private void txt_pictureBox_DragLeave(object sender, EventArgs e)
 		{
 			overlay_cover.Hide();
 		}
 
+		private void txt_pictureBox_DragDrop(object sender, DragEventArgs e)
+		{
+			String[] files = (String[])e.Data.GetData(DataFormats.FileDrop);
+			if (files.Length != 1)
+			{
+				MessageBoxEx.Show(this, tools.getString("only_single_file"));
+			}
+			else if (!files[0].ToLower().EndsWith(".txt"))
+			{
+				MessageBoxEx.Show(this, tools.getString("only_txt_file"));
+			}
+			else
+			{
+				MessageBoxEx.Show(files[0]);
+			}
+			overlay_cover.Hide();
+		}
+		
 		private Image drawBackGroundImage()
 		{
 			Image img = new Bitmap(txt_pictureBox.Width, txt_pictureBox.Height);
 
 			using (Graphics g = Graphics.FromImage(img))
 			{
-				using (Pen pen = new Pen(themeColor, 5))
+				using (Pen pen = new Pen(tools.color, 5))
 				{
 					pen.DashStyle = DashStyle.Dash;
 					pen.DashPattern = new Single[] { 2f, 1.96f, 2f, 1.96f };
@@ -211,9 +242,9 @@ namespace TBReader2
 					g.DrawLine(pen, txt_pictureBox.Width - 1, txt_pictureBox.Height, txt_pictureBox.Width - 1, 0);
 				}
 
-				using (SolidBrush b = new SolidBrush(themeColor))
+				using (SolidBrush b = new SolidBrush(tools.color))
 				{
-					String s = Properties.Resources.ResourceManager.GetString(langCode + "pictureBox_string_1");
+					String s = tools.getString("pictureBox_string_1");
 					Font f = new Font("Microsoft YaHei UI", 25, FontStyle.Bold);
 					SizeF size = g.MeasureString(s, f);
 					Single px = txt_pictureBox.Width / 2 - size.Width / 2;
@@ -221,7 +252,7 @@ namespace TBReader2
 					g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 					g.DrawString(s, f, b, px, py);
 
-					s = Properties.Resources.ResourceManager.GetString(langCode + "pictureBox_string_2");
+					s = tools.getString("pictureBox_string_2");
 					f = new Font("Microsoft YaHei UI", 25, FontStyle.Bold);
 					size = g.MeasureString(s, f);
 					px = txt_pictureBox.Width / 2 - size.Width / 2;
@@ -238,13 +269,16 @@ namespace TBReader2
 		{
 			overlay_cover.Show();
 
-			openFileDialog.Title = Properties.Resources.ResourceManager.GetString(langCode + "openFileDialog_title");
-			openFileDialog.Filter = Properties.Resources.ResourceManager.GetString(langCode + "openFileDialog_filter");
+			openFileDialog.Title = tools.getString("openFileDialog_title");
+			openFileDialog.Filter = tools.getString("openFileDialog_filter");
+			
+			
 			if (openFileDialog.ShowDialog(this) == DialogResult.OK)
 			{
 				MessageBoxEx.Show(openFileDialog.FileName);
 			}
-
+			
+			
 			overlay_cover.Hide();
 		}
 

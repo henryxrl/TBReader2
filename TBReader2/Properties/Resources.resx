@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="en_about_author_label" xml:space="preserve">
     <value>Author</value>
   </data>
@@ -147,6 +151,36 @@
   <data name="en_apt_tooltip" xml:space="preserve">
     <value>(sec)</value>
   </data>
+  <data name="en_autoUpdater_msg_failed" xml:space="preserve">
+    <value>Update failed!&lt;br/&gt;Please try again later!</value>
+  </data>
+  <data name="en_autoUpdater_msg_failed_title" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="en_autoUpdater_msg_success" xml:space="preserve">
+    <value>Success!&lt;br/&gt;Application restarts in 5 seconds!</value>
+  </data>
+  <data name="en_autoUpdater_msg_success_title" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="en_autoUpdater_msg_terminated" xml:space="preserve">
+    <value>Update terminated!&lt;br/&gt;Cannot complete update!</value>
+  </data>
+  <data name="en_autoUpdater_msg_terminated_title" xml:space="preserve">
+    <value>Terminated</value>
+  </data>
+  <data name="en_autoUpdater_result_latest" xml:space="preserve">
+    <value>Latest version already!</value>
+  </data>
+  <data name="en_autoUpdater_result_none" xml:space="preserve">
+    <value>No update info found!</value>
+  </data>
+  <data name="en_button_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="en_button_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="en_hotkey1" xml:space="preserve">
     <value>Next Line</value>
   </data>
@@ -174,8 +208,11 @@
   <data name="en_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;HOTKEYS&lt;/b&gt;</value>
   </data>
-  <data name="en_ok_button" xml:space="preserve">
-    <value>OK</value>
+  <data name="en_only_single_file" xml:space="preserve">
+    <value>One file at a time!</value>
+  </data>
+  <data name="en_only_txt_file" xml:space="preserve">
+    <value>TXT file only!</value>
   </data>
   <data name="en_openFileDialog_filter" xml:space="preserve">
     <value>Text File|*.txt</value>
@@ -188,6 +225,36 @@
   </data>
   <data name="en_pictureBox_string_2" xml:space="preserve">
     <value>OR... Double click here</value>
+  </data>
+  <data name="en_update_completed" xml:space="preserve">
+    <value>Completed: </value>
+  </data>
+  <data name="en_update_cur" xml:space="preserve">
+    <value>Cur Version</value>
+  </data>
+  <data name="en_update_description" xml:space="preserve">
+    <value>Update Description</value>
+  </data>
+  <data name="en_update_download" xml:space="preserve">
+    <value>Download Update</value>
+  </data>
+  <data name="en_update_downloaded" xml:space="preserve">
+    <value>Downloaded: </value>
+  </data>
+  <data name="en_update_downloading" xml:space="preserve">
+    <value>Downloading Update ...</value>
+  </data>
+  <data name="en_update_found" xml:space="preserve">
+    <value>Update found!</value>
+  </data>
+  <data name="en_update_found_title" xml:space="preserve">
+    <value>Update found</value>
+  </data>
+  <data name="en_update_new" xml:space="preserve">
+    <value>New Version</value>
+  </data>
+  <data name="en_update_verifying" xml:space="preserve">
+    <value>Verifying Update ...</value>
   </data>
   <data name="zh_about_author_label" xml:space="preserve">
     <value>作者</value>
@@ -219,6 +286,36 @@
   <data name="zh_apt_tooltip" xml:space="preserve">
     <value>秒</value>
   </data>
+  <data name="zh_autoUpdater_msg_failed" xml:space="preserve">
+    <value>更新出错！&lt;br/&gt;请稍后再试一次！</value>
+  </data>
+  <data name="zh_autoUpdater_msg_failed_title" xml:space="preserve">
+    <value>更新出错</value>
+  </data>
+  <data name="zh_autoUpdater_msg_success" xml:space="preserve">
+    <value>更新成功！&lt;br/&gt;程序5秒后即将自动重启！</value>
+  </data>
+  <data name="zh_autoUpdater_msg_success_title" xml:space="preserve">
+    <value>更新成功</value>
+  </data>
+  <data name="zh_autoUpdater_msg_terminated" xml:space="preserve">
+    <value>更新过程被中断！&lt;br/&gt;无法完成更新！</value>
+  </data>
+  <data name="zh_autoUpdater_msg_terminated_title" xml:space="preserve">
+    <value>更新中断</value>
+  </data>
+  <data name="zh_autoUpdater_result_latest" xml:space="preserve">
+    <value>已经是最新版本！</value>
+  </data>
+  <data name="zh_autoUpdater_result_none" xml:space="preserve">
+    <value>没有找到更新信息！</value>
+  </data>
+  <data name="zh_button_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="zh_button_ok" xml:space="preserve">
+    <value>确定</value>
+  </data>
   <data name="zh_hotkey1" xml:space="preserve">
     <value>下一行</value>
   </data>
@@ -246,8 +343,11 @@
   <data name="zh_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;热键说明&lt;/b&gt;</value>
   </data>
-  <data name="zh_ok_button" xml:space="preserve">
-    <value>确定</value>
+  <data name="zh_only_single_file" xml:space="preserve">
+    <value>只能拖入一个文件！</value>
+  </data>
+  <data name="zh_only_txt_file" xml:space="preserve">
+    <value>只能拖入TXT文件！</value>
   </data>
   <data name="zh_openFileDialog_filter" xml:space="preserve">
     <value>文本文件|*.txt</value>
@@ -260,5 +360,35 @@
   </data>
   <data name="zh_pictureBox_string_2" xml:space="preserve">
     <value>或者双击框内</value>
+  </data>
+  <data name="zh_update_completed" xml:space="preserve">
+    <value>已完成：</value>
+  </data>
+  <data name="zh_update_cur" xml:space="preserve">
+    <value>当前版本</value>
+  </data>
+  <data name="zh_update_description" xml:space="preserve">
+    <value>更新内容</value>
+  </data>
+  <data name="zh_update_download" xml:space="preserve">
+    <value>下载更新</value>
+  </data>
+  <data name="zh_update_downloaded" xml:space="preserve">
+    <value>已下载：</value>
+  </data>
+  <data name="zh_update_downloading" xml:space="preserve">
+    <value>正在下载更新……</value>
+  </data>
+  <data name="zh_update_found" xml:space="preserve">
+    <value>有新版本发布！</value>
+  </data>
+  <data name="zh_update_found_title" xml:space="preserve">
+    <value>检测到更新</value>
+  </data>
+  <data name="zh_update_new" xml:space="preserve">
+    <value>更新版本</value>
+  </data>
+  <data name="zh_update_verifying" xml:space="preserve">
+    <value>验证更新……</value>
   </data>
 </root>

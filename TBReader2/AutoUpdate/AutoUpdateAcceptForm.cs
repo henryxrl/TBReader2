@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TBReader2;
 
 namespace AutoUpdate
 {
@@ -19,6 +20,11 @@ namespace AutoUpdate
 		private AutoUpdateXml updateInfo;
 
 		/// <summary>
+		/// The program to update's tools
+		/// </summary>
+		private Tools tools;
+
+		/// <summary>
 		/// Creates a new AutoUpdateAcceptForm
 		/// </summary>
 		/// <param name="applicationInfo"></param>
@@ -29,10 +35,20 @@ namespace AutoUpdate
 
 			this.applicationInfo = applicationInfo;
 			this.updateInfo = updateInfo;
+			this.tools = applicationInfo.Tools;
 
-			this.Text = this.applicationInfo.ApplicationName + " - 检测到更新";
+			pictureBox.Image = tools.img;
 
-			this.lblUpdateAvail.Text = "SimpleEpub2 有新版本发布！\n请问是否更新？";
+			this.Text = tools.getString("update_found_title");
+
+			this.lblAppName.Text = this.applicationInfo.ApplicationName;
+			this.lblUpdateAvail.Text = tools.getString("update_found");
+			this.lblNewVersion_label.Text = tools.getString("update_new");
+			this.lblCurVersion_label.Text = tools.getString("update_cur");
+			this.lblDescription.Text = tools.getString("update_description");
+
+			this.btnYes.Text = tools.getString("button_ok");
+			this.btnNo.Text = tools.getString("button_cancel");
 
 			// Assigns the icon if it isn't null
 			if (this.applicationInfo.ApplicationIcon != null)
@@ -46,6 +62,13 @@ namespace AutoUpdate
 
 			// Fill in update info
 			this.txtDescription.Text = updateInfo.Description;
+		}
+
+		private void AutoUpdateAcceptForm_Load(object sender, EventArgs e)
+		{
+			this.lblNewVersion_label.ForeColor = tools.color;
+			this.lblCurVersion_label.ForeColor = tools.color;
+			this.lblDescription.ForeColor = tools.color;
 		}
 
 		private void btnYes_Click(object sender, EventArgs e)
@@ -66,5 +89,6 @@ namespace AutoUpdate
 			if (!(e.Control && e.KeyCode == Keys.C))
 				e.SuppressKeyPress = true;
 		}
+
 	}
 }

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using TBReader2;
 
 namespace AutoUpdate
 {
@@ -12,6 +13,16 @@ namespace AutoUpdate
 	/// </summary>
 	internal partial class AutoUpdateDownloadForm : DevComponents.DotNetBar.Metro.MetroForm
 	{
+		/// <summary>
+		/// The program to update's info
+		/// </summary>
+		private AutoUpdatable applicationInfo;
+
+		/// <summary>
+		/// The program to update's tools
+		/// </summary>
+		private Tools tools;
+
 		/// <summary>
 		/// The web client to download the update
 		/// </summary>
@@ -43,14 +54,19 @@ namespace AutoUpdate
 		/// <summary>
 		/// Creates a new AutoUpdateDownloadForm
 		/// </summary>
-		internal AutoUpdateDownloadForm(Uri location, String md5, Icon programIcon)
+		internal AutoUpdateDownloadForm(AutoUpdatable applicationInfo, Uri location, String md5, Icon programIcon)
 		{
 			InitializeComponent();
+
+			this.applicationInfo = applicationInfo;
+			this.tools = applicationInfo.Tools;
 
 			if (programIcon != null)
 				this.Icon = programIcon;
 
-			this.Text = "SimpleEpub2 - 下载更新";
+			this.Text = applicationInfo.ApplicationName + " - " + tools.getString("update_download");
+
+			this.lblDownloading.Text = tools.getString("update_downloading");
 
 			// Set the temp file name and create new 0-byte file
 			tempFile = Path.GetTempFileName();
@@ -72,14 +88,19 @@ namespace AutoUpdate
 			catch { this.DialogResult = DialogResult.No; this.Close(); }
 		}
 
+		private void AutoUpdateDownloadForm_Load(object sender, EventArgs e)
+		{
+			this.lblDownloading.ForeColor = tools.color;
+		}
+
 		/// <summary>
 		/// Downloads file from server
 		/// </summary>
 		private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
 		{
 			// Update progressbar on download
-			this.lblPercentage.Text = String.Format("已完成： {0}", FormatPercentage(e.BytesReceived, e.TotalBytesToReceive, 0));
-			this.lblProgress.Text = String.Format("已下载： {0} / {1}", FormatBytes(e.BytesReceived, 1, true), FormatBytes(e.TotalBytesToReceive, 1, true));
+			this.lblPercentage.Text = String.Format(tools.getString("update_completed") + " {0}", FormatPercentage(e.BytesReceived, e.TotalBytesToReceive, 0));
+			this.lblProgress.Text = String.Format(tools.getString("update_downloaded") + " {0} / {1}", FormatBytes(e.BytesReceived, 1, true), FormatBytes(e.TotalBytesToReceive, 1, true));
 			this.progressBar.Value = e.ProgressPercentage;
 		}
 
@@ -98,7 +119,7 @@ namespace AutoUpdate
 			else
 			{
 				// Show the "Hashing" label and set the progressbar to marquee
-				this.lblProgress.Text = "验证更新……";
+				this.lblProgress.Text = tools.getString("update_verifying");
 				this.progressBar.Style = ProgressBarStyle.Marquee;
 
 				// Start the hashing
@@ -196,5 +217,6 @@ namespace AutoUpdate
 				this.DialogResult = DialogResult.Abort;
 			}
 		}
+
 	}
 }

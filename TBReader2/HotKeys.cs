@@ -5,28 +5,28 @@ namespace TBReader2
 {
 	public partial class HotKeys : DevComponents.DotNetBar.Controls.SlidePanel
 	{
-		public HotKeys(String langCode, Color themeColor)
+		public HotKeys(Tools tools)
 		{
 			InitializeComponent();
 
-			hotkey1.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey1");
-			hotkey2.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey2");
-			hotkey3.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey3");
-			hotkey4.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey4");
-			hotkey5.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey5");
-			hotkey6.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey6");
-			hotkey7.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey7");
-			hotkey8.Text = Properties.Resources.ResourceManager.GetString(langCode + "hotkey8");
-			hotkeys_ok_button.Text = Properties.Resources.ResourceManager.GetString(langCode + "ok_button");
+			hotkey1.Text = tools.getString("hotkey1");
+			hotkey2.Text = tools.getString("hotkey2");
+			hotkey3.Text = tools.getString("hotkey3");
+			hotkey4.Text = tools.getString("hotkey4");
+			hotkey5.Text = tools.getString("hotkey5");
+			hotkey6.Text = tools.getString("hotkey6");
+			hotkey7.Text = tools.getString("hotkey7");
+			hotkey8.Text = tools.getString("hotkey8");
+			hotkeys_ok_button.Text = tools.getString("button_ok");
 
-			hotkey1_label.ForeColor = themeColor;
-			hotkey2_label.ForeColor = themeColor;
-			hotkey3_label.ForeColor = themeColor;
-			hotkey4_label.ForeColor = themeColor;
-			hotkey5_label.ForeColor = themeColor;
-			hotkey6_label.ForeColor = themeColor;
-			hotkey7_label.ForeColor = themeColor;
-			hotkey8_label.ForeColor = themeColor;
+			hotkey1_label.ForeColor = tools.color;
+			hotkey2_label.ForeColor = tools.color;
+			hotkey3_label.ForeColor = tools.color;
+			hotkey4_label.ForeColor = tools.color;
+			hotkey5_label.ForeColor = tools.color;
+			hotkey6_label.ForeColor = tools.color;
+			hotkey7_label.ForeColor = tools.color;
+			hotkey8_label.ForeColor = tools.color;
 		}
 
 		private void hotkeys_ok_button_Click(object sender, EventArgs e)

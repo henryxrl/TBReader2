@@ -28,17 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoUpdateAcceptForm));
 			this.lblCurVersion = new System.Windows.Forms.Label();
 			this.lblNewVersion = new System.Windows.Forms.Label();
-			this.lblUpdateAvail = new System.Windows.Forms.Label();
 			this.pictureBox = new System.Windows.Forms.PictureBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
+			this.lblNewVersion_label = new System.Windows.Forms.Label();
+			this.lblCurVersion_label = new System.Windows.Forms.Label();
 			this.btnYes = new DevComponents.DotNetBar.ButtonX();
 			this.btnNo = new DevComponents.DotNetBar.ButtonX();
 			this.txtDescription = new System.Windows.Forms.RichTextBox();
 			this.lblDescription = new System.Windows.Forms.Label();
+			this.lblUpdateAvail = new DevComponents.DotNetBar.LabelX();
+			this.lblAppName = new DevComponents.DotNetBar.LabelX();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -47,96 +47,82 @@
 			this.lblCurVersion.BackColor = System.Drawing.Color.White;
 			this.lblCurVersion.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F);
 			this.lblCurVersion.ForeColor = System.Drawing.Color.Black;
-			this.lblCurVersion.Location = new System.Drawing.Point(254, 117);
+			this.lblCurVersion.Location = new System.Drawing.Point(305, 126);
 			this.lblCurVersion.Name = "lblCurVersion";
-			this.lblCurVersion.Size = new System.Drawing.Size(74, 19);
+			this.lblCurVersion.Size = new System.Drawing.Size(77, 19);
 			this.lblCurVersion.TabIndex = 20;
-			this.lblCurVersion.Text = "版本号";
+			this.lblCurVersion.Text = "labelX1";
 			this.lblCurVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// lblNewVersion
 			// 
 			this.lblNewVersion.BackColor = System.Drawing.Color.White;
-			this.lblNewVersion.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F);
+			this.lblNewVersion.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.lblNewVersion.ForeColor = System.Drawing.Color.Black;
-			this.lblNewVersion.Location = new System.Drawing.Point(254, 89);
+			this.lblNewVersion.Location = new System.Drawing.Point(305, 98);
 			this.lblNewVersion.Name = "lblNewVersion";
-			this.lblNewVersion.Size = new System.Drawing.Size(74, 19);
+			this.lblNewVersion.Size = new System.Drawing.Size(77, 19);
 			this.lblNewVersion.TabIndex = 16;
-			this.lblNewVersion.Text = "版本号";
+			this.lblNewVersion.Text = "labelX1";
 			this.lblNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lblUpdateAvail
-			// 
-			this.lblUpdateAvail.BackColor = System.Drawing.Color.White;
-			this.lblUpdateAvail.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.75F);
-			this.lblUpdateAvail.ForeColor = System.Drawing.Color.Black;
-			this.lblUpdateAvail.Location = new System.Drawing.Point(106, 10);
-			this.lblUpdateAvail.Name = "lblUpdateAvail";
-			this.lblUpdateAvail.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
-			this.lblUpdateAvail.Size = new System.Drawing.Size(276, 80);
-			this.lblUpdateAvail.TabIndex = 15;
-			this.lblUpdateAvail.Text = "标题";
-			this.lblUpdateAvail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// pictureBox
 			// 
 			this.pictureBox.BackColor = System.Drawing.Color.White;
 			this.pictureBox.ForeColor = System.Drawing.Color.Black;
-			this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-			this.pictureBox.Location = new System.Drawing.Point(12, 10);
+			this.pictureBox.Location = new System.Drawing.Point(12, 6);
 			this.pictureBox.Name = "pictureBox";
-			this.pictureBox.Size = new System.Drawing.Size(80, 80);
+			this.pictureBox.Size = new System.Drawing.Size(150, 150);
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox.TabIndex = 14;
 			this.pictureBox.TabStop = false;
 			// 
-			// label1
+			// lblNewVersion_label
 			// 
-			this.label1.BackColor = System.Drawing.Color.White;
-			this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F);
-			this.label1.ForeColor = System.Drawing.Color.Black;
-			this.label1.Location = new System.Drawing.Point(143, 89);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(100, 19);
-			this.label1.TabIndex = 16;
-			this.label1.Text = "更新版本:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.lblNewVersion_label.BackColor = System.Drawing.Color.White;
+			this.lblNewVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.lblNewVersion_label.ForeColor = System.Drawing.Color.Black;
+			this.lblNewVersion_label.Location = new System.Drawing.Point(168, 98);
+			this.lblNewVersion_label.Name = "lblNewVersion_label";
+			this.lblNewVersion_label.Size = new System.Drawing.Size(121, 19);
+			this.lblNewVersion_label.TabIndex = 16;
+			this.lblNewVersion_label.Text = "labelX1";
+			this.lblNewVersion_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// label2
+			// lblCurVersion_label
 			// 
-			this.label2.BackColor = System.Drawing.Color.White;
-			this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F);
-			this.label2.ForeColor = System.Drawing.Color.Black;
-			this.label2.Location = new System.Drawing.Point(143, 117);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(100, 19);
-			this.label2.TabIndex = 20;
-			this.label2.Text = "当前版本:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.lblCurVersion_label.BackColor = System.Drawing.Color.White;
+			this.lblCurVersion_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.lblCurVersion_label.ForeColor = System.Drawing.Color.Black;
+			this.lblCurVersion_label.Location = new System.Drawing.Point(168, 126);
+			this.lblCurVersion_label.Name = "lblCurVersion_label";
+			this.lblCurVersion_label.Size = new System.Drawing.Size(121, 19);
+			this.lblCurVersion_label.TabIndex = 20;
+			this.lblCurVersion_label.Text = "labelX1";
+			this.lblCurVersion_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// btnYes
 			// 
 			this.btnYes.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
 			this.btnYes.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-			this.btnYes.Location = new System.Drawing.Point(147, 347);
+			this.btnYes.Location = new System.Drawing.Point(90, 350);
 			this.btnYes.Name = "btnYes";
 			this.btnYes.Size = new System.Drawing.Size(75, 23);
 			this.btnYes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
 			this.btnYes.TabIndex = 23;
-			this.btnYes.Text = "确定";
+			this.btnYes.Text = "Yes";
 			this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
 			// 
 			// btnNo
 			// 
 			this.btnNo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
 			this.btnNo.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-			this.btnNo.Location = new System.Drawing.Point(258, 347);
+			this.btnNo.Location = new System.Drawing.Point(230, 350);
 			this.btnNo.Name = "btnNo";
 			this.btnNo.Size = new System.Drawing.Size(75, 23);
 			this.btnNo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
 			this.btnNo.TabIndex = 24;
-			this.btnNo.Text = "取消";
+			this.btnNo.Text = "No";
 			this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
 			// 
 			// txtDescription
@@ -146,42 +132,75 @@
 			this.txtDescription.Cursor = System.Windows.Forms.Cursors.Default;
 			this.txtDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.txtDescription.ForeColor = System.Drawing.Color.Black;
-			this.txtDescription.Location = new System.Drawing.Point(111, 177);
+			this.txtDescription.Location = new System.Drawing.Point(12, 203);
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ReadOnly = true;
 			this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-			this.txtDescription.Size = new System.Drawing.Size(271, 152);
+			this.txtDescription.Size = new System.Drawing.Size(370, 125);
 			this.txtDescription.TabIndex = 25;
 			this.txtDescription.TabStop = false;
-			this.txtDescription.Text = "更新";
+			this.txtDescription.Text = "Details";
 			this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
 			// 
 			// lblDescription
 			// 
 			this.lblDescription.AutoSize = true;
 			this.lblDescription.BackColor = System.Drawing.Color.White;
-			this.lblDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+			this.lblDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.lblDescription.ForeColor = System.Drawing.Color.Black;
-			this.lblDescription.Location = new System.Drawing.Point(108, 157);
+			this.lblDescription.Location = new System.Drawing.Point(9, 178);
 			this.lblDescription.Name = "lblDescription";
-			this.lblDescription.Size = new System.Drawing.Size(68, 17);
+			this.lblDescription.Size = new System.Drawing.Size(52, 15);
 			this.lblDescription.TabIndex = 26;
-			this.lblDescription.Text = "更新内容：";
+			this.lblDescription.Text = "labelX1";
+			// 
+			// lblUpdateAvail
+			// 
+			this.lblUpdateAvail.BackColor = System.Drawing.Color.White;
+			// 
+			// 
+			// 
+			this.lblUpdateAvail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			this.lblUpdateAvail.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.75F);
+			this.lblUpdateAvail.ForeColor = System.Drawing.Color.Black;
+			this.lblUpdateAvail.Location = new System.Drawing.Point(168, 51);
+			this.lblUpdateAvail.Name = "lblUpdateAvail";
+			this.lblUpdateAvail.Size = new System.Drawing.Size(214, 35);
+			this.lblUpdateAvail.TabIndex = 27;
+			this.lblUpdateAvail.Text = "labelX1";
+			this.lblUpdateAvail.TextAlignment = System.Drawing.StringAlignment.Center;
+			// 
+			// lblAppName
+			// 
+			this.lblAppName.BackColor = System.Drawing.Color.White;
+			// 
+			// 
+			// 
+			this.lblAppName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			this.lblAppName.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.lblAppName.ForeColor = System.Drawing.Color.Black;
+			this.lblAppName.Location = new System.Drawing.Point(168, 12);
+			this.lblAppName.Name = "lblAppName";
+			this.lblAppName.Size = new System.Drawing.Size(214, 35);
+			this.lblAppName.TabIndex = 28;
+			this.lblAppName.Text = "labelX1";
+			this.lblAppName.TextAlignment = System.Drawing.StringAlignment.Center;
 			// 
 			// AutoUpdateAcceptForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(394, 391);
+			this.Controls.Add(this.lblAppName);
+			this.Controls.Add(this.lblUpdateAvail);
 			this.Controls.Add(this.lblDescription);
 			this.Controls.Add(this.txtDescription);
 			this.Controls.Add(this.btnNo);
 			this.Controls.Add(this.btnYes);
-			this.Controls.Add(this.label2);
+			this.Controls.Add(this.lblCurVersion_label);
 			this.Controls.Add(this.lblCurVersion);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblNewVersion_label);
 			this.Controls.Add(this.lblNewVersion);
-			this.Controls.Add(this.lblUpdateAvail);
 			this.Controls.Add(this.pictureBox);
 			this.DoubleBuffered = true;
 			this.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
@@ -192,6 +211,7 @@
 			this.Name = "AutoUpdateAcceptForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Load += new System.EventHandler(this.AutoUpdateAcceptForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -202,13 +222,14 @@
 
 		private System.Windows.Forms.Label lblCurVersion;
 		private System.Windows.Forms.Label lblNewVersion;
-		private System.Windows.Forms.Label lblUpdateAvail;
 		private System.Windows.Forms.PictureBox pictureBox;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblNewVersion_label;
+		private System.Windows.Forms.Label lblCurVersion_label;
 		private DevComponents.DotNetBar.ButtonX btnYes;
 		private DevComponents.DotNetBar.ButtonX btnNo;
 		private System.Windows.Forms.RichTextBox txtDescription;
 		private System.Windows.Forms.Label lblDescription;
+		private DevComponents.DotNetBar.LabelX lblUpdateAvail;
+		private DevComponents.DotNetBar.LabelX lblAppName;
 	}
 }

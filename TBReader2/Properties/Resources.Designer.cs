@@ -61,6 +61,16 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap clock {
+            get {
+                object obj = ResourceManager.GetObject("clock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Author 的本地化字符串。
         /// </summary>
         internal static string en_about_author_label {
@@ -151,6 +161,96 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Update failed!&lt;br/&gt;Please try again later! 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_failed {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_failed_title {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_failed_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Success!&lt;br/&gt;Application restarts in 5 seconds! 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_success {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Success 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_success_title {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_success_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Update terminated!&lt;br/&gt;Cannot complete update! 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_terminated {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_terminated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Terminated 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_msg_terminated_title {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_msg_terminated_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Latest version already! 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_result_latest {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_result_latest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 No update info found! 的本地化字符串。
+        /// </summary>
+        internal static string en_autoUpdater_result_none {
+            get {
+                return ResourceManager.GetString("en_autoUpdater_result_none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Cancel 的本地化字符串。
+        /// </summary>
+        internal static string en_button_cancel {
+            get {
+                return ResourceManager.GetString("en_button_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 OK 的本地化字符串。
+        /// </summary>
+        internal static string en_button_ok {
+            get {
+                return ResourceManager.GetString("en_button_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 &lt;b&gt;HOTKEYS&lt;/b&gt; 的本地化字符串。
         /// </summary>
         internal static string en_hotkey_button {
@@ -232,11 +332,20 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 OK 的本地化字符串。
+        ///   查找类似 One file at a time! 的本地化字符串。
         /// </summary>
-        internal static string en_ok_button {
+        internal static string en_only_single_file {
             get {
-                return ResourceManager.GetString("en_ok_button", resourceCulture);
+                return ResourceManager.GetString("en_only_single_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TXT file only! 的本地化字符串。
+        /// </summary>
+        internal static string en_only_txt_file {
+            get {
+                return ResourceManager.GetString("en_only_txt_file", resourceCulture);
             }
         }
         
@@ -273,6 +382,96 @@ namespace TBReader2.Properties {
         internal static string en_pictureBox_string_2 {
             get {
                 return ResourceManager.GetString("en_pictureBox_string_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Completed:  的本地化字符串。
+        /// </summary>
+        internal static string en_update_completed {
+            get {
+                return ResourceManager.GetString("en_update_completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Cur Version 的本地化字符串。
+        /// </summary>
+        internal static string en_update_cur {
+            get {
+                return ResourceManager.GetString("en_update_cur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Update Description 的本地化字符串。
+        /// </summary>
+        internal static string en_update_description {
+            get {
+                return ResourceManager.GetString("en_update_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Download Update 的本地化字符串。
+        /// </summary>
+        internal static string en_update_download {
+            get {
+                return ResourceManager.GetString("en_update_download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Downloaded:  的本地化字符串。
+        /// </summary>
+        internal static string en_update_downloaded {
+            get {
+                return ResourceManager.GetString("en_update_downloaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Downloading Update ... 的本地化字符串。
+        /// </summary>
+        internal static string en_update_downloading {
+            get {
+                return ResourceManager.GetString("en_update_downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Update found! 的本地化字符串。
+        /// </summary>
+        internal static string en_update_found {
+            get {
+                return ResourceManager.GetString("en_update_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Update found 的本地化字符串。
+        /// </summary>
+        internal static string en_update_found_title {
+            get {
+                return ResourceManager.GetString("en_update_found_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 New Version 的本地化字符串。
+        /// </summary>
+        internal static string en_update_new {
+            get {
+                return ResourceManager.GetString("en_update_new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Verifying Update ... 的本地化字符串。
+        /// </summary>
+        internal static string en_update_verifying {
+            get {
+                return ResourceManager.GetString("en_update_verifying", resourceCulture);
             }
         }
         
@@ -367,6 +566,96 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 更新出错！&lt;br/&gt;请稍后再试一次！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_failed {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新出错 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_failed_title {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_failed_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新成功！&lt;br/&gt;程序5秒后即将自动重启！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_success {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新成功 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_success_title {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_success_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新过程被中断！&lt;br/&gt;无法完成更新！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_terminated {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_terminated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新中断 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_msg_terminated_title {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_msg_terminated_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已经是最新版本！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_result_latest {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_result_latest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有找到更新信息！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_autoUpdater_result_none {
+            get {
+                return ResourceManager.GetString("zh_autoUpdater_result_none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        internal static string zh_button_cancel {
+            get {
+                return ResourceManager.GetString("zh_button_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        internal static string zh_button_ok {
+            get {
+                return ResourceManager.GetString("zh_button_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 &lt;b&gt;热键说明&lt;/b&gt; 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey_button {
@@ -448,11 +737,20 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 确定 的本地化字符串。
+        ///   查找类似 只能拖入一个文件！ 的本地化字符串。
         /// </summary>
-        internal static string zh_ok_button {
+        internal static string zh_only_single_file {
             get {
-                return ResourceManager.GetString("zh_ok_button", resourceCulture);
+                return ResourceManager.GetString("zh_only_single_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 只能拖入TXT文件！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_only_txt_file {
+            get {
+                return ResourceManager.GetString("zh_only_txt_file", resourceCulture);
             }
         }
         
@@ -489,6 +787,96 @@ namespace TBReader2.Properties {
         internal static string zh_pictureBox_string_2 {
             get {
                 return ResourceManager.GetString("zh_pictureBox_string_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已完成： 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_completed {
+            get {
+                return ResourceManager.GetString("zh_update_completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 当前版本 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_cur {
+            get {
+                return ResourceManager.GetString("zh_update_cur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新内容 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_description {
+            get {
+                return ResourceManager.GetString("zh_update_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 下载更新 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_download {
+            get {
+                return ResourceManager.GetString("zh_update_download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已下载： 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_downloaded {
+            get {
+                return ResourceManager.GetString("zh_update_downloaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在下载更新…… 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_downloading {
+            get {
+                return ResourceManager.GetString("zh_update_downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 有新版本发布！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_found {
+            get {
+                return ResourceManager.GetString("zh_update_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 检测到更新 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_found_title {
+            get {
+                return ResourceManager.GetString("zh_update_found_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更新版本 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_new {
+            get {
+                return ResourceManager.GetString("zh_update_new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 验证更新…… 的本地化字符串。
+        /// </summary>
+        internal static string zh_update_verifying {
+            get {
+                return ResourceManager.GetString("zh_update_verifying", resourceCulture);
             }
         }
     }

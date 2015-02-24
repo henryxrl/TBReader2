@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using TBReader2;
 
 namespace AutoUpdate
 {
@@ -20,6 +21,10 @@ namespace AutoUpdate
 		/// </summary>
 		String ApplicationID { get; }
 		/// <summary>
+		/// The current language code
+		/// </summary>
+		Tools Tools { get; }
+		/// <summary>
 		/// The current assembly
 		/// </summary>
 		Assembly ApplicationAssembly { get; }
@@ -36,6 +41,6 @@ namespace AutoUpdate
 		/// For Windows Forms Applications, use 'this'
 		/// Console Apps, reference System.Windows.Forms and return null.
 		/// </summary>
-		 Form Context { get; }
+		Form Context { get; }
 	}
 }

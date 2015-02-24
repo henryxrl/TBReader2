@@ -39,15 +39,16 @@
 			this.lblProgress.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblProgress.Location = new System.Drawing.Point(214, 125);
 			this.lblProgress.Name = "lblProgress";
-			this.lblProgress.Size = new System.Drawing.Size(164, 22);
+			this.lblProgress.Size = new System.Drawing.Size(195, 22);
 			this.lblProgress.TabIndex = 8;
+			this.lblProgress.Text = "labelX1";
 			this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// progressBar
 			// 
 			this.progressBar.Location = new System.Drawing.Point(34, 85);
 			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(344, 23);
+			this.progressBar.Size = new System.Drawing.Size(375, 23);
 			this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
 			this.progressBar.TabIndex = 7;
 			// 
@@ -56,9 +57,9 @@
 			this.lblDownloading.Font = new System.Drawing.Font("Microsoft YaHei UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.lblDownloading.Location = new System.Drawing.Point(35, 21);
 			this.lblDownloading.Name = "lblDownloading";
-			this.lblDownloading.Size = new System.Drawing.Size(343, 45);
+			this.lblDownloading.Size = new System.Drawing.Size(374, 45);
 			this.lblDownloading.TabIndex = 6;
-			this.lblDownloading.Text = "正在下载更新……";
+			this.lblDownloading.Text = "labelX1";
 			this.lblDownloading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lblPercentage
@@ -68,13 +69,14 @@
 			this.lblPercentage.Name = "lblPercentage";
 			this.lblPercentage.Size = new System.Drawing.Size(164, 22);
 			this.lblPercentage.TabIndex = 9;
+			this.lblPercentage.Text = "labelX1";
 			this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AutoUpdateDownloadForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(413, 176);
+			this.ClientSize = new System.Drawing.Size(444, 177);
 			this.Controls.Add(this.lblPercentage);
 			this.Controls.Add(this.lblProgress);
 			this.Controls.Add(this.progressBar);
@@ -88,6 +90,7 @@
 			this.Name = "AutoUpdateDownloadForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AutoUpdateDownloadForm_FormClosed);
+			this.Load += new System.EventHandler(this.AutoUpdateDownloadForm_Load);
 			this.ResumeLayout(false);
 
 		}

@@ -118,6 +118,7 @@
     <Compile Include="HotKeys.Designer.cs">
       <DependentUpon>HotKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
