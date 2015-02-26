@@ -49,7 +49,7 @@ namespace TBReader2
 		}
 		#endregion
 
-		Tools tools = null;
+		private Tools tools = null;
 
 		private About abt = null;
 		private HotKeys hky = null;
@@ -57,6 +57,14 @@ namespace TBReader2
 		private Int32 aptTime = 0;
 		private Int32 timerCount;
 		private Int32 timerFlag = -1;	// 0: auto read forward; 1: auto read backward; 2: go back to current; -1: default
+
+		private String txt_URL;
+		private String[] txt_book;
+
+		private String curTitle;
+
+		// About to register global hot key
+		private KeyboardHook hook = new KeyboardHook();
 
 		public MainForm()
 		{
@@ -72,7 +80,48 @@ namespace TBReader2
 			HelpButtonVisible = true;
 			HelpButtonClick += FormAboutButtonClick;
 
+			contextMenuStrip.Items.Add(tools.getString("exit"), null, item_Click);
+
 			updater = new AutoUpdater(this);
+
+			#region Register HotKeys
+			// register the event that is fired after the key press.
+			hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
+
+			try
+			{
+				// ctrl+shift+Q = Quit
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Q);
+
+				// ctrl+shift+right = next line
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Right);
+
+				// ctrl+shift+left = prev line
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Left);
+
+				// ctrl+shift+up = bookmark cur loc
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Up);
+
+				// ctrl+shift+down = jump to bookmark
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Down);
+
+				// ctrl+shift+delete = delete current bookmark
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Delete);
+
+				// ctrl+shift+r = toggle to default title text/cur condition
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.R);
+
+				// ctrl+shift+space = toggle hide/show
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Space);
+
+				// ctrl+shift+p = jump to previous location (only under bookmark view)
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.P);
+			}
+			catch
+			{
+				MessageBoxEx.Show(tools.getString("hotkey_registration_failed"));
+			}
+			#endregion
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -102,6 +151,8 @@ namespace TBReader2
 			updater.DoUpdate(true);
 		}
 
+		#region UI Setup
+		
 		private void setTools()
 		{
 			// themeColor
@@ -196,6 +247,7 @@ namespace TBReader2
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			{
 				e.Effect = DragDropEffects.All;
+				bookName_label.SendToBack();
 				overlay_cover.Show();
 			}
 			else
@@ -205,6 +257,7 @@ namespace TBReader2
 		private void txt_pictureBox_DragLeave(object sender, EventArgs e)
 		{
 			overlay_cover.Hide();
+			bookName_label.BringToFront();
 		}
 
 		private void txt_pictureBox_DragDrop(object sender, DragEventArgs e)
@@ -212,19 +265,56 @@ namespace TBReader2
 			String[] files = (String[])e.Data.GetData(DataFormats.FileDrop);
 			if (files.Length != 1)
 			{
+				e.Effect = DragDropEffects.None;
 				MessageBoxEx.Show(this, tools.getString("only_single_file"));
+				overlay_cover.Hide();
+				bookName_label.BringToFront();
+				return;
 			}
 			else if (!files[0].ToLower().EndsWith(".txt"))
 			{
+				e.Effect = DragDropEffects.None;
 				MessageBoxEx.Show(this, tools.getString("only_txt_file"));
+				overlay_cover.Hide();
+				bookName_label.BringToFront();
+				return;
 			}
 			else
 			{
-				MessageBoxEx.Show(files[0]);
+				e.Effect = DragDropEffects.All;
+				txt_URL = files[0];
+				//MessageBoxEx.Show(txt_URL);
+				read();
+				overlay_cover.Hide();
+				bookName_label.BringToFront();
+				txt_pictureBox.BackgroundImage = drawBackGroundImage();
+				return;
 			}
-			overlay_cover.Hide();
 		}
-		
+
+		private void txt_pictureBox_DoubleClick(object sender, EventArgs e)
+		{
+			bookName_label.SendToBack();
+			overlay_cover.Show();
+
+			openFileDialog.Title = tools.getString("openFileDialog_title");
+			openFileDialog.Filter = tools.getString("openFileDialog_filter");
+			
+			if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+			{
+				txt_URL = openFileDialog.FileName;
+				//MessageBoxEx.Show(txt_URL);
+				read();
+				overlay_cover.Hide();
+				bookName_label.BringToFront();
+				txt_pictureBox.BackgroundImage = drawBackGroundImage();
+				return;
+			}
+			
+			overlay_cover.Hide();
+			bookName_label.BringToFront();
+		}
+
 		private Image drawBackGroundImage()
 		{
 			Image img = new Bitmap(txt_pictureBox.Width, txt_pictureBox.Height);
@@ -262,24 +352,105 @@ namespace TBReader2
 				}
 			}
 
+			if (txt_URL != null)
+			{
+				bookName_label.Text = tools.getString("pictureBox_string_3")
+										+ System.IO.Path.GetFileNameWithoutExtension(txt_URL);
+			}
+
 			return img;
 		}
 
-		private void txt_pictureBox_DoubleClick(object sender, EventArgs e)
+		private void item_Click(object sender, EventArgs e)
 		{
-			overlay_cover.Show();
+			quitTBReader();
+		}
 
-			openFileDialog.Title = tools.getString("openFileDialog_title");
-			openFileDialog.Filter = tools.getString("openFileDialog_filter");
-			
-			
-			if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+		private void notifyIcon_DoubleClick(object sender, EventArgs e)
+		{
+			hideShow();
+		}
+
+		#endregion
+
+		private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
+		{
+			// show the keys pressed in a label.
+			String key = e.Key.ToString();
+			String keyComb = e.Modifier.ToString() + " + " + key;
+			MessageBoxEx.Show(keyComb);
+
+			switch (key)
 			{
-				MessageBoxEx.Show(openFileDialog.FileName);
+				case "Up":
+					//checkOpenTXT();
+					//addBookmark();
+					break;
+				case "Down":
+					//checkOpenTXT();
+					//jumpToBookmarks();
+					break;
+				case "Left":
+					//checkOpenTXT();
+					//readBackward();
+					break;
+				case "Right":
+					//checkOpenTXT();
+					//readForward();
+					break;
+				case "Q":
+					//quitTBReader();
+					break;
+				case "R":
+					//toggleTitleText();
+					break;
+				case "Space":
+					hideShow();
+					break;
+				case "P":
+					//jumpFromBookmarkToCurLoc();
+					break;
+				case "Delete":
+					//deleteCurBookmakr();
+					break;
+				default:
+					MessageBoxEx.Show(tools.getString("hotkey_invalid_pressed"));
+					break;
 			}
-			
-			
-			overlay_cover.Hide();
+		}
+		
+		private void read()
+		{
+			txt_book = System.IO.File.ReadAllLines(txt_URL, System.Text.Encoding.Default);
+			MessageBoxEx.Show("done");
+		}
+
+		private String TruncateAtWord(String input, Int32 length)
+		{
+			if (input == null || input.Length < length)
+				return input;
+
+			Int32 iNextSpace = input.LastIndexOf(" ", length);
+			return String.Format("{0}...", input.Substring(0, (iNextSpace > 0) ? iNextSpace : length).Trim());
+		}
+
+		private void hideShow()
+		{
+			if (this.Visible == true) this.Hide();
+			else this.Show();
+		}
+
+		private void quitTBReader()
+		{
+			/*
+			saveCurrentLoc();
+
+			if (defaultTitleText.ContainsKey(window))
+			{
+				restorePrevWindowTitle();
+			}
+			*/
+			Application.Exit();
 		}
 
 	}

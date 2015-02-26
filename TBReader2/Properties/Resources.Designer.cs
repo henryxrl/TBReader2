@@ -251,11 +251,38 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Exit 的本地化字符串。
+        /// </summary>
+        internal static string en_exit {
+            get {
+                return ResourceManager.GetString("en_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 &lt;b&gt;HOTKEYS&lt;/b&gt; 的本地化字符串。
         /// </summary>
         internal static string en_hotkey_button {
             get {
                 return ResourceManager.GetString("en_hotkey_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Invalid key pressed! 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey_invalid_pressed {
+            get {
+                return ResourceManager.GetString("en_hotkey_invalid_pressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed to register some of the hot keys! 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey_registration_failed {
+            get {
+                return ResourceManager.GetString("en_hotkey_registration_failed", resourceCulture);
             }
         }
         
@@ -382,6 +409,15 @@ namespace TBReader2.Properties {
         internal static string en_pictureBox_string_2 {
             get {
                 return ResourceManager.GetString("en_pictureBox_string_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Reading:  的本地化字符串。
+        /// </summary>
+        internal static string en_pictureBox_string_3 {
+            get {
+                return ResourceManager.GetString("en_pictureBox_string_3", resourceCulture);
             }
         }
         
@@ -656,11 +692,38 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 退出 的本地化字符串。
+        /// </summary>
+        internal static string zh_exit {
+            get {
+                return ResourceManager.GetString("zh_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 &lt;b&gt;热键说明&lt;/b&gt; 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey_button {
             get {
                 return ResourceManager.GetString("zh_hotkey_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 热键无效！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey_invalid_pressed {
+            get {
+                return ResourceManager.GetString("zh_hotkey_invalid_pressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 一些热键注册失败！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey_registration_failed {
+            get {
+                return ResourceManager.GetString("zh_hotkey_registration_failed", resourceCulture);
             }
         }
         
@@ -787,6 +850,15 @@ namespace TBReader2.Properties {
         internal static string zh_pictureBox_string_2 {
             get {
                 return ResourceManager.GetString("zh_pictureBox_string_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在阅读： 的本地化字符串。
+        /// </summary>
+        internal static string zh_pictureBox_string_3 {
+            get {
+                return ResourceManager.GetString("zh_pictureBox_string_3", resourceCulture);
             }
         }
         

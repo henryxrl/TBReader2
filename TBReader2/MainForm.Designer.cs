@@ -39,6 +39,9 @@
 			this.overlay_cover = new System.Windows.Forms.PictureBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
+			this.bookName_label = new DevComponents.DotNetBar.LabelX();
+			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.apt_trackBar = new TBReader2.NoFocusTrackBar();
 			((System.ComponentModel.ISupportInitialize)(this.txt_pictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.overlay_cover)).BeginInit();
@@ -114,6 +117,31 @@
 			this.styleManager.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
 			this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(143))))));
 			// 
+			// bookName_label
+			// 
+			this.bookName_label.BackColor = System.Drawing.Color.Transparent;
+			// 
+			// 
+			// 
+			this.bookName_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			resources.ApplyResources(this.bookName_label, "bookName_label");
+			this.bookName_label.ForeColor = System.Drawing.Color.Black;
+			this.bookName_label.Name = "bookName_label";
+			this.bookName_label.TextAlignment = System.Drawing.StringAlignment.Center;
+			this.bookName_label.TextLineAlignment = System.Drawing.StringAlignment.Near;
+			// 
+			// notifyIcon
+			// 
+			this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+			resources.ApplyResources(this.notifyIcon, "notifyIcon");
+			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+			// 
+			// contextMenuStrip
+			// 
+			resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
+			this.contextMenuStrip.Name = "contextMenuStrip";
+			// 
 			// apt_trackBar
 			// 
 			this.apt_trackBar.BackColor = System.Drawing.Color.White;
@@ -128,14 +156,14 @@
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Controls.Add(this.apt_end_label);
+			this.Controls.Add(this.bookName_label);
 			this.Controls.Add(this.overlay_cover);
+			this.Controls.Add(this.apt_end_label);
 			this.Controls.Add(this.apt_label);
 			this.Controls.Add(this.apt_start_label);
 			this.Controls.Add(this.apt_trackBar);
 			this.Controls.Add(this.txt_pictureBox);
 			this.DoubleBuffered = true;
-			this.ForeColor = System.Drawing.Color.Black;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.HelpButtonText = "Help";
 			this.MaximizeBox = false;
@@ -162,6 +190,9 @@
 		protected internal System.Windows.Forms.ToolTip toolTip;
 		protected internal System.Windows.Forms.Timer timer;
 		private DevComponents.DotNetBar.StyleManager styleManager;
+		private DevComponents.DotNetBar.LabelX bookName_label;
+		private System.Windows.Forms.NotifyIcon notifyIcon;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 	}
 }
 

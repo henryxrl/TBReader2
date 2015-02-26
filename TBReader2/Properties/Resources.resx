@@ -181,6 +181,9 @@
   <data name="en_button_ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="en_exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="en_hotkey1" xml:space="preserve">
     <value>Next Line</value>
   </data>
@@ -208,6 +211,12 @@
   <data name="en_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;HOTKEYS&lt;/b&gt;</value>
   </data>
+  <data name="en_hotkey_invalid_pressed" xml:space="preserve">
+    <value>Invalid key pressed!</value>
+  </data>
+  <data name="en_hotkey_registration_failed" xml:space="preserve">
+    <value>Failed to register some of the hot keys!</value>
+  </data>
   <data name="en_only_single_file" xml:space="preserve">
     <value>One file at a time!</value>
   </data>
@@ -225,6 +234,9 @@
   </data>
   <data name="en_pictureBox_string_2" xml:space="preserve">
     <value>OR... Double click here</value>
+  </data>
+  <data name="en_pictureBox_string_3" xml:space="preserve">
+    <value>Reading: </value>
   </data>
   <data name="en_update_completed" xml:space="preserve">
     <value>Completed: </value>
@@ -316,6 +328,9 @@
   <data name="zh_button_ok" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="zh_exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
   <data name="zh_hotkey1" xml:space="preserve">
     <value>下一行</value>
   </data>
@@ -343,6 +358,12 @@
   <data name="zh_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;热键说明&lt;/b&gt;</value>
   </data>
+  <data name="zh_hotkey_invalid_pressed" xml:space="preserve">
+    <value>热键无效！</value>
+  </data>
+  <data name="zh_hotkey_registration_failed" xml:space="preserve">
+    <value>一些热键注册失败！</value>
+  </data>
   <data name="zh_only_single_file" xml:space="preserve">
     <value>只能拖入一个文件！</value>
   </data>
@@ -360,6 +381,9 @@
   </data>
   <data name="zh_pictureBox_string_2" xml:space="preserve">
     <value>或者双击框内</value>
+  </data>
+  <data name="zh_pictureBox_string_3" xml:space="preserve">
+    <value>正在阅读：</value>
   </data>
   <data name="zh_update_completed" xml:space="preserve">
     <value>已完成：</value>
