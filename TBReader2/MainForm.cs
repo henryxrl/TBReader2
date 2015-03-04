@@ -124,10 +124,13 @@ namespace TBReader2
 
 		private String curTitle;		// Current window's original title
 		private String curLineText;		// Current text shown in windows' title bar
+		private String curLineText_pre;
+		private String curLineText_content;
 
 		private Int32 totalLineNum;		// 1-based. Total line number
 		private Int32 curLineNum;		// 1-based. Need to minus 1 to get current line index
 		private Int32 lineOffset;		// 0-based. character index of a line
+		private Int32 lineOffset_OLD;
 
 
 
@@ -464,9 +467,9 @@ namespace TBReader2
 				case "Down":
 					//MessageBoxEx.Show(TruncateAtWord("hey dude, how are you? I'm fine thank you!", 10));
 					//MessageBoxEx.Show("font size: " + SystemFonts.CaptionFont.Size + "\nfont size in point: " + SystemFonts.CaptionFont.SizeInPoints);
-					MessageBoxEx.Show(TruncatePixelLength("hey dudeee, how are you? I'm fine thank you!", 0, 100));
-					MessageBoxEx.Show(TruncatePixelLength("hey dudeee, 比比比比? I'm fine 你妹啊比 you!", 0, 100));
-					MessageBoxEx.Show(TruncatePixelLength("我草拟大爷的比比比比比吧！啊啊啊你妹啊比！阿比阿鼻！！！！", 0, 100));
+					//MessageBoxEx.Show(TruncatePixelLength("hey dudeee, how are you? I'm fine thank you!", 0, 100));
+					//MessageBoxEx.Show(TruncatePixelLength("hey dudeee, 比比比比? I'm fine 你妹啊比 you!", 0, 100));
+					//MessageBoxEx.Show(TruncatePixelLength("我草拟大爷的比比比比比吧！啊啊啊你妹啊比！阿比阿鼻！！！！", 0, 100));
 					//checkOpenTXT();
 					//jumpToBookmarks();
 					break;
@@ -502,6 +505,12 @@ namespace TBReader2
 					break;
 			}
 		}
+
+
+
+
+
+		
 
 
 
@@ -549,8 +558,7 @@ namespace TBReader2
 
 		private void resize_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
 		{
-			getActiveWindowDisplayWidth();
-			MessageBoxEx.Show("width: " + displayWidth);
+			jumpToLine(0);
 		}
 
 		private void switch_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
@@ -705,7 +713,7 @@ namespace TBReader2
 			if (lineOffset != 0)
 				lineOffset++;
 			else curLineNum++;
-			jumpToLine();
+			jumpToLine(1);
 
 		}
 
@@ -717,14 +725,20 @@ namespace TBReader2
 			}
 		}
 
-		private void jumpToLine()
+		// flag == -1: read backward; flag == 0: read again; flag == 1: read forward
+		private void jumpToLine(Int32 flag)
 		{
 			window = GetForegroundWindow().ToInt32();
+			getActiveWindowDisplayWidth();
 			
 			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
-			String pre = String.Format("({0:0.0}%) ", progress);
-			String line = txt_book[curLineNum-1].Trim();
-			curLineText = pre + line;
+			curLineText_pre = String.Format("({0:0.0}%) ", progress);
+			curLineText_content = txt_book[curLineNum - 1].Trim();
+
+			if (flag == 0)
+				curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset_OLD, displayWidth);
+			else curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset, displayWidth);
+
 			setCurTitleText(curLineText);
 			isOriginalTitle = false;
 		}
@@ -744,36 +758,55 @@ namespace TBReader2
 
 
 
+
+
+
+
+
 		private void processBook()
 		{
 			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default).Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
 			totalLineNum = txt_book.Length;
 			curLineNum = 0;
 			lineOffset = 0;
+			lineOffset_OLD = 0;
 		}
 
-		private String TruncateAtWord(String input, Int32 charNum)
+		private String TruncatePixelLength(String pre, String line, Int32 startIdx, Int32 length)
 		{
-			if (input == null || input.Length < charNum)
+			// Update lineOffset_OLD
+			lineOffset_OLD = startIdx;
+
+			String content = line.Substring(startIdx);
+			String input = pre + content;
+
+			// If everything fits, return
+			if (TextRenderer.MeasureText(input, SystemFonts.CaptionFont).Width <= length)
+			{
+				lineOffset = 0;
 				return input;
+			}
 
-			Int32 iNextSpace = input.LastIndexOf(" ", charNum);
-			return String.Format("{0}...", input.Substring(0, (iNextSpace > 0) ? iNextSpace : charNum).Trim());
-		}
-
-		private String TruncatePixelLength(String input, Int32 startIdx, Int32 length)
-		{
-			
-			//return TextTruncator.TruncateText(input, length, SystemFonts.CaptionFont);
-
-			Int32 newLength = length - TextRenderer.MeasureText("...", SystemFonts.CaptionFont).Width;
+			// If not, calculate max substring that fits
+			Int32 newLength = length - TextRenderer.MeasureText(pre + "...", SystemFonts.CaptionFont).Width;
 			Int32 tempLength = 0;
 			Int32 idx = 0;
-			for (; idx < input.Length && tempLength < newLength; idx++)
+			for (; idx < content.Length - 1 && tempLength < newLength; idx++)
 			{
-				tempLength += TextRenderer.MeasureText(input[idx].ToString(), SystemFonts.CaptionFont).Width;
+				tempLength = TextRenderer.MeasureText(content.Substring(0, idx+1), SystemFonts.CaptionFont).Width;
 			}
-			return input.Substring(0, idx) + "...";
+
+			// Truncate substring at word
+			Int32 newIdx = content.LastIndexOf(" ", idx, idx + 1);
+			idx = (newIdx > 0) ? newIdx : idx;
+
+			// Update lineOffset
+			if (idx == content.Length - 1)
+				lineOffset = 0;
+			else lineOffset = startIdx + idx;
+
+			// return result
+			return pre + content.Substring(0, idx + 1) + "...";
 		}
 
 		private void hideShow()
