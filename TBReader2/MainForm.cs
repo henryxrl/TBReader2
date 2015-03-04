@@ -5,12 +5,18 @@ using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Windows.Forms;
 using AutoUpdate;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms.VisualStyles;
+using System.IO;
+using System.Linq;
 
 namespace TBReader2
 {
 	public partial class MainForm : DevComponents.DotNetBar.Metro.MetroForm, AutoUpdatable
 	{
 		#region AutoUpdate
+		
 		private AutoUpdater updater;
 		
 		public string ApplicationName
@@ -47,13 +53,68 @@ namespace TBReader2
 		{
 			get { return this; }
 		}
+
 		#endregion
 
-		private Tools tools = null;
+		#region Window-related variables
 
+		// Global hot key
+		private KeyboardHook hook = new KeyboardHook();
+		[DllImport("user32.dll")]
+		private static extern Boolean UnregisterHotKey(IntPtr hWnd, Int32 id);
+
+		// Get foreground window and size
+		[DllImport("user32.dll")]
+		private static extern IntPtr GetForegroundWindow();
+		[DllImport("user32.dll")]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		private static extern Boolean GetWindowRect(IntPtr hWnd, out RECT lpRect);
+		[StructLayout(LayoutKind.Sequential)]
+		private struct RECT
+		{
+			public Int32 Left;        // x position of upper-left corner  
+			public Int32 Top;         // y position of upper-left corner  
+			public Int32 Right;       // x position of lower-right corner  
+			public Int32 Bottom;      // y position of lower-right corner  
+		}
+
+		// Get/set window title text
+		[DllImport("user32.dll")]
+		private static extern Int32 GetWindowText(IntPtr hWnd, StringBuilder text, Int32 count);
+		[DllImport("user32.dll")]
+		private static extern Int32 SetWindowText(Int32 hWnd, StringBuilder text);
+
+		// Other window event
+		[DllImport("user32.dll", SetLastError = true)]
+		private static extern IntPtr SetWinEventHook(UInt32 eventMin, UInt32 eventMax, IntPtr hmodWinEventProc, WinEventProc lpfnWinEventProc, Int32 idProcess, Int32 idThread, UInt32 dwflags);
+		[DllImport("user32.dll")]
+		private static extern Int32 UnhookWinEvent(IntPtr hWinEventHook);
+		private delegate void WinEventProc(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime);
+		private const UInt32 WINEVENT_OUTOFCONTEXT = 0;
+
+		// Other window resize
+		private const UInt32 EVENT_SYSTEM_MOVESIZEEND = 0x000B;
+		private WinEventProc resize_listener;
+		private IntPtr resize_winHook;
+
+		// Other window switch event
+		private const UInt32 EVENT_SYSTEM_FOREGROUND = 0x0003;
+		private const UInt32 EVENT_SYSTEM_SWITCHEND = 0x0015;
+		private WinEventProc switch_listener;
+		private IntPtr switch_winHook;
+
+		#endregion
+
+		private Int32 window = 0;
+		private Boolean isOriginalTitle = true;
+		private Int32 dim_w = 0;		// Remember the width of the active window
+		private Int32 displayWidth = 0;		// Actual length for text display
+
+		private Tools tools = null;
 		private About abt = null;
 		private HotKeys hky = null;
 
+		// Auto page turn
 		private Int32 aptTime = 0;
 		private Int32 timerCount;
 		private Int32 timerFlag = -1;	// 0: auto read forward; 1: auto read backward; 2: go back to current; -1: default
@@ -61,10 +122,19 @@ namespace TBReader2
 		private String txt_URL;
 		private String[] txt_book;
 
-		private String curTitle;
+		private String curTitle;		// Current window's original title
+		private String curLineText;		// Current text shown in windows' title bar
 
-		// About to register global hot key
-		private KeyboardHook hook = new KeyboardHook();
+		private Int32 totalLineNum;		// 1-based. Total line number
+		private Int32 curLineNum;		// 1-based. Need to minus 1 to get current line index
+		private Int32 lineOffset;		// 0-based. character index of a line
+
+
+
+
+
+
+
 
 		public MainForm()
 		{
@@ -149,6 +219,8 @@ namespace TBReader2
 			setAbout(false);
 
 			updater.DoUpdate(true);
+
+			StartListeningForWindowChanges();
 		}
 
 		#region UI Setup
@@ -284,7 +356,7 @@ namespace TBReader2
 				e.Effect = DragDropEffects.All;
 				txt_URL = files[0];
 				//MessageBoxEx.Show(txt_URL);
-				read();
+				processBook();
 				overlay_cover.Hide();
 				bookName_label.BringToFront();
 				txt_pictureBox.BackgroundImage = drawBackGroundImage();
@@ -304,7 +376,7 @@ namespace TBReader2
 			{
 				txt_URL = openFileDialog.FileName;
 				//MessageBoxEx.Show(txt_URL);
-				read();
+				processBook();
 				overlay_cover.Hide();
 				bookName_label.BringToFront();
 				txt_pictureBox.BackgroundImage = drawBackGroundImage();
@@ -377,16 +449,24 @@ namespace TBReader2
 		{
 			// show the keys pressed in a label.
 			String key = e.Key.ToString();
-			String keyComb = e.Modifier.ToString() + " + " + key;
-			MessageBoxEx.Show(keyComb);
+			//String keyComb = e.Modifier.ToString() + " + " + key;
+			//MessageBoxEx.Show(keyComb);
 
 			switch (key)
 			{
 				case "Up":
+					//StartListeningForWindowChanges();
+					//StartListeningForWindowSwitch();
+					//MessageBoxEx.Show("title: " + GetActiveWindowTitle());
 					//checkOpenTXT();
 					//addBookmark();
 					break;
 				case "Down":
+					//MessageBoxEx.Show(TruncateAtWord("hey dude, how are you? I'm fine thank you!", 10));
+					//MessageBoxEx.Show("font size: " + SystemFonts.CaptionFont.Size + "\nfont size in point: " + SystemFonts.CaptionFont.SizeInPoints);
+					MessageBoxEx.Show(TruncatePixelLength("hey dudeee, how are you? I'm fine thank you!", 0, 100));
+					MessageBoxEx.Show(TruncatePixelLength("hey dudeee, 比比比比? I'm fine 你妹啊比 you!", 0, 100));
+					MessageBoxEx.Show(TruncatePixelLength("我草拟大爷的比比比比比吧！啊啊啊你妹啊比！阿比阿鼻！！！！", 0, 100));
 					//checkOpenTXT();
 					//jumpToBookmarks();
 					break;
@@ -397,12 +477,16 @@ namespace TBReader2
 				case "Right":
 					//checkOpenTXT();
 					//readForward();
+					if (txt_URL != null)
+					{
+						readForward();
+					}
 					break;
 				case "Q":
-					//quitTBReader();
+					quitTBReader();
 					break;
 				case "R":
-					//toggleTitleText();
+					toggleTitleText();
 					break;
 				case "Space":
 					hideShow();
@@ -418,20 +502,278 @@ namespace TBReader2
 					break;
 			}
 		}
-		
-		private void read()
+
+
+
+
+
+
+		private String GetActiveWindowTitle()
 		{
-			txt_book = System.IO.File.ReadAllLines(txt_URL, System.Text.Encoding.Default);
-			MessageBoxEx.Show("done");
+			const Int32 nChars = 256;
+			StringBuilder Buff = new StringBuilder(nChars);
+			IntPtr handle = GetForegroundWindow();
+
+			if (GetWindowText(handle, Buff, nChars) > 0)
+			{
+				return Buff.ToString();
+			}
+
+			return null;
 		}
 
-		private String TruncateAtWord(String input, Int32 length)
+
+
+
+
+		#region Other Window Event
+
+		private void StartListeningForWindowChanges()
 		{
-			if (input == null || input.Length < length)
+			// Resize event
+			resize_listener = new WinEventProc(resize_EventCallback);
+			//setting the window hook
+			resize_winHook = SetWinEventHook(EVENT_SYSTEM_MOVESIZEEND, EVENT_SYSTEM_MOVESIZEEND, IntPtr.Zero, resize_listener, 0, 0, WINEVENT_OUTOFCONTEXT);
+
+			// Switch event
+			switch_listener = new WinEventProc(switch_EventCallback);
+			//setting the window hook
+			switch_winHook = SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, switch_listener, 0, 0, WINEVENT_OUTOFCONTEXT);
+		}
+
+		private void StopListeningForWindowChanges()
+		{
+			UnhookWinEvent(resize_winHook);
+			UnhookWinEvent(switch_winHook);
+		}
+
+		private void resize_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
+		{
+			getActiveWindowDisplayWidth();
+			MessageBoxEx.Show("width: " + displayWidth);
+		}
+
+		private void switch_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
+		{
+			restorePrevTitle();
+			curTitle = GetActiveWindowTitle();
+			window = GetForegroundWindow().ToInt32();
+			if (!isOriginalTitle && curLineText != null)
+			{
+				setCurTitleText(curLineText);
+				isOriginalTitle = false;
+			}
+		}
+
+		private void getActiveWindowDisplayWidth()
+		{
+			try
+			{
+				RECT dim = new RECT();
+				GetWindowRect(GetForegroundWindow(), out dim);
+				if (Width != dim.Right - dim.Left || Height != dim.Bottom - dim.Top)
+				{
+					dim_w = dim.Right - dim.Left;
+
+					/*
+					//MessageBoxEx.Show("Width: " + dim_w);
+					Int32 AllButtonsAndPadding = GetWindowsMiscElementsSize();
+					//MessageBoxEx.Show("windows misc elements size: " + AllButtonsAndPadding);
+					Int32 realSize = dim_w - AllButtonsAndPadding;
+					//MessageBoxEx.Show("real size for display text: " + realSize);
+					Single titleFontSize = SystemFonts.CaptionFont.Size;
+					//MessageBoxEx.Show("title font size: " + titleFontSize);
+					Single pixelPerChar;
+					using (Graphics g = this.CreateGraphics())
+					{
+						pixelPerChar = titleFontSize * g.DpiX / 72;
+					}
+					//MessageBoxEx.Show("title font width in px: " + pixelPerChar);
+					Int32 numCharsInCurTitle = (Int32)Math.Floor((Double)realSize / (Double)pixelPerChar);
+					//MessageBoxEx.Show("cur title can fit: " + numCharsInCurTitle + " words");
+
+					result = (dim_w - 200) / 2;
+					if (result < 0) result = 0;
+					*/
+
+					displayWidth = dim_w - GetWindowsMiscElementsSize();
+				}
+			}
+			catch
+			{
+				MessageBoxEx.Show(tools.getString("window_get_dim_failed"));
+				displayWidth = -1;
+			}
+		}
+
+		VisualStyleRenderer renderer = null;
+		//This gets the size of the X and the border of the form
+		private Int32 GetWindowsMiscElementsSize()
+		{
+			Int32 result = 0;
+			
+			using (Graphics g = this.CreateGraphics())
+			{
+				// Get the size of the close button.
+				Int32 closeSize = 0;
+				if (SetRenderer(VisualStyleElement.Window.CloseButton.Normal))
+				{
+					closeSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;
+					result += closeSize;
+				}
+				
+				// Get the size of the minimize button.
+				if (SetRenderer(VisualStyleElement.Window.MinButton.Normal))
+				{
+					//Int32 minSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;		// use close button size
+					result += closeSize;
+				}
+
+				// Get the size of the maximize button.
+				if (SetRenderer(VisualStyleElement.Window.MaxButton.Normal))
+				{
+					//Int32 maxSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;		// use close button size
+					result += closeSize;
+				}
+
+				// Get the size of the icon.
+				if (this.ShowIcon)
+				{
+					Int32 iconSize = this.Icon.Width;
+					result += iconSize;
+				}
+
+				// Get the thickness of the left, bottom, 
+				// and right window frame.
+				if (SetRenderer(VisualStyleElement.Window.FrameLeft.Active))
+				{
+					Int32 frameSize = (renderer.GetPartSize(g, ThemeSizeType.True).Width) * 2; //Borders on both side
+					result += frameSize * 4;	// Just to be safe...
+				}
+			}
+
+			return result;
+		}
+
+		// Set the VisualStyleRenderer to a new element.
+		private bool SetRenderer(VisualStyleElement element)
+		{
+			if (!VisualStyleRenderer.IsElementDefined(element))
+			{
+				return false;
+			}
+
+			if (renderer == null)
+			{
+				renderer = new VisualStyleRenderer(element);
+			}
+			else
+			{
+				renderer.SetParameters(element);
+			}
+
+			return true;
+		}
+
+		#endregion
+
+
+
+
+
+
+		private void toggleTitleText()
+		{
+			String tempTitle = GetActiveWindowTitle();
+			if (curTitle != null && curLineText != null)
+			{
+				if (tempTitle.CompareTo(curTitle) != 0)
+				{
+					setCurTitleText(curTitle);
+					isOriginalTitle = true;
+				}
+				else
+				{
+					setCurTitleText(curLineText);
+					isOriginalTitle = false;
+				}
+			}
+		}
+
+		private void readForward()
+		{
+			if (lineOffset != 0)
+				lineOffset++;
+			else curLineNum++;
+			jumpToLine();
+
+		}
+
+		private void restorePrevTitle()
+		{
+			if (curTitle != null)
+			{
+				setCurTitleText(curTitle);
+			}
+		}
+
+		private void jumpToLine()
+		{
+			window = GetForegroundWindow().ToInt32();
+			
+			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
+			String pre = String.Format("({0:0.0}%) ", progress);
+			String line = txt_book[curLineNum-1].Trim();
+			curLineText = pre + line;
+			setCurTitleText(curLineText);
+			isOriginalTitle = false;
+		}
+
+		private void setCurTitleText(String s)
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.Append(s);
+			SetWindowText(window, sb);
+			sb.Clear();
+		}
+
+
+
+
+
+
+
+
+		private void processBook()
+		{
+			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default).Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
+			totalLineNum = txt_book.Length;
+			curLineNum = 0;
+			lineOffset = 0;
+		}
+
+		private String TruncateAtWord(String input, Int32 charNum)
+		{
+			if (input == null || input.Length < charNum)
 				return input;
 
-			Int32 iNextSpace = input.LastIndexOf(" ", length);
-			return String.Format("{0}...", input.Substring(0, (iNextSpace > 0) ? iNextSpace : length).Trim());
+			Int32 iNextSpace = input.LastIndexOf(" ", charNum);
+			return String.Format("{0}...", input.Substring(0, (iNextSpace > 0) ? iNextSpace : charNum).Trim());
+		}
+
+		private String TruncatePixelLength(String input, Int32 startIdx, Int32 length)
+		{
+			
+			//return TextTruncator.TruncateText(input, length, SystemFonts.CaptionFont);
+
+			Int32 newLength = length - TextRenderer.MeasureText("...", SystemFonts.CaptionFont).Width;
+			Int32 tempLength = 0;
+			Int32 idx = 0;
+			for (; idx < input.Length && tempLength < newLength; idx++)
+			{
+				tempLength += TextRenderer.MeasureText(input[idx].ToString(), SystemFonts.CaptionFont).Width;
+			}
+			return input.Substring(0, idx) + "...";
 		}
 
 		private void hideShow()
@@ -450,7 +792,18 @@ namespace TBReader2
 				restorePrevWindowTitle();
 			}
 			*/
+			restorePrevTitle();
+			StopListeningForWindowChanges();
 			Application.Exit();
+		}
+
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			base.OnFormClosing(e);
+
+			//if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+			quitTBReader();
 		}
 
 	}

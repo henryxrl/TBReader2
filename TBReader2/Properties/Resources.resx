@@ -268,6 +268,9 @@
   <data name="en_update_verifying" xml:space="preserve">
     <value>Verifying Update ...</value>
   </data>
+  <data name="en_window_get_dim_failed" xml:space="preserve">
+    <value>Failed to get window dimensions!</value>
+  </data>
   <data name="zh_about_author_label" xml:space="preserve">
     <value>作者</value>
   </data>
@@ -414,5 +417,8 @@
   </data>
   <data name="zh_update_verifying" xml:space="preserve">
     <value>验证更新……</value>
+  </data>
+  <data name="zh_window_get_dim_failed" xml:space="preserve">
+    <value>无法获得窗口尺寸！</value>
   </data>
 </root>

@@ -512,6 +512,15 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Failed to get window dimensions! 的本地化字符串。
+        /// </summary>
+        internal static string en_window_get_dim_failed {
+            get {
+                return ResourceManager.GetString("en_window_get_dim_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 作者 的本地化字符串。
         /// </summary>
         internal static string zh_about_author_label {
@@ -949,6 +958,15 @@ namespace TBReader2.Properties {
         internal static string zh_update_verifying {
             get {
                 return ResourceManager.GetString("zh_update_verifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 无法获得窗口尺寸！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_window_get_dim_failed {
+            get {
+                return ResourceManager.GetString("zh_window_get_dim_failed", resourceCulture);
             }
         }
     }
