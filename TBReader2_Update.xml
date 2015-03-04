@@ -1,13 +1,13 @@
-<?xml version="1.0"?> 
-<sharpUpdate> 
-    <update appID="TBReader2"> 
-        <version>2.0.1.1</version> 
-        <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url> 
-        <fileName>TBReader2.exe</fileName> 
-        <md5>400DEDA4C8A2102847558338C190EDE2</md5>
+<?xml version="1.0"?>
+<sharpUpdate>
+    <update appID="TBReader2">
+        <version>2.0.1.1</version>
+        <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url>
+        <fileName>TBReader2.exe</fileName>
+        <md5>6E9938658DF074BA8923BE539C300835</md5>
         <description>2015-03-05 Update:
         1. Text REALTIME AUTO-FIT by window's width!!
-        2. Updated read forward logic because of text auto-fit</description> 
-        <launchArgs></launchArgs> 
-    </update> 
+        2. Updated read forward logic because of text auto-fit</description>
+        <launchArgs></launchArgs>
+    </update>
 </sharpUpdate>
