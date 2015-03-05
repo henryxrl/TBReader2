@@ -35,10 +35,10 @@
 			this.lblCurVersion_label = new System.Windows.Forms.Label();
 			this.btnYes = new DevComponents.DotNetBar.ButtonX();
 			this.btnNo = new DevComponents.DotNetBar.ButtonX();
-			this.txtDescription = new System.Windows.Forms.RichTextBox();
 			this.lblDescription = new System.Windows.Forms.Label();
 			this.lblUpdateAvail = new DevComponents.DotNetBar.LabelX();
 			this.lblAppName = new DevComponents.DotNetBar.LabelX();
+			this.txtDescription = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -125,23 +125,6 @@
 			this.btnNo.Text = "No";
 			this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
 			// 
-			// txtDescription
-			// 
-			this.txtDescription.BackColor = System.Drawing.Color.White;
-			this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtDescription.Cursor = System.Windows.Forms.Cursors.Default;
-			this.txtDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtDescription.ForeColor = System.Drawing.Color.Black;
-			this.txtDescription.Location = new System.Drawing.Point(12, 203);
-			this.txtDescription.Name = "txtDescription";
-			this.txtDescription.ReadOnly = true;
-			this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-			this.txtDescription.Size = new System.Drawing.Size(370, 125);
-			this.txtDescription.TabIndex = 25;
-			this.txtDescription.TabStop = false;
-			this.txtDescription.Text = "Details";
-			this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
-			// 
 			// lblDescription
 			// 
 			this.lblDescription.AutoSize = true;
@@ -186,15 +169,35 @@
 			this.lblAppName.Text = "labelX1";
 			this.lblAppName.TextAlignment = System.Drawing.StringAlignment.Center;
 			// 
+			// txtDescription
+			// 
+			this.txtDescription.BackColorRichTextBox = System.Drawing.Color.White;
+			// 
+			// 
+			// 
+			this.txtDescription.BackgroundStyle.Class = "RichTextBoxBorder";
+			this.txtDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			this.txtDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.txtDescription.Location = new System.Drawing.Point(12, 205);
+			this.txtDescription.Name = "txtDescription";
+			this.txtDescription.ReadOnly = true;
+			this.txtDescription.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft YaHei UI;}}\r\n\\viewkind4\\u" +
+    "c1\\pard\\lang2052\\f0\\fs18 Details\\par\r\n}\r\n";
+			this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.txtDescription.Size = new System.Drawing.Size(370, 125);
+			this.txtDescription.TabIndex = 29;
+			this.txtDescription.TabStop = false;
+			this.txtDescription.Text = "Details";
+			// 
 			// AutoUpdateAcceptForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(394, 391);
+			this.Controls.Add(this.txtDescription);
 			this.Controls.Add(this.lblAppName);
 			this.Controls.Add(this.lblUpdateAvail);
 			this.Controls.Add(this.lblDescription);
-			this.Controls.Add(this.txtDescription);
 			this.Controls.Add(this.btnNo);
 			this.Controls.Add(this.btnYes);
 			this.Controls.Add(this.lblCurVersion_label);
@@ -227,9 +230,9 @@
 		private System.Windows.Forms.Label lblCurVersion_label;
 		private DevComponents.DotNetBar.ButtonX btnYes;
 		private DevComponents.DotNetBar.ButtonX btnNo;
-		private System.Windows.Forms.RichTextBox txtDescription;
 		private System.Windows.Forms.Label lblDescription;
 		private DevComponents.DotNetBar.LabelX lblUpdateAvail;
 		private DevComponents.DotNetBar.LabelX lblAppName;
+		private DevComponents.DotNetBar.Controls.RichTextBoxEx txtDescription;
 	}
 }

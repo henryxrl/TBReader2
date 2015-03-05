@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms.VisualStyles;
 using System.IO;
 using System.Linq;
+using Ini;
 
 namespace TBReader2
 {
@@ -107,8 +108,10 @@ namespace TBReader2
 
 		private Int32 window = 0;
 		private Boolean isOriginalTitle = true;
-		private Int32 dim_w = 0;		// Remember the width of the active window
-		private Int32 displayWidth = 0;		// Actual length for text display
+		private Int32 displayWidth = 0;		// Actual length for text display in px
+
+		static private String iniPath = Application.StartupPath + "\\bookmarks.ini";
+		private IniFile ini = new IniFile(iniPath);
 
 		private Tools tools = null;
 		private About abt = null;
@@ -120,6 +123,7 @@ namespace TBReader2
 		private Int32 timerFlag = -1;	// 0: auto read forward; 1: auto read backward; 2: go back to current; -1: default
 
 		private String txt_URL;
+		private String txt_name;
 		private String[] txt_book;
 
 		private String curTitle;		// Current window's original title
@@ -429,8 +433,7 @@ namespace TBReader2
 
 			if (txt_URL != null)
 			{
-				bookName_label.Text = tools.getString("pictureBox_string_3")
-										+ System.IO.Path.GetFileNameWithoutExtension(txt_URL);
+				bookName_label.Text = tools.getString("pictureBox_string_3") + txt_name;
 			}
 
 			return img;
@@ -474,12 +477,12 @@ namespace TBReader2
 					//jumpToBookmarks();
 					break;
 				case "Left":
-					//checkOpenTXT();
-					//readBackward();
+					if (txt_URL != null)
+					{
+						readBackward();
+					}
 					break;
 				case "Right":
-					//checkOpenTXT();
-					//readForward();
 					if (txt_URL != null)
 					{
 						readForward();
@@ -581,7 +584,7 @@ namespace TBReader2
 				GetWindowRect(GetForegroundWindow(), out dim);
 				if (Width != dim.Right - dim.Left || Height != dim.Bottom - dim.Top)
 				{
-					dim_w = dim.Right - dim.Left;
+					Int32 dim_w = dim.Right - dim.Left;
 
 					/*
 					//MessageBoxEx.Show("Width: " + dim_w);
@@ -714,7 +717,15 @@ namespace TBReader2
 				lineOffset++;
 			else curLineNum++;
 			jumpToLine(1);
+		}
 
+		private void readBackward()
+		{
+			if (lineOffset != 0)
+				lineOffset = 0;
+			if (lineOffset_OLD == 0)
+				curLineNum--;
+			jumpToLine(-1);
 		}
 
 		private void restorePrevTitle()
@@ -766,10 +777,13 @@ namespace TBReader2
 		private void processBook()
 		{
 			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default).Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
+			txt_name = System.IO.Path.GetFileNameWithoutExtension(txt_URL);
 			totalLineNum = txt_book.Length;
 			curLineNum = 0;
 			lineOffset = 0;
 			lineOffset_OLD = 0;
+
+			loadCurProgess();
 		}
 
 		private String TruncatePixelLength(String pre, String line, Int32 startIdx, Int32 length)
@@ -815,16 +829,28 @@ namespace TBReader2
 			else this.Show();
 		}
 
+
+		private void saveCurProgess()
+		{
+			// Roll back a little bit
+			tools.writeCurLoc(ini, txt_name, curLineNum - 1);
+		}
+
+		private void loadCurProgess()
+		{
+			Int32 curProg = tools.loadCurLoc(ini, txt_name);
+			if (curProg != -1)
+			{
+				curLineNum = curProg;
+				lineOffset = 0;
+				lineOffset_OLD = 0;
+			}
+		}
+
+
 		private void quitTBReader()
 		{
-			/*
-			saveCurrentLoc();
-
-			if (defaultTitleText.ContainsKey(window))
-			{
-				restorePrevWindowTitle();
-			}
-			*/
+			saveCurProgess();
 			restorePrevTitle();
 			StopListeningForWindowChanges();
 			Application.Exit();

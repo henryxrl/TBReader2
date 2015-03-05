@@ -101,6 +101,7 @@
     <Compile Include="AutoUpdate\AutoUpdater.cs" />
     <Compile Include="AutoUpdate\AutoUpdateXml.cs" />
     <Compile Include="AutoUpdate\Hash.cs" />
+    <Compile Include="Ini.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
