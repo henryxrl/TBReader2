@@ -46,6 +46,8 @@ namespace TBReader2
 			this.hotkey7_label = new DevComponents.DotNetBar.LabelX();
 			this.hotkey8 = new DevComponents.DotNetBar.LabelX();
 			this.hotkey8_label = new DevComponents.DotNetBar.LabelX();
+			this.hotkey9 = new DevComponents.DotNetBar.LabelX();
+			this.hotkey9_label = new DevComponents.DotNetBar.LabelX();
 			this.SuspendLayout();
 			// 
 			// hotkeys_ok_button
@@ -209,11 +211,32 @@ namespace TBReader2
 			this.hotkey8_label.ForeColor = System.Drawing.Color.Black;
 			this.hotkey8_label.Name = "hotkey8_label";
 			// 
+			// hotkey9
+			// 
+			// 
+			// 
+			// 
+			this.hotkey9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			resources.ApplyResources(this.hotkey9, "hotkey9");
+			this.hotkey9.Name = "hotkey9";
+			// 
+			// hotkey9_label
+			// 
+			// 
+			// 
+			// 
+			this.hotkey9_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			resources.ApplyResources(this.hotkey9_label, "hotkey9_label");
+			this.hotkey9_label.ForeColor = System.Drawing.Color.Black;
+			this.hotkey9_label.Name = "hotkey9_label";
+			// 
 			// HotKeys
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.hotkey9);
+			this.Controls.Add(this.hotkey9_label);
 			this.Controls.Add(this.hotkey8);
 			this.Controls.Add(this.hotkey8_label);
 			this.Controls.Add(this.hotkey7);
@@ -257,6 +280,8 @@ namespace TBReader2
 		private DevComponents.DotNetBar.LabelX hotkey7_label;
 		private DevComponents.DotNetBar.LabelX hotkey8;
 		private DevComponents.DotNetBar.LabelX hotkey8_label;
+		private DevComponents.DotNetBar.LabelX hotkey9;
+		private DevComponents.DotNetBar.LabelX hotkey9_label;
 
 
 	}

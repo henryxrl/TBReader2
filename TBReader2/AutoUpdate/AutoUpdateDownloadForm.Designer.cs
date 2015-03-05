@@ -41,7 +41,6 @@
 			this.lblProgress.Name = "lblProgress";
 			this.lblProgress.Size = new System.Drawing.Size(195, 22);
 			this.lblProgress.TabIndex = 8;
-			this.lblProgress.Text = "labelX1";
 			this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// progressBar
@@ -59,7 +58,6 @@
 			this.lblDownloading.Name = "lblDownloading";
 			this.lblDownloading.Size = new System.Drawing.Size(374, 45);
 			this.lblDownloading.TabIndex = 6;
-			this.lblDownloading.Text = "labelX1";
 			this.lblDownloading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lblPercentage
@@ -69,7 +67,6 @@
 			this.lblPercentage.Name = "lblPercentage";
 			this.lblPercentage.Size = new System.Drawing.Size(164, 22);
 			this.lblPercentage.TabIndex = 9;
-			this.lblPercentage.Text = "labelX1";
 			this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// AutoUpdateDownloadForm

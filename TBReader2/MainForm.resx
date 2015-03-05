@@ -3955,7 +3955,7 @@
     <value>apt_trackBar</value>
   </data>
   <data name="&gt;&gt;apt_trackBar.Type" xml:space="preserve">
-    <value>TBReader2.NoFocusTrackBar, TBReader2, Version=2.0.0.5, Culture=neutral, PublicKeyToken=null</value>
+    <value>TBReader2.NoFocusTrackBar, TBReader2, Version=2.0.1.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;apt_trackBar.Parent" xml:space="preserve">
     <value>$this</value>

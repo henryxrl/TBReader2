@@ -233,6 +233,42 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Bookmark added! 的本地化字符串。
+        /// </summary>
+        internal static string en_bookmark_added {
+            get {
+                return ResourceManager.GetString("en_bookmark_added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Error deleting current bookmark! 的本地化字符串。
+        /// </summary>
+        internal static string en_bookmark_delete_error {
+            get {
+                return ResourceManager.GetString("en_bookmark_delete_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Bookmark exists! 的本地化字符串。
+        /// </summary>
+        internal static string en_bookmark_exists {
+            get {
+                return ResourceManager.GetString("en_bookmark_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 No bookmark found! 的本地化字符串。
+        /// </summary>
+        internal static string en_bookmark_none {
+            get {
+                return ResourceManager.GetString("en_bookmark_none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Cancel 的本地化字符串。
         /// </summary>
         internal static string en_button_cancel {
@@ -359,6 +395,15 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Delete current bookmark&lt;br/&gt;(ONLY under bookmark view) 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey9 {
+            get {
+                return ResourceManager.GetString("en_hotkey9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 One file at a time! 的本地化字符串。
         /// </summary>
         internal static string en_only_single_file {
@@ -418,6 +463,33 @@ namespace TBReader2.Properties {
         internal static string en_pictureBox_string_3 {
             get {
                 return ResourceManager.GetString("en_pictureBox_string_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Already the FIRST line! 的本地化字符串。
+        /// </summary>
+        internal static string en_readbackward_nomore {
+            get {
+                return ResourceManager.GetString("en_readbackward_nomore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Already the LAST line! 的本地化字符串。
+        /// </summary>
+        internal static string en_readforward_nomore {
+            get {
+                return ResourceManager.GetString("en_readforward_nomore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Invalid value! 的本地化字符串。
+        /// </summary>
+        internal static string en_timer_error {
+            get {
+                return ResourceManager.GetString("en_timer_error", resourceCulture);
             }
         }
         
@@ -683,6 +755,42 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 已添加书签！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_bookmark_added {
+            get {
+                return ResourceManager.GetString("zh_bookmark_added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 删除书签出错！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_bookmark_delete_error {
+            get {
+                return ResourceManager.GetString("zh_bookmark_delete_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 书签已存在！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_bookmark_exists {
+            get {
+                return ResourceManager.GetString("zh_bookmark_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有书签！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_bookmark_none {
+            get {
+                return ResourceManager.GetString("zh_bookmark_none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         internal static string zh_button_cancel {
@@ -809,6 +917,15 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除当前书签&lt;br/&gt;（只在查看书签时有效） 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey9 {
+            get {
+                return ResourceManager.GetString("zh_hotkey9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 只能拖入一个文件！ 的本地化字符串。
         /// </summary>
         internal static string zh_only_single_file {
@@ -868,6 +985,33 @@ namespace TBReader2.Properties {
         internal static string zh_pictureBox_string_3 {
             get {
                 return ResourceManager.GetString("zh_pictureBox_string_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已是第一行！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_readbackward_nomore {
+            get {
+                return ResourceManager.GetString("zh_readbackward_nomore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已是最后一行！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_readforward_nomore {
+            get {
+                return ResourceManager.GetString("zh_readforward_nomore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 无效指令！ 的本地化字符串。
+        /// </summary>
+        internal static string zh_timer_error {
+            get {
+                return ResourceManager.GetString("zh_timer_error", resourceCulture);
             }
         }
         

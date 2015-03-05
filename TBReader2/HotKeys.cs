@@ -17,6 +17,7 @@ namespace TBReader2
 			hotkey6.Text = tools.getString("hotkey6");
 			hotkey7.Text = tools.getString("hotkey7");
 			hotkey8.Text = tools.getString("hotkey8");
+			hotkey9.Text = tools.getString("hotkey9");
 			hotkeys_ok_button.Text = tools.getString("button_ok");
 
 			hotkey1_label.ForeColor = tools.color;
@@ -27,6 +28,7 @@ namespace TBReader2
 			hotkey6_label.ForeColor = tools.color;
 			hotkey7_label.ForeColor = tools.color;
 			hotkey8_label.ForeColor = tools.color;
+			hotkey9_label.ForeColor = tools.color;
 		}
 
 		private void hotkeys_ok_button_Click(object sender, EventArgs e)

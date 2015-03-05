@@ -1,23 +1,25 @@
-﻿using DevComponents.DotNetBar;
+﻿using AutoUpdate;
+using DevComponents.DotNetBar;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Reflection;
-using System.Windows.Forms;
-using AutoUpdate;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms.VisualStyles;
 using System.IO;
 using System.Linq;
-using Ini;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace TBReader2
 {
 	public partial class MainForm : DevComponents.DotNetBar.Metro.MetroForm, AutoUpdatable
 	{
+		#region Variables
+
 		#region AutoUpdate
-		
+
 		private AutoUpdater updater;
 		
 		public string ApplicationName
@@ -104,49 +106,67 @@ namespace TBReader2
 		private WinEventProc switch_listener;
 		private IntPtr switch_winHook;
 
-		#endregion
-
+		// Other important variables
 		private Int32 window = 0;
-		private Boolean isOriginalTitle = true;
 		private Int32 displayWidth = 0;		// Actual length for text display in px
 
-		static private String iniPath = Application.StartupPath + "\\bookmarks.ini";
-		private IniFile ini = new IniFile(iniPath);
+		#endregion
+
+		#region UI
 
 		private Tools tools = null;
 		private About abt = null;
 		private HotKeys hky = null;
 
-		// Auto page turn
+		#endregion
+
+		#region Auto page turn
+
 		private Int32 aptTime = 0;
 		private Int32 timerCount;
 		private Int32 timerFlag = -1;	// 0: auto read forward; 1: auto read backward; 2: go back to current; -1: default
 
+		#endregion
+
+		#region TXT
+		
 		private String txt_URL;
 		private String txt_name;
 		private String[] txt_book;
+		private Int32 totalLineNum;		// 1-based. Total line number
+		private Int32 curLineNum;		// 1-based. Need to minus 1 to get current line index
+		private Int32 lineOffset;		// 0-based. character index of a line
+		private Int32 lineOffset_OLD;
+		
+		#endregion
+
+		#region Bookmark
+
+		private List<Tuple<Int32, Int32>> bookmarks;		// 1) curLineNum; 2) lineOffset
+		private Int32 bookmark_idx = -1;
+		private Int32 bookmark_count;
+		private Boolean isBookmarkView = false;
+
+		#endregion
+
+		#region Window title text
 
 		private String curTitle;		// Current window's original title
 		private String curLineText;		// Current text shown in windows' title bar
 		private String curLineText_pre;
 		private String curLineText_content;
+		private Boolean isOriginalTitle = true;
 
-		private Int32 totalLineNum;		// 1-based. Total line number
-		private Int32 curLineNum;		// 1-based. Need to minus 1 to get current line index
-		private Int32 lineOffset;		// 0-based. character index of a line
-		private Int32 lineOffset_OLD;
+		#endregion
 
+		#endregion
 
-
-
-
-
-
+		#region UI Setup
 
 		public MainForm()
 		{
 			InitializeComponent();
-			
+
 			setTools();
 
 			TitleText = "<div align=\"left\">  " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "</div>";
@@ -229,8 +249,6 @@ namespace TBReader2
 
 			StartListeningForWindowChanges();
 		}
-
-		#region UI Setup
 		
 		private void setTools()
 		{
@@ -449,11 +467,48 @@ namespace TBReader2
 			hideShow();
 		}
 
+		private void timer_Tick(object sender, EventArgs e)
+		{
+			timerCount--;
+
+			if (timerCount == 0)
+			{
+				if (timerFlag == 0)
+				{
+					readForward();
+				}
+				else if (timerFlag == 1)
+				{
+					// why do we need to auto read backwards? Lol...
+					// readBackward();
+				}
+				else if (timerFlag == 2)
+				{
+					jumpToLine(0);
+				}
+				else    // timerFlag == -1
+				{
+					MessageBoxEx.Show(tools.getString("timer_error"));
+				}
+			}
+		}
+
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			base.OnFormClosing(e);
+
+			//if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+			quitTBReader();
+		}
+
 		#endregion
+
+		#region Main functions
 
 		private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
 		{
-			// show the keys pressed in a label.
+			// Show the keys pressed in a label.
 			String key = e.Key.ToString();
 			//String keyComb = e.Modifier.ToString() + " + " + key;
 			//MessageBoxEx.Show(keyComb);
@@ -461,32 +516,16 @@ namespace TBReader2
 			switch (key)
 			{
 				case "Up":
-					//StartListeningForWindowChanges();
-					//StartListeningForWindowSwitch();
-					//MessageBoxEx.Show("title: " + GetActiveWindowTitle());
-					//checkOpenTXT();
-					//addBookmark();
+					addBookMark();
 					break;
 				case "Down":
-					//MessageBoxEx.Show(TruncateAtWord("hey dude, how are you? I'm fine thank you!", 10));
-					//MessageBoxEx.Show("font size: " + SystemFonts.CaptionFont.Size + "\nfont size in point: " + SystemFonts.CaptionFont.SizeInPoints);
-					//MessageBoxEx.Show(TruncatePixelLength("hey dudeee, how are you? I'm fine thank you!", 0, 100));
-					//MessageBoxEx.Show(TruncatePixelLength("hey dudeee, 比比比比? I'm fine 你妹啊比 you!", 0, 100));
-					//MessageBoxEx.Show(TruncatePixelLength("我草拟大爷的比比比比比吧！啊啊啊你妹啊比！阿比阿鼻！！！！", 0, 100));
-					//checkOpenTXT();
-					//jumpToBookmarks();
+					jumpThroughBookMarks();
 					break;
 				case "Left":
-					if (txt_URL != null)
-					{
-						readBackward();
-					}
+					readBackward();
 					break;
 				case "Right":
-					if (txt_URL != null)
-					{
-						readForward();
-					}
+					readForward();
 					break;
 				case "Q":
 					quitTBReader();
@@ -498,10 +537,10 @@ namespace TBReader2
 					hideShow();
 					break;
 				case "P":
-					//jumpFromBookmarkToCurLoc();
+					jumpFromBookmarkToCurLoc();
 					break;
 				case "Delete":
-					//deleteCurBookmakr();
+					deleteCurBookMark();
 					break;
 				default:
 					MessageBoxEx.Show(tools.getString("hotkey_invalid_pressed"));
@@ -509,34 +548,181 @@ namespace TBReader2
 			}
 		}
 
-
-
-
-
-		
-
-
-
-
-
-
-		private String GetActiveWindowTitle()
+		private void readForward()
 		{
-			const Int32 nChars = 256;
-			StringBuilder Buff = new StringBuilder(nChars);
-			IntPtr handle = GetForegroundWindow();
-
-			if (GetWindowText(handle, Buff, nChars) > 0)
+			if (txt_URL != null)
 			{
-				return Buff.ToString();
-			}
+				if (lineOffset != 0)
+					lineOffset++;
+				else curLineNum++;
 
-			return null;
+				isOriginalTitle = false;
+				isBookmarkView = false;
+
+				jumpToLine(1);
+
+				if (!isOriginalTitle && aptTime > 0)
+				{
+					// timer here to apt in given secs
+					timer.Enabled = true;
+					timerCount = aptTime;
+					timerFlag = 0;
+				}
+			}
 		}
 
+		private void readBackward()
+		{
+			if (txt_URL != null)
+			{
+				if (lineOffset != 0)
+					lineOffset = 0;
+				if (lineOffset_OLD == 0)
+					curLineNum--;
 
+				isOriginalTitle = false;
+				isBookmarkView = false;
 
+				jumpToLine(-1);
+			}
+		}
 
+		private void toggleTitleText()
+		{
+			if (txt_URL != null)
+			{
+				String tempTitle = GetActiveWindowTitle();
+				if (curTitle != null && curLineText != null)
+				{
+					if (tempTitle.CompareTo(curTitle) != 0)
+					{
+						setCurTitleText(curTitle);
+						isOriginalTitle = true;
+					}
+					else
+					{
+						setCurTitleText(curLineText);
+						isOriginalTitle = false;
+					}
+				}
+			}
+		}
+
+		private void addBookMark()
+		{
+			if (txt_URL != null && !isOriginalTitle)
+			{
+				if (tools.writeBookMark(curLineNum, lineOffset_OLD))
+				{
+					setCurTitleText(tools.getString("bookmark_added"));
+				}
+				else
+				{
+					setCurTitleText(tools.getString("bookmark_exists"));
+				}
+
+				// timer here to go back to reading in 3 secs
+				timer.Enabled = true;
+				timerCount = 2;
+				timerFlag = 2;
+			}
+		}
+
+		private void jumpThroughBookMarks()
+		{
+			if (txt_URL != null && !isOriginalTitle)
+			{
+				bookmarks = tools.loadBookMarks();
+				if (bookmarks == null || bookmarks.Count == 0)
+				{
+					setCurTitleText(tools.getString("bookmark_none"));
+
+					// timer here to go back to reading in 3 secs
+					timer.Enabled = true;
+					timerCount = 2;
+					timerFlag = 2;
+				}
+				else
+				{
+					bookmark_count = bookmarks.Count;
+					if (bookmark_idx == bookmark_count - 1)
+						bookmark_idx = 0;
+					else bookmark_idx++;
+
+					curLineNum = bookmarks[bookmark_idx].Item1;
+					lineOffset = bookmarks[bookmark_idx].Item2;
+					lineOffset_OLD = lineOffset;
+					jumpToLine(2);
+				}
+			}
+		}
+
+		private void deleteCurBookMark()
+		{
+			if (txt_URL != null && !isOriginalTitle && isBookmarkView)
+			{
+				if (tools.deleteBookMark(curLineNum, lineOffset_OLD))
+				{
+					bookmarks = tools.loadBookMarks();
+					if (bookmarks == null || bookmarks.Count == 0)
+					{
+						setCurTitleText(tools.getString("bookmark_none"));
+
+						// timer here to go back to reading in 3 secs
+						timer.Enabled = true;
+						timerCount = 2;
+						timerFlag = 2;
+					}
+					else
+					{
+						bookmark_count = bookmarks.Count;
+						if (bookmark_idx >= bookmark_count - 1)
+							bookmark_idx = 0;
+						else bookmark_idx++;
+
+						curLineNum = bookmarks[bookmark_idx].Item1;
+						lineOffset = bookmarks[bookmark_idx].Item2;
+						lineOffset_OLD = lineOffset;
+						jumpToLine(2);
+					}
+				}
+				else
+				{
+					setCurTitleText(tools.getString("bookmark_delete_error"));
+
+					// timer here to go back to reading in 3 secs
+					timer.Enabled = true;
+					timerCount = 2;
+					timerFlag = 2;
+				}
+			}
+		}
+
+		private void jumpFromBookmarkToCurLoc()
+		{
+			if (txt_URL != null && !isOriginalTitle && isBookmarkView)
+			{
+				isBookmarkView = false;
+
+				jumpToLine(0);
+			}
+		}
+
+		private void hideShow()
+		{
+			if (this.Visible == true) this.Hide();
+			else this.Show();
+		}
+
+		private void quitTBReader()
+		{
+			saveCurProgess();
+			restorePrevTitle();
+			StopListeningForWindowChanges();
+			Application.Exit();
+		}
+
+		#endregion
 
 		#region Other Window Event
 
@@ -567,11 +753,13 @@ namespace TBReader2
 		private void switch_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
 		{
 			restorePrevTitle();
-			curTitle = GetActiveWindowTitle();
+			
 			window = GetForegroundWindow().ToInt32();
-			if (!isOriginalTitle && curLineText != null)
+			curTitle = GetActiveWindowTitle();
+
+			if (!isOriginalTitle)
 			{
-				setCurTitleText(curLineText);
+				jumpToLine(0);
 				isOriginalTitle = false;
 			}
 		}
@@ -622,7 +810,7 @@ namespace TBReader2
 		private Int32 GetWindowsMiscElementsSize()
 		{
 			Int32 result = 0;
-			
+
 			using (Graphics g = this.CreateGraphics())
 			{
 				// Get the size of the close button.
@@ -632,7 +820,7 @@ namespace TBReader2
 					closeSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;
 					result += closeSize;
 				}
-				
+
 				// Get the size of the minimize button.
 				if (SetRenderer(VisualStyleElement.Window.MinButton.Normal))
 				{
@@ -688,102 +876,74 @@ namespace TBReader2
 
 		#endregion
 
-
-
-
-
-
-		private void toggleTitleText()
-		{
-			String tempTitle = GetActiveWindowTitle();
-			if (curTitle != null && curLineText != null)
-			{
-				if (tempTitle.CompareTo(curTitle) != 0)
-				{
-					setCurTitleText(curTitle);
-					isOriginalTitle = true;
-				}
-				else
-				{
-					setCurTitleText(curLineText);
-					isOriginalTitle = false;
-				}
-			}
-		}
-
-		private void readForward()
-		{
-			if (lineOffset != 0)
-				lineOffset++;
-			else curLineNum++;
-			jumpToLine(1);
-		}
-
-		private void readBackward()
-		{
-			if (lineOffset != 0)
-				lineOffset = 0;
-			if (lineOffset_OLD == 0)
-				curLineNum--;
-			jumpToLine(-1);
-		}
-
-		private void restorePrevTitle()
-		{
-			if (curTitle != null)
-			{
-				setCurTitleText(curTitle);
-			}
-		}
-
-		// flag == -1: read backward; flag == 0: read again; flag == 1: read forward
-		private void jumpToLine(Int32 flag)
-		{
-			window = GetForegroundWindow().ToInt32();
-			getActiveWindowDisplayWidth();
-			
-			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
-			curLineText_pre = String.Format("({0:0.0}%) ", progress);
-			curLineText_content = txt_book[curLineNum - 1].Trim();
-
-			if (flag == 0)
-				curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset_OLD, displayWidth);
-			else curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset, displayWidth);
-
-			setCurTitleText(curLineText);
-			isOriginalTitle = false;
-		}
-
-		private void setCurTitleText(String s)
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.Append(s);
-			SetWindowText(window, sb);
-			sb.Clear();
-		}
-
-
-
-
-
-
-
-
-
-
-
-
+		#region Helper functions
 
 		private void processBook()
 		{
-			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default).Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
+			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default)
+				.Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
 			txt_name = System.IO.Path.GetFileNameWithoutExtension(txt_URL);
-			totalLineNum = txt_book.Length;
+			totalLineNum = txt_book.Count();
 			curLineNum = 0;
 			lineOffset = 0;
 			lineOffset_OLD = 0;
 
+			tools.Name = txt_name;
+			tools.LineNum = totalLineNum;
+
 			loadCurProgess();
+		}
+
+		// flag == -1: read backward; flag == 0: read again; flag == 1: read forward; flag == 2: bookmarks
+		private void jumpToLine(Int32 flag)
+		{
+			window = GetForegroundWindow().ToInt32();
+			getActiveWindowDisplayWidth();
+
+			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
+
+			if (isBookmarkView || flag == 2)
+			{
+				isBookmarkView = true;
+				curLineText_pre = "(" + (bookmark_idx + 1).ToString() + "/" + bookmark_count + ") ";
+			}
+			else
+			{
+				isBookmarkView = false;
+				curLineText_pre = String.Format("({0:0.0}%) ", progress);
+			}
+
+			Int32 curLine_idx = curLineNum - 1;
+			if (curLine_idx >= 0 && curLine_idx < txt_book.Count())
+			{
+				curLineText_content = txt_book[curLine_idx].Trim();
+				lineOffset = (lineOffset >= curLineText_content.Length) ? 0 : lineOffset;
+				lineOffset_OLD = (lineOffset_OLD >= curLineText_content.Length) ? 0 : lineOffset_OLD;
+
+				if (flag == 0)
+					curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset_OLD, displayWidth);
+				else curLineText = TruncatePixelLength(curLineText_pre, curLineText_content, lineOffset, displayWidth);
+
+				setCurTitleText(curLineText);
+			}
+			else
+			{
+				if ((curLine_idx) < 0)
+				{
+					setCurTitleText(tools.getString("readbackward_nomore"));
+					curLineNum = 1;
+				}
+				else
+				{
+					setCurTitleText(tools.getString("readforward_nomore"));
+					curLineNum = txt_book.Count();
+				}
+
+				// timer here to go back to reading in 3 secs
+				timer.Enabled = true;
+				timerCount = 2;
+				timerFlag = 2;
+			}
 		}
 
 		private String TruncatePixelLength(String pre, String line, Int32 startIdx, Int32 length)
@@ -807,7 +967,7 @@ namespace TBReader2
 			Int32 idx = 0;
 			for (; idx < content.Length - 1 && tempLength < newLength; idx++)
 			{
-				tempLength = TextRenderer.MeasureText(content.Substring(0, idx+1), SystemFonts.CaptionFont).Width;
+				tempLength = TextRenderer.MeasureText(content.Substring(0, idx + 1), SystemFonts.CaptionFont).Width;
 			}
 
 			// Truncate substring at word
@@ -823,47 +983,50 @@ namespace TBReader2
 			return pre + content.Substring(0, idx + 1) + "...";
 		}
 
-		private void hideShow()
+		private String GetActiveWindowTitle()
 		{
-			if (this.Visible == true) this.Hide();
-			else this.Show();
+			const Int32 nChars = 256;
+			StringBuilder Buff = new StringBuilder(nChars);
+			IntPtr handle = GetForegroundWindow();
+
+			if (GetWindowText(handle, Buff, nChars) > 0)
+			{
+				return Buff.ToString();
+			}
+
+			return null;
 		}
 
+		private void restorePrevTitle()
+		{
+			if (curTitle != null)
+			{
+				setCurTitleText(curTitle);
+			}
+		}
+
+		private void setCurTitleText(String s)
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.Append(s);
+			SetWindowText(window, sb);
+			sb.Clear();
+		}
 
 		private void saveCurProgess()
 		{
 			// Roll back a little bit
-			tools.writeCurLoc(ini, txt_name, curLineNum - 1);
+			tools.writeCurLoc(curLineNum - 1);
 		}
 
 		private void loadCurProgess()
 		{
-			Int32 curProg = tools.loadCurLoc(ini, txt_name);
-			if (curProg != -1)
-			{
-				curLineNum = curProg;
-				lineOffset = 0;
-				lineOffset_OLD = 0;
-			}
+			curLineNum = tools.loadCurLoc();
+			lineOffset = 0;
+			lineOffset_OLD = 0;
 		}
 
-
-		private void quitTBReader()
-		{
-			saveCurProgess();
-			restorePrevTitle();
-			StopListeningForWindowChanges();
-			Application.Exit();
-		}
-
-		protected override void OnFormClosing(FormClosingEventArgs e)
-		{
-			base.OnFormClosing(e);
-
-			//if (e.CloseReason == CloseReason.WindowsShutDown) return;
-
-			quitTBReader();
-		}
+		#endregion
 
 	}
 }

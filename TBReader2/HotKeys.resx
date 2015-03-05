@@ -144,16 +144,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkeys_ok_button.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
-  <metadata name="hotkey1_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey1_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey1_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 44</value>
+    <value>78, 39</value>
   </data>
   <data name="hotkey1_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -174,16 +171,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey1_label.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
-  <metadata name="hotkey1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 44</value>
+    <value>239, 39</value>
   </data>
   <data name="hotkey1.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -204,16 +198,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
-  <metadata name="hotkey2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 83</value>
+    <value>239, 74</value>
   </data>
   <data name="hotkey2.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -234,16 +225,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
-  <metadata name="hotkey2_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey2_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey2_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 83</value>
+    <value>78, 74</value>
   </data>
   <data name="hotkey2_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -264,16 +252,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey2_label.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
-  <metadata name="hotkey3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 122</value>
+    <value>239, 109</value>
   </data>
   <data name="hotkey3.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -294,16 +279,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey3.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
-  <metadata name="hotkey3_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey3_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey3_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 122</value>
+    <value>78, 109</value>
   </data>
   <data name="hotkey3_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -324,16 +306,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey3_label.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
-  <metadata name="hotkey4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 161</value>
+    <value>239, 144</value>
   </data>
   <data name="hotkey4.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -354,16 +333,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey4.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
-  <metadata name="hotkey4_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey4_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey4_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 161</value>
+    <value>78, 144</value>
   </data>
   <data name="hotkey4_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -384,16 +360,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey4_label.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
-  <metadata name="hotkey5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 200</value>
+    <value>239, 228</value>
   </data>
   <data name="hotkey5.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 37</value>
@@ -414,16 +387,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
-  <metadata name="hotkey5_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey5_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey5_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 200</value>
+    <value>78, 228</value>
   </data>
   <data name="hotkey5_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -444,16 +414,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey5_label.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
-  <metadata name="hotkey6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 253</value>
+    <value>239, 277</value>
   </data>
   <data name="hotkey6.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -474,16 +441,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey6.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
-  <metadata name="hotkey6_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey6_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey6_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 253</value>
+    <value>78, 277</value>
   </data>
   <data name="hotkey6_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -504,16 +468,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey6_label.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
-  <metadata name="hotkey7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 292</value>
+    <value>239, 312</value>
   </data>
   <data name="hotkey7.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -534,16 +495,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
-  <metadata name="hotkey7_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey7_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey7_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 292</value>
+    <value>78, 312</value>
   </data>
   <data name="hotkey7_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -564,16 +522,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey7_label.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
-  <metadata name="hotkey8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt</value>
   </data>
   <data name="hotkey8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 331</value>
+    <value>239, 347</value>
   </data>
   <data name="hotkey8.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 23</value>
@@ -594,16 +549,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey8.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
-  <metadata name="hotkey8_label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hotkey8_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
   </data>
   <data name="hotkey8_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 331</value>
+    <value>78, 347</value>
   </data>
   <data name="hotkey8_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -624,6 +576,60 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hotkey8_label.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="hotkey9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9.75pt</value>
+  </data>
+  <data name="hotkey9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 179</value>
+  </data>
+  <data name="hotkey9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 37</value>
+  </data>
+  <data name="hotkey9.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="hotkey9.Text" xml:space="preserve">
+    <value>Delete current bookmark&lt;br/&gt;(ONLY under bookmark view)</value>
+  </data>
+  <data name="&gt;&gt;hotkey9.Name" xml:space="preserve">
+    <value>hotkey9</value>
+  </data>
+  <data name="&gt;&gt;hotkey9.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.7.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;hotkey9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hotkey9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="hotkey9_label.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="hotkey9_label.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 179</value>
+  </data>
+  <data name="hotkey9_label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
+  </data>
+  <data name="hotkey9_label.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="hotkey9_label.Text" xml:space="preserve">
+    <value>Ctrl+Shift+Delete</value>
+  </data>
+  <data name="&gt;&gt;hotkey9_label.Name" xml:space="preserve">
+    <value>hotkey9_label</value>
+  </data>
+  <data name="&gt;&gt;hotkey9_label.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.7.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;hotkey9_label.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hotkey9_label.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

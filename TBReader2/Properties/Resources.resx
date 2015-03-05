@@ -175,6 +175,18 @@
   <data name="en_autoUpdater_result_none" xml:space="preserve">
     <value>No update info found!</value>
   </data>
+  <data name="en_bookmark_added" xml:space="preserve">
+    <value>Bookmark added!</value>
+  </data>
+  <data name="en_bookmark_delete_error" xml:space="preserve">
+    <value>Error deleting current bookmark!</value>
+  </data>
+  <data name="en_bookmark_exists" xml:space="preserve">
+    <value>Bookmark exists!</value>
+  </data>
+  <data name="en_bookmark_none" xml:space="preserve">
+    <value>No bookmark found!</value>
+  </data>
   <data name="en_button_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -208,6 +220,9 @@
   <data name="en_hotkey8" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="en_hotkey9" xml:space="preserve">
+    <value>Delete current bookmark&lt;br/&gt;(ONLY under bookmark view)</value>
+  </data>
   <data name="en_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;HOTKEYS&lt;/b&gt;</value>
   </data>
@@ -237,6 +252,15 @@
   </data>
   <data name="en_pictureBox_string_3" xml:space="preserve">
     <value>Reading: </value>
+  </data>
+  <data name="en_readbackward_nomore" xml:space="preserve">
+    <value>Already the FIRST line!</value>
+  </data>
+  <data name="en_readforward_nomore" xml:space="preserve">
+    <value>Already the LAST line!</value>
+  </data>
+  <data name="en_timer_error" xml:space="preserve">
+    <value>Invalid value!</value>
   </data>
   <data name="en_update_completed" xml:space="preserve">
     <value>Completed: </value>
@@ -325,6 +349,18 @@
   <data name="zh_autoUpdater_result_none" xml:space="preserve">
     <value>没有找到更新信息！</value>
   </data>
+  <data name="zh_bookmark_added" xml:space="preserve">
+    <value>已添加书签！</value>
+  </data>
+  <data name="zh_bookmark_delete_error" xml:space="preserve">
+    <value>删除书签出错！</value>
+  </data>
+  <data name="zh_bookmark_exists" xml:space="preserve">
+    <value>书签已存在！</value>
+  </data>
+  <data name="zh_bookmark_none" xml:space="preserve">
+    <value>没有书签！</value>
+  </data>
   <data name="zh_button_cancel" xml:space="preserve">
     <value>取消</value>
   </data>
@@ -358,6 +394,9 @@
   <data name="zh_hotkey8" xml:space="preserve">
     <value>退出</value>
   </data>
+  <data name="zh_hotkey9" xml:space="preserve">
+    <value>删除当前书签&lt;br/&gt;（只在查看书签时有效）</value>
+  </data>
   <data name="zh_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;热键说明&lt;/b&gt;</value>
   </data>
@@ -387,6 +426,15 @@
   </data>
   <data name="zh_pictureBox_string_3" xml:space="preserve">
     <value>正在阅读：</value>
+  </data>
+  <data name="zh_readbackward_nomore" xml:space="preserve">
+    <value>已是第一行！</value>
+  </data>
+  <data name="zh_readforward_nomore" xml:space="preserve">
+    <value>已是最后一行！</value>
+  </data>
+  <data name="zh_timer_error" xml:space="preserve">
+    <value>无效指令！</value>
   </data>
   <data name="zh_update_completed" xml:space="preserve">
     <value>已完成：</value>

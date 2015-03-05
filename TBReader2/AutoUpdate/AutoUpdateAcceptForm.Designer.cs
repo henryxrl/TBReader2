@@ -51,7 +51,6 @@
 			this.lblCurVersion.Name = "lblCurVersion";
 			this.lblCurVersion.Size = new System.Drawing.Size(77, 19);
 			this.lblCurVersion.TabIndex = 20;
-			this.lblCurVersion.Text = "labelX1";
 			this.lblCurVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// lblNewVersion
@@ -63,7 +62,6 @@
 			this.lblNewVersion.Name = "lblNewVersion";
 			this.lblNewVersion.Size = new System.Drawing.Size(77, 19);
 			this.lblNewVersion.TabIndex = 16;
-			this.lblNewVersion.Text = "labelX1";
 			this.lblNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// pictureBox
@@ -171,6 +169,7 @@
 			// 
 			// txtDescription
 			// 
+			this.txtDescription.BackColor = System.Drawing.Color.White;
 			this.txtDescription.BackColorRichTextBox = System.Drawing.Color.White;
 			// 
 			// 
@@ -178,16 +177,16 @@
 			this.txtDescription.BackgroundStyle.Class = "RichTextBoxBorder";
 			this.txtDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			this.txtDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.txtDescription.ForeColor = System.Drawing.Color.Black;
 			this.txtDescription.Location = new System.Drawing.Point(12, 205);
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ReadOnly = true;
-			this.txtDescription.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft YaHei UI;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 Details\\par\r\n}\r\n";
+			this.txtDescription.Rtf = "{\\rtf1\\ansi\\ansicpg936\\deff0\\deflang1033\\deflangfe2052{\\fonttbl{\\f0\\fnil\\fcharset" +
+    "134 Microsoft YaHei UI;}}\r\n\\viewkind4\\uc1\\pard\\lang2052\\f0\\fs18\\par\r\n}\r\n";
 			this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
 			this.txtDescription.Size = new System.Drawing.Size(370, 125);
 			this.txtDescription.TabIndex = 29;
 			this.txtDescription.TabStop = false;
-			this.txtDescription.Text = "Details";
 			// 
 			// AutoUpdateAcceptForm
 			// 
