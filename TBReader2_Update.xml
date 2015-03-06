@@ -9,12 +9,14 @@
         1. NEW FEATURE: Able to add, delete, view bookmarks
         2. NEW FEATURE: Ctrl-Shift-P to exit out of bookmark view
         3. NEW FEATURE: Auto page turn works
-        4. Added error check on current progress (in case manually changed)
-        5. Added error check on bookmark line number and offset range
-        6. Added a 2-second timer for title bar notifications
-        7. Fixed some UI bugs
-        8. Fixed the bug that can go infinitely forward or backward
-        9. Fixed the bug which disabled exiting out of bookmark view</description>
+        4. NEW FEATURE: Support for displaying Western languages (break line by word etc.)
+        5. NEW FEATURE: Skip empty lines in text files
+        6. Added error check on current progress (in case manually changed)
+        7. Added error check on bookmark line number and offset range
+        8. Added a 2-second timer for title bar notifications
+        9. Fixed some UI bugs
+        10. Fixed the bug that can go infinitely forward or backward
+        11. Fixed the bug which disabled exiting out of bookmark view</description>
         <launchArgs></launchArgs>
     </update>
 </sharpUpdate>
