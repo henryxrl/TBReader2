@@ -140,9 +140,10 @@ namespace TBReader2
 					return;
 				else
 				{
-					txt_URL = value;
 					saveCurProgess();
 					restorePrevTitle();
+					isOriginalTitle = true;
+					txt_URL = value;
 				}
 			}
 		}
