@@ -467,7 +467,7 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Already the FIRST line! 的本地化字符串。
+        ///   查找类似 Already at the FIRST line! 的本地化字符串。
         /// </summary>
         internal static string en_readbackward_nomore {
             get {
@@ -476,7 +476,7 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Already the LAST line! 的本地化字符串。
+        ///   查找类似 Already at the LAST line! 的本地化字符串。
         /// </summary>
         internal static string en_readforward_nomore {
             get {

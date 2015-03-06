@@ -254,10 +254,10 @@
     <value>Reading: </value>
   </data>
   <data name="en_readbackward_nomore" xml:space="preserve">
-    <value>Already the FIRST line!</value>
+    <value>Already at the FIRST line!</value>
   </data>
   <data name="en_readforward_nomore" xml:space="preserve">
-    <value>Already the LAST line!</value>
+    <value>Already at the LAST line!</value>
   </data>
   <data name="en_timer_error" xml:space="preserve">
     <value>Invalid value!</value>

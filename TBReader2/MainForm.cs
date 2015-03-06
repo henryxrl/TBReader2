@@ -596,12 +596,14 @@ namespace TBReader2
 				{
 					if (tempTitle.CompareTo(curTitle) != 0)
 					{
-						setCurTitleText(curTitle);
+						//setCurTitleText(curTitle);
+						restorePrevTitle();
 						isOriginalTitle = true;
 					}
 					else
 					{
-						setCurTitleText(curLineText);
+						//setCurTitleText(curLineText);
+						jumpToLine(0);
 						isOriginalTitle = false;
 					}
 				}
@@ -747,20 +749,26 @@ namespace TBReader2
 
 		private void resize_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
 		{
-			jumpToLine(0);
+			if (txt_URL != null && !isOriginalTitle)
+			{
+				jumpToLine(0);
+			}
 		}
 
 		private void switch_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
 		{
-			restorePrevTitle();
-			
-			window = GetForegroundWindow().ToInt32();
-			curTitle = GetActiveWindowTitle();
-
-			if (!isOriginalTitle)
+			if (txt_URL != null)
 			{
-				jumpToLine(0);
-				isOriginalTitle = false;
+				restorePrevTitle();
+
+				window = GetForegroundWindow().ToInt32();
+				curTitle = GetActiveWindowTitle();
+
+				if (!isOriginalTitle)
+				{
+					jumpToLine(0);
+					isOriginalTitle = false;
+				}
 			}
 		}
 

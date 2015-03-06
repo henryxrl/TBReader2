@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <sharpUpdate>
     <update appID="TBReader2">
-        <version>2.1.0.0</version>
+        <version>2.1.0.2</version>
         <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url>
         <fileName>TBReader2.exe</fileName>
-        <md5>3599615B3479C1BC93677C0B98909C88</md5>
-        <description>2015-03-07 Update:
+        <md5>281F890CF74583D53EC87557DD835888</md5>
+        <description>2015-03-08 Update:
     1. NEW FEATURE: Able to add, delete, view bookmarks
     2. NEW FEATURE: Ctrl-Shift-P to exit out of bookmark view
     3. NEW FEATURE: Auto page turn works
@@ -15,8 +15,12 @@
     7. Added error check on bookmark line number and offset range
     8. Added a 2-second timer for title bar notifications
     9. Fixed some UI bugs
-    10. Fixed the bug that can go infinitely forward or backward
-    11. Fixed the bug which disabled exiting out of bookmark view</description>
+    10. Fixed a bug that can go infinitely forward or backward
+    11. Fixed a bug which disabled exiting out of bookmark view
+    12. Fixed a bug which triggers force close when resizing other windows
+    13. Fixed a bug which displays "Already at the first line" when starting a new book
+    14. Fixed a bug which shows hidden text when resizing window
+    15. Fixed a bug which disables resetting back to original title text under Windows 10</description>
         <launchArgs></launchArgs>
     </update>
 </sharpUpdate>

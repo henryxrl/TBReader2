@@ -84,7 +84,8 @@ namespace TBReader2
 			}
 			catch
 			{
-				return -1;
+				//return -1;		// Can't be -1 because it will make curLineNum -1.
+				return 0;
 			}
 		}
 
