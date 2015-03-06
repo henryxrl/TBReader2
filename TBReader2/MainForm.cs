@@ -131,6 +131,22 @@ namespace TBReader2
 		#region TXT
 		
 		private String txt_URL;
+		private String TXTURL		// Properties. Triggers when value changed
+		{
+			get { return this.txt_URL; }
+			set
+			{
+				if (txt_URL == value)
+					return;
+				else
+				{
+					txt_URL = value;
+					saveCurProgess();
+					restorePrevTitle();
+				}
+			}
+		}
+
 		private String txt_name;
 		private String[] txt_book;
 		private Int32 totalLineNum;		// 1-based. Total line number
@@ -379,7 +395,7 @@ namespace TBReader2
 			else
 			{
 				e.Effect = DragDropEffects.All;
-				txt_URL = files[0];
+				TXTURL = files[0];
 				//MessageBoxEx.Show(txt_URL);
 				processBook();
 				overlay_cover.Hide();
@@ -399,7 +415,7 @@ namespace TBReader2
 			
 			if (openFileDialog.ShowDialog(this) == DialogResult.OK)
 			{
-				txt_URL = openFileDialog.FileName;
+				TXTURL = openFileDialog.FileName;
 				//MessageBoxEx.Show(txt_URL);
 				processBook();
 				overlay_cover.Hide();
