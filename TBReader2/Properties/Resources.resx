@@ -199,29 +199,62 @@
   <data name="en_hotkey1" xml:space="preserve">
     <value>Next Line</value>
   </data>
+  <data name="en_hotkey10" xml:space="preserve">
+    <value>Lock/unlock current window</value>
+  </data>
+  <data name="en_hotkey10_label" xml:space="preserve">
+    <value>Ctrl+Shift+Home</value>
+  </data>
+  <data name="en_hotkey1_label" xml:space="preserve">
+    <value>Ctrl+Shift+Right</value>
+  </data>
   <data name="en_hotkey2" xml:space="preserve">
     <value>Previous Line</value>
+  </data>
+  <data name="en_hotkey2_label" xml:space="preserve">
+    <value>Ctrl+Shift+Left</value>
   </data>
   <data name="en_hotkey3" xml:space="preserve">
     <value>Bookmark current line</value>
   </data>
+  <data name="en_hotkey3_label" xml:space="preserve">
+    <value>Ctrl+Shift+Up</value>
+  </data>
   <data name="en_hotkey4" xml:space="preserve">
-    <value>Jump through bookmarks</value>
+    <value>Go through bookmarks</value>
+  </data>
+  <data name="en_hotkey4_label" xml:space="preserve">
+    <value>Ctrl+Shift+Down</value>
   </data>
   <data name="en_hotkey5" xml:space="preserve">
-    <value>Jump to previous location&lt;br/&gt;(ONLY under bookmark view)</value>
+    <value>Go back to previous location&lt;br/&gt;(ONLY under bookmark view)</value>
+  </data>
+  <data name="en_hotkey5_label" xml:space="preserve">
+    <value>Ctrl+Shift+X</value>
   </data>
   <data name="en_hotkey6" xml:space="preserve">
     <value>Toggle default title/current line</value>
   </data>
+  <data name="en_hotkey6_label" xml:space="preserve">
+    <value>Ctrl+Shift+Z</value>
+  </data>
   <data name="en_hotkey7" xml:space="preserve">
     <value>Toggle TBReader2 hide/show</value>
+  </data>
+  <data name="en_hotkey7_label" xml:space="preserve">
+    <value>Ctrl+Shift+Space</value>
   </data>
   <data name="en_hotkey8" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="en_hotkey8_label" xml:space="preserve">
+    <value>Ctrl+Shift+Q</value>
+  </data>
   <data name="en_hotkey9" xml:space="preserve">
     <value>Delete current bookmark&lt;br/&gt;(ONLY under bookmark view)</value>
+  </data>
+  <data name="en_hotkey9_label" xml:space="preserve">
+    <value>Ctrl+Shift+Delete</value>
   </data>
   <data name="en_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;HOTKEYS&lt;/b&gt;</value>
@@ -373,29 +406,62 @@
   <data name="zh_hotkey1" xml:space="preserve">
     <value>下一行</value>
   </data>
+  <data name="zh_hotkey10" xml:space="preserve">
+    <value>锁定/解除锁定当前窗口</value>
+  </data>
+  <data name="zh_hotkey10_label" xml:space="preserve">
+    <value>Ctrl+Shift+Home</value>
+  </data>
+  <data name="zh_hotkey1_label" xml:space="preserve">
+    <value>Ctrl+Shift+右</value>
+  </data>
   <data name="zh_hotkey2" xml:space="preserve">
     <value>上一行</value>
+  </data>
+  <data name="zh_hotkey2_label" xml:space="preserve">
+    <value>Ctrl+Shift+左</value>
   </data>
   <data name="zh_hotkey3" xml:space="preserve">
     <value>添加当前行为书签</value>
   </data>
+  <data name="zh_hotkey3_label" xml:space="preserve">
+    <value>Ctrl+Shift+上</value>
+  </data>
   <data name="zh_hotkey4" xml:space="preserve">
     <value>循环跳转所有书签</value>
+  </data>
+  <data name="zh_hotkey4_label" xml:space="preserve">
+    <value>Ctrl+Shift+下</value>
   </data>
   <data name="zh_hotkey5" xml:space="preserve">
     <value>回到之前的位置&lt;br/&gt;（只在查看书签时有效）</value>
   </data>
+  <data name="zh_hotkey5_label" xml:space="preserve">
+    <value>Ctrl+Shift+X</value>
+  </data>
   <data name="zh_hotkey6" xml:space="preserve">
     <value>切换当前内容/真正标题</value>
+  </data>
+  <data name="zh_hotkey6_label" xml:space="preserve">
+    <value>Ctrl+Shift+Z</value>
   </data>
   <data name="zh_hotkey7" xml:space="preserve">
     <value>显示/隐藏TBReader2</value>
   </data>
+  <data name="zh_hotkey7_label" xml:space="preserve">
+    <value>Ctrl+Shift+空格</value>
+  </data>
   <data name="zh_hotkey8" xml:space="preserve">
     <value>退出</value>
   </data>
+  <data name="zh_hotkey8_label" xml:space="preserve">
+    <value>Ctrl+Shift+Q</value>
+  </data>
   <data name="zh_hotkey9" xml:space="preserve">
     <value>删除当前书签&lt;br/&gt;（只在查看书签时有效）</value>
+  </data>
+  <data name="zh_hotkey9_label" xml:space="preserve">
+    <value>Ctrl+Shift+Delete</value>
   </data>
   <data name="zh_hotkey_button" xml:space="preserve">
     <value>&lt;b&gt;热键说明&lt;/b&gt;</value>

@@ -332,11 +332,47 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+Right 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey1_label {
+            get {
+                return ResourceManager.GetString("en_hotkey1_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Lock/unlock current window 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey10 {
+            get {
+                return ResourceManager.GetString("en_hotkey10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Home 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey10_label {
+            get {
+                return ResourceManager.GetString("en_hotkey10_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Previous Line 的本地化字符串。
         /// </summary>
         internal static string en_hotkey2 {
             get {
                 return ResourceManager.GetString("en_hotkey2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Left 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey2_label {
+            get {
+                return ResourceManager.GetString("en_hotkey2_label", resourceCulture);
             }
         }
         
@@ -350,7 +386,16 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Jump through bookmarks 的本地化字符串。
+        ///   查找类似 Ctrl+Shift+Up 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey3_label {
+            get {
+                return ResourceManager.GetString("en_hotkey3_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Go through bookmarks 的本地化字符串。
         /// </summary>
         internal static string en_hotkey4 {
             get {
@@ -359,11 +404,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Jump to previous location&lt;br/&gt;(ONLY under bookmark view) 的本地化字符串。
+        ///   查找类似 Ctrl+Shift+Down 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey4_label {
+            get {
+                return ResourceManager.GetString("en_hotkey4_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Go back to previous location&lt;br/&gt;(ONLY under bookmark view) 的本地化字符串。
         /// </summary>
         internal static string en_hotkey5 {
             get {
                 return ResourceManager.GetString("en_hotkey5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+X 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey5_label {
+            get {
+                return ResourceManager.GetString("en_hotkey5_label", resourceCulture);
             }
         }
         
@@ -377,11 +440,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+Z 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey6_label {
+            get {
+                return ResourceManager.GetString("en_hotkey6_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Toggle TBReader2 hide/show 的本地化字符串。
         /// </summary>
         internal static string en_hotkey7 {
             get {
                 return ResourceManager.GetString("en_hotkey7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Space 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey7_label {
+            get {
+                return ResourceManager.GetString("en_hotkey7_label", resourceCulture);
             }
         }
         
@@ -395,11 +476,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+Q 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey8_label {
+            get {
+                return ResourceManager.GetString("en_hotkey8_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Delete current bookmark&lt;br/&gt;(ONLY under bookmark view) 的本地化字符串。
         /// </summary>
         internal static string en_hotkey9 {
             get {
                 return ResourceManager.GetString("en_hotkey9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Delete 的本地化字符串。
+        /// </summary>
+        internal static string en_hotkey9_label {
+            get {
+                return ResourceManager.GetString("en_hotkey9_label", resourceCulture);
             }
         }
         
@@ -854,11 +953,47 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+右 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey1_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey1_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 锁定/解除锁定当前窗口 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey10 {
+            get {
+                return ResourceManager.GetString("zh_hotkey10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Home 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey10_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey10_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 上一行 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey2 {
             get {
                 return ResourceManager.GetString("zh_hotkey2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+左 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey2_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey2_label", resourceCulture);
             }
         }
         
@@ -872,11 +1007,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+上 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey3_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey3_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 循环跳转所有书签 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey4 {
             get {
                 return ResourceManager.GetString("zh_hotkey4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+下 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey4_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey4_label", resourceCulture);
             }
         }
         
@@ -890,11 +1043,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+X 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey5_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey5_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 切换当前内容/真正标题 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey6 {
             get {
                 return ResourceManager.GetString("zh_hotkey6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Z 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey6_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey6_label", resourceCulture);
             }
         }
         
@@ -908,6 +1079,15 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+空格 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey7_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey7_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 退出 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey8 {
@@ -917,11 +1097,29 @@ namespace TBReader2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Ctrl+Shift+Q 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey8_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey8_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 删除当前书签&lt;br/&gt;（只在查看书签时有效） 的本地化字符串。
         /// </summary>
         internal static string zh_hotkey9 {
             get {
                 return ResourceManager.GetString("zh_hotkey9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Ctrl+Shift+Delete 的本地化字符串。
+        /// </summary>
+        internal static string zh_hotkey9_label {
+            get {
+                return ResourceManager.GetString("zh_hotkey9_label", resourceCulture);
             }
         }
         

@@ -68,7 +68,6 @@
 			resources.ApplyResources(this.apt_start_label, "apt_start_label");
 			this.apt_start_label.Name = "apt_start_label";
 			this.apt_start_label.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-			this.apt_start_label.TextAlignment = System.Drawing.StringAlignment.Center;
 			this.apt_start_label.WordWrap = true;
 			// 
 			// apt_end_label
@@ -82,7 +81,7 @@
 			resources.ApplyResources(this.apt_end_label, "apt_end_label");
 			this.apt_end_label.Name = "apt_end_label";
 			this.apt_end_label.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-			this.apt_end_label.TextAlignment = System.Drawing.StringAlignment.Center;
+			this.apt_end_label.TextAlignment = System.Drawing.StringAlignment.Far;
 			this.apt_end_label.WordWrap = true;
 			// 
 			// apt_label
@@ -158,12 +157,12 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Controls.Add(this.bookName_label);
-			this.Controls.Add(this.overlay_cover);
 			this.Controls.Add(this.apt_end_label);
 			this.Controls.Add(this.apt_label);
 			this.Controls.Add(this.apt_start_label);
 			this.Controls.Add(this.apt_trackBar);
 			this.Controls.Add(this.txt_pictureBox);
+			this.Controls.Add(this.overlay_cover);
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.HelpButtonText = "Help";

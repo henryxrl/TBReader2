@@ -109,6 +109,7 @@ namespace TBReader2
 		// Other important variables
 		private Int32 window = 0;
 		private Int32 displayWidth = 0;		// Actual length for text display in px
+		private Boolean windowLocked = false;
 
 		#endregion
 
@@ -144,6 +145,7 @@ namespace TBReader2
 					restorePrevTitle();
 					isOriginalTitle = true;
 					txt_URL = value;
+					curTitle = GetActiveWindowTitle();
 				}
 			}
 		}
@@ -163,6 +165,34 @@ namespace TBReader2
 		private Int32 bookmark_idx = -1;
 		private Int32 bookmark_count;
 		private Boolean isBookmarkView = false;
+		private Boolean BookmarkView
+		{
+			get { return this.isBookmarkView; }
+			set
+			{
+				if (isBookmarkView == value)
+					return;
+				else
+				{
+					isBookmarkView = value;
+
+					if (isBookmarkView)		// Enter bookmark view
+					{
+						prevLineNum = curLineNum;
+						prevLineOffset = lineOffset_OLD;
+						isOriginalTitle = false;
+					}
+					else
+					{
+						prevLineNum = -1;
+						prevLineOffset = -1;
+					}
+				}
+			}
+		}
+
+		private Int32 prevLineNum = -1;
+		private Int32 prevLineOffset = -1;
 
 		#endregion
 
@@ -204,7 +234,7 @@ namespace TBReader2
 
 			try
 			{
-				// ctrl+shift+Q = Quit
+				// ctrl+shift+q = Quit
 				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Q);
 
 				// ctrl+shift+right = next line
@@ -222,14 +252,17 @@ namespace TBReader2
 				// ctrl+shift+delete = delete current bookmark
 				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Delete);
 
-				// ctrl+shift+r = toggle to default title text/cur condition
-				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.R);
+				// ctrl+shift+z = toggle to default title text/cur condition
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Z);
 
 				// ctrl+shift+space = toggle hide/show
 				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Space);
 
-				// ctrl+shift+p = jump to previous location (only under bookmark view)
-				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.P);
+				// ctrl+shift+x = jump to previous location (only under bookmark view)
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.X);
+
+				// ctrl+shift+home = lock current window for display
+				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.Home);
 			}
 			catch
 			{
@@ -264,7 +297,8 @@ namespace TBReader2
 
 			updater.DoUpdate(true);
 
-			StartListeningForWindowChanges();
+			StartListeningForWindowResize();
+			StartListeningForWindowSwitch();
 		}
 		
 		private void setTools()
@@ -547,17 +581,20 @@ namespace TBReader2
 				case "Q":
 					quitTBReader();
 					break;
-				case "R":
+				case "Z":
 					toggleTitleText();
 					break;
 				case "Space":
 					hideShow();
 					break;
-				case "P":
+				case "X":
 					jumpFromBookmarkToCurLoc();
 					break;
 				case "Delete":
 					deleteCurBookMark();
+					break;
+				case "Home":
+					lockCurWindowForDisplay();
 					break;
 				default:
 					MessageBoxEx.Show(tools.getString("hotkey_invalid_pressed"));
@@ -574,7 +611,7 @@ namespace TBReader2
 				else curLineNum++;
 
 				isOriginalTitle = false;
-				isBookmarkView = false;
+				BookmarkView = false;
 
 				jumpToLine(1);
 
@@ -598,7 +635,7 @@ namespace TBReader2
 					curLineNum--;
 
 				isOriginalTitle = false;
-				isBookmarkView = false;
+				BookmarkView = false;
 
 				jumpToLine(-1);
 			}
@@ -608,10 +645,9 @@ namespace TBReader2
 		{
 			if (txt_URL != null)
 			{
-				String tempTitle = GetActiveWindowTitle();
 				if (curTitle != null && curLineText != null)
 				{
-					if (tempTitle.CompareTo(curTitle) != 0)
+					if (!isOriginalTitle)
 					{
 						//setCurTitleText(curTitle);
 						restorePrevTitle();
@@ -625,6 +661,31 @@ namespace TBReader2
 					}
 				}
 			}
+		}
+
+		private void lockCurWindowForDisplay()
+		{
+			Int32 curWindow = GetForegroundWindow().ToInt32();
+			if (windowLocked)
+			{
+				windowLocked = false;
+				if (window != curWindow)
+				{
+					restorePrevTitle();
+					curTitle = GetActiveWindowTitle();
+
+					if (!isOriginalTitle)
+					{
+						jumpToLine(0);
+						isOriginalTitle = false;
+					}
+				}
+			}
+			else
+			{
+				windowLocked = true;
+			}
+			window = curWindow;
 		}
 
 		private void addBookMark()
@@ -663,6 +724,8 @@ namespace TBReader2
 				}
 				else
 				{
+					BookmarkView = true;
+
 					bookmark_count = bookmarks.Count;
 					if (bookmark_idx == bookmark_count - 1)
 						bookmark_idx = 0;
@@ -721,7 +784,11 @@ namespace TBReader2
 		{
 			if (txt_URL != null && !isOriginalTitle && isBookmarkView)
 			{
-				isBookmarkView = false;
+				curLineNum = prevLineNum;
+				lineOffset = prevLineOffset;
+				lineOffset_OLD = lineOffset;
+
+				BookmarkView = false;
 
 				jumpToLine(0);
 			}
@@ -737,7 +804,8 @@ namespace TBReader2
 		{
 			saveCurProgess();
 			restorePrevTitle();
-			StopListeningForWindowChanges();
+			StopListeningForWindowResize();
+			StopListeningForWindowSwitch();
 			Application.Exit();
 		}
 
@@ -745,22 +813,29 @@ namespace TBReader2
 
 		#region Other Window Event
 
-		private void StartListeningForWindowChanges()
+		private void StartListeningForWindowResize()
 		{
 			// Resize event
 			resize_listener = new WinEventProc(resize_EventCallback);
 			//setting the window hook
 			resize_winHook = SetWinEventHook(EVENT_SYSTEM_MOVESIZEEND, EVENT_SYSTEM_MOVESIZEEND, IntPtr.Zero, resize_listener, 0, 0, WINEVENT_OUTOFCONTEXT);
+		}
 
+		private void StartListeningForWindowSwitch()
+		{
 			// Switch event
 			switch_listener = new WinEventProc(switch_EventCallback);
 			//setting the window hook
 			switch_winHook = SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, switch_listener, 0, 0, WINEVENT_OUTOFCONTEXT);
 		}
 
-		private void StopListeningForWindowChanges()
+		private void StopListeningForWindowResize()
 		{
 			UnhookWinEvent(resize_winHook);
+		}
+
+		private void StopListeningForWindowSwitch()
+		{
 			UnhookWinEvent(switch_winHook);
 		}
 
@@ -774,7 +849,7 @@ namespace TBReader2
 
 		private void switch_EventCallback(IntPtr hWinEventHook, UInt32 iEvent, IntPtr hWnd, Int32 idObject, Int32 idChild, Int32 dwEventThread, Int32 dwmsEventTime)
 		{
-			if (txt_URL != null)
+			if (txt_URL != null && !windowLocked)
 			{
 				restorePrevTitle();
 
@@ -820,7 +895,17 @@ namespace TBReader2
 					if (result < 0) result = 0;
 					*/
 
-					displayWidth = dim_w - GetWindowsMiscElementsSize();
+					//displayWidth = dim_w - GetWindowsMiscElementsSize();
+
+					Int32 captionButtonWidth = (Int32)Math.Ceiling(Math.Max(SystemInformation.CaptionButtonSize.Width, 
+						System.Windows.SystemParameters.CaptionWidth));
+					Int32 iconWidth = (Int32)Math.Ceiling(Math.Max(SystemInformation.SmallIconSize.Width, 
+						System.Windows.SystemParameters.SmallIconWidth));
+					Int32 borderWidth = SystemInformation.Border3DSize.Width
+						+ SystemInformation.BorderSize.Width 
+						+ SystemInformation.FrameBorderSize.Width;
+
+					displayWidth = dim_w - captionButtonWidth * 6 - iconWidth * 4 - borderWidth * 2;
 				}
 			}
 			catch
@@ -830,9 +915,10 @@ namespace TBReader2
 			}
 		}
 
-		VisualStyleRenderer renderer = null;
-		//This gets the size of the X and the border of the form
-		private Int32 GetWindowsMiscElementsSize()
+		//VisualStyleRenderer renderer = null;
+		// This gets the size of the X and the border of the form
+		// Obsolete! VisualStyleElement only supports Windows XP
+		/*private Int32 GetWindowsMiscElementsSize()
 		{
 			Int32 result = 0;
 
@@ -897,7 +983,7 @@ namespace TBReader2
 			}
 
 			return true;
-		}
+		}*/
 
 		#endregion
 
@@ -922,19 +1008,22 @@ namespace TBReader2
 		// flag == -1: read backward; flag == 0: read again; flag == 1: read forward; flag == 2: bookmarks
 		private void jumpToLine(Int32 flag)
 		{
-			window = GetForegroundWindow().ToInt32();
-			getActiveWindowDisplayWidth();
+			if (!windowLocked)
+			{
+				window = GetForegroundWindow().ToInt32();
+				getActiveWindowDisplayWidth();
+			}
 
 			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
 
 			if (isBookmarkView || flag == 2)
 			{
-				isBookmarkView = true;
+				BookmarkView = true;
 				curLineText_pre = "(" + (bookmark_idx + 1).ToString() + "/" + bookmark_count + ") ";
 			}
 			else
 			{
-				isBookmarkView = false;
+				BookmarkView = false;
 				curLineText_pre = String.Format("({0:0.0}%) ", progress);
 			}
 
