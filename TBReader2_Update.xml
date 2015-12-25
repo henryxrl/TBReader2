@@ -1,18 +1,21 @@
-<?xml version="1.0"?>
 <sharpUpdate>
-    <update appID="TBReader2">
-        <version>2.2.2.0</version>
-        <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url>
-        <fileName>TBReader2.exe</fileName>
-        <md5>85B7D013F631364051D1DA4CD416035B</md5>
-        <description>2015-03-12 Update:
-    1. NEW FEATURE: Lock / unlock current window (Ctrl + Shift + Home)
-    2. Added Chinese translation to some UI labels
-    3. Changed some hotkeys for easy usage
-    4. Reworked the logic of jumping from bookmark view to previous location
-    5. Fixed some bugs from the "toggle current line / original title" function
-    6. Fixed a bug that prevents saving the original title
-    7. Rewrote the function of measuring the width of title bar area for text display</description>
-        <launchArgs></launchArgs>
-    </update>
+  <update appID="TBReader2">
+    <version>2.3.1.0</version>
+    <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url>
+    <fileName>TBReader2.exe</fileName>
+    <md5>1D729D8471173A147997CF5AB9B8731B</md5>
+    <launchArgs>
+    </launchArgs>
+    <description>12/24/2015 Update:
+    1. NEW: High DPI support
+    2. NEW: Add "GenerateUpdateXML" to automate update xml generation
+    3. FIXED: Title bar available pixels calculation logic
+    4. FIXED: Text length calculation logic
+
+12/24/2015 更新：
+    1. 新增：支持高DPI
+    2. 新增：新增"GenerateUpdateXML"以自动生成更新xml文件
+    3. 修复：计算标题栏像素长度的逻辑
+    4. 修复：计算字符串像素长度的逻辑</description>
+  </update>
 </sharpUpdate>

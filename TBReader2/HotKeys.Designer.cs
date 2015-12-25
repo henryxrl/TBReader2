@@ -254,8 +254,9 @@ namespace TBReader2
 			// HotKeys
 			// 
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.White;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.hotkey10);
 			this.Controls.Add(this.hotkey10_label);
 			this.Controls.Add(this.hotkey9);

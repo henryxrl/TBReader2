@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBReader2", "TBReader2\TBReader2.csproj", "{773BE9D7-E5AD-46D6-AAC3-7C16E20C3553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenereateUpdateXML", "GenereateUpdateXML\GenereateUpdateXML.csproj", "{A3C7B41A-08B3-4DC6-8662-F410E5BAF418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{773BE9D7-E5AD-46D6-AAC3-7C16E20C3553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{773BE9D7-E5AD-46D6-AAC3-7C16E20C3553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{773BE9D7-E5AD-46D6-AAC3-7C16E20C3553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C7B41A-08B3-4DC6-8662-F410E5BAF418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C7B41A-08B3-4DC6-8662-F410E5BAF418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C7B41A-08B3-4DC6-8662-F410E5BAF418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C7B41A-08B3-4DC6-8662-F410E5BAF418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

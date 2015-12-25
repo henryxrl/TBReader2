@@ -22,12 +22,12 @@ namespace TBReader2
 
 		private AutoUpdater updater;
 		
-		public string ApplicationName
+		public String ApplicationName
 		{
 			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
 		}
 
-		public string ApplicationID
+		public String ApplicationID
 		{
 			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; }
 		}
@@ -81,8 +81,8 @@ namespace TBReader2
 			public Int32 Bottom;      // y position of lower-right corner  
 		}
 
-		// Get/set window title text
-		[DllImport("user32.dll")]
+        // Get/set window title text
+        [DllImport("user32.dll")]
 		private static extern Int32 GetWindowText(IntPtr hWnd, StringBuilder text, Int32 count);
 		[DllImport("user32.dll")]
 		private static extern Int32 SetWindowText(Int32 hWnd, StringBuilder text);
@@ -873,40 +873,52 @@ namespace TBReader2
 				if (Width != dim.Right - dim.Left || Height != dim.Bottom - dim.Top)
 				{
 					Int32 dim_w = dim.Right - dim.Left;
+                    //Console.WriteLine("Left: " + dim.Left);
+                    //Console.WriteLine("Right: " + dim.Right);
 
-					/*
-					//MessageBoxEx.Show("Width: " + dim_w);
-					Int32 AllButtonsAndPadding = GetWindowsMiscElementsSize();
+                    /*
+                    //MessageBoxEx.Show("Width: " + dim_w);
+                    Int32 AllButtonsAndPadding = GetWindowsMiscElementsSize();
 					//MessageBoxEx.Show("windows misc elements size: " + AllButtonsAndPadding);
 					Int32 realSize = dim_w - AllButtonsAndPadding;
 					//MessageBoxEx.Show("real size for display text: " + realSize);
 					Single titleFontSize = SystemFonts.CaptionFont.Size;
 					//MessageBoxEx.Show("title font size: " + titleFontSize);
-					Single pixelPerChar;
+					Double pixelPerChar;
 					using (Graphics g = this.CreateGraphics())
 					{
-						pixelPerChar = titleFontSize * g.DpiX / 72;
+						pixelPerChar = titleFontSize * g.DpiX / 96.0;
 					}
 					//MessageBoxEx.Show("title font width in px: " + pixelPerChar);
 					Int32 numCharsInCurTitle = (Int32)Math.Floor((Double)realSize / (Double)pixelPerChar);
 					//MessageBoxEx.Show("cur title can fit: " + numCharsInCurTitle + " words");
+                    */
 
+                    /*
 					result = (dim_w - 200) / 2;
 					if (result < 0) result = 0;
 					*/
 
 					//displayWidth = dim_w - GetWindowsMiscElementsSize();
-
-					Int32 captionButtonWidth = (Int32)Math.Ceiling(Math.Max(SystemInformation.CaptionButtonSize.Width, 
-						System.Windows.SystemParameters.CaptionWidth));
-					Int32 iconWidth = (Int32)Math.Ceiling(Math.Max(SystemInformation.SmallIconSize.Width, 
-						System.Windows.SystemParameters.SmallIconWidth));
+                    
+                    
+					Int32 captionButtonWidth = (Int32)Math.Ceiling(SystemInformation.CaptionButtonSize.Width + 
+						System.Windows.SystemParameters.CaptionWidth);
+                    //Console.WriteLine("captionButtonWidth: " + captionButtonWidth);
+					Int32 iconWidth = (Int32)Math.Ceiling(SystemInformation.SmallIconSize.Width + 
+						System.Windows.SystemParameters.SmallIconWidth);
+                    //Console.WriteLine("iconWidth: " + iconWidth);
 					Int32 borderWidth = SystemInformation.Border3DSize.Width
 						+ SystemInformation.BorderSize.Width 
 						+ SystemInformation.FrameBorderSize.Width;
+                    //Console.WriteLine("borderWidth: " + borderWidth);
 
-					displayWidth = dim_w - captionButtonWidth * 6 - iconWidth * 4 - borderWidth * 2;
-				}
+                    //displayWidth = dim_w - captionButtonWidth * 6 - iconWidth * 4 - borderWidth * 2;
+                    displayWidth = dim_w - captionButtonWidth * 3 - iconWidth - borderWidth * 2;
+
+                    Console.WriteLine(displayWidth);
+
+                }
 			}
 			catch
 			{
@@ -915,10 +927,12 @@ namespace TBReader2
 			}
 		}
 
-		//VisualStyleRenderer renderer = null;
-		// This gets the size of the X and the border of the form
-		// Obsolete! VisualStyleElement only supports Windows XP
-		/*private Int32 GetWindowsMiscElementsSize()
+        #region OBSOLETE: VisualStyleRenderer Methods
+
+        //VisualStyleRenderer renderer = null;
+        // This gets the size of the X and the border of the form
+        // Obsolete! VisualStyleElement only supports Windows XP
+        /*private Int32 GetWindowsMiscElementsSize()
 		{
 			Int32 result = 0;
 
@@ -933,17 +947,19 @@ namespace TBReader2
 				}
 
 				// Get the size of the minimize button.
-				if (SetRenderer(VisualStyleElement.Window.MinButton.Normal))
+				if (this.MinimizeBox && SetRenderer(VisualStyleElement.Window.MinButton.Normal))
 				{
-					//Int32 minSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;		// use close button size
-					result += closeSize;
+					Int32 minSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;      // use close button size
+                    result += minSize;
+                    //result += closeSize;
 				}
 
 				// Get the size of the maximize button.
-				if (SetRenderer(VisualStyleElement.Window.MaxButton.Normal))
+				if (this.MaximizeBox && SetRenderer(VisualStyleElement.Window.MaxButton.Normal))
 				{
-					//Int32 maxSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;		// use close button size
-					result += closeSize;
+					Int32 maxSize = renderer.GetPartSize(g, ThemeSizeType.True).Width;      // use close button size
+                    result += maxSize;
+                    //result += closeSize;
 				}
 
 				// Get the size of the icon.
@@ -963,10 +979,10 @@ namespace TBReader2
 			}
 
 			return result;
-		}
+		}*/
 
-		// Set the VisualStyleRenderer to a new element.
-		private bool SetRenderer(VisualStyleElement element)
+        // Set the VisualStyleRenderer to a new element.
+        /*private bool SetRenderer(VisualStyleElement element)
 		{
 			if (!VisualStyleRenderer.IsElementDefined(element))
 			{
@@ -985,11 +1001,13 @@ namespace TBReader2
 			return true;
 		}*/
 
-		#endregion
+        #endregion
+        
+        #endregion
 
-		#region Helper functions
+        #region Helper functions
 
-		private void processBook()
+        private void processBook()
 		{
 			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default)
 				.Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
@@ -1060,7 +1078,33 @@ namespace TBReader2
 			}
 		}
 
-		private String TruncatePixelLength(String pre, String line, Int32 startIdx, Int32 length)
+        private Int32 MeasureDisplayStringWidth(String text, Font font)
+        {
+            Int32 result = 0;
+            using (Graphics graphics = this.CreateGraphics())
+            {
+                /*
+                StringFormat format = new StringFormat();
+                RectangleF rect = new RectangleF(0, 0, 1000, 1000);
+                CharacterRange[] ranges = { new CharacterRange(0, text.Length) };
+                Region[] regions = new Region[1];
+
+                format.SetMeasurableCharacterRanges(ranges);
+
+                regions = graphics.MeasureCharacterRanges(text, font, rect, format);
+                rect = regions[0].GetBounds(graphics);
+                result = (Int32)(rect.Right + 1.0f);
+                */
+
+                Single doubleWidth = graphics.MeasureString(text + text, font).Width;
+                Single singleWidth = graphics.MeasureString(text, font).Width;
+                result = (Int32)(doubleWidth - singleWidth);
+            }
+
+            return result;
+        }
+
+        private String TruncatePixelLength(String pre, String line, Int32 startIdx, Int32 length)
 		{
 			// Update lineOffset_OLD
 			lineOffset_OLD = startIdx;
@@ -1068,21 +1112,27 @@ namespace TBReader2
 			String content = line.Substring(startIdx);
 			String input = pre + content;
 
-			// If everything fits, return
-			if (TextRenderer.MeasureText(input, SystemFonts.CaptionFont).Width <= length)
+            // If everything fits, return
+            //Console.WriteLine("Text length: " + TextRenderer.MeasureText(input, SystemFonts.CaptionFont).Width);
+            //Console.WriteLine("Text length2: " + MeasureDisplayStringWidth(input, SystemFonts.CaptionFont));
+            //Int32 stringLengthInPixel = TextRenderer.MeasureText(input, SystemFonts.CaptionFont).Width;
+            Int32 stringLengthInPixel = MeasureDisplayStringWidth(input, SystemFonts.CaptionFont);
+            if (stringLengthInPixel <= length)
 			{
 				lineOffset = 0;
 				return input;
 			}
 
-			// If not, calculate max substring that fits
-			Int32 newLength = length - TextRenderer.MeasureText(pre + "...", SystemFonts.CaptionFont).Width;
-			Int32 tempLength = 0;
+            // If not, calculate max substring that fits
+            //Int32 newLength = length - TextRenderer.MeasureText(pre + "...", SystemFonts.CaptionFont).Width;
+            Int32 newLength = length - MeasureDisplayStringWidth(pre + "...", SystemFonts.CaptionFont);
+            Int32 tempLength = 0;
 			Int32 idx = 0;
 			for (; idx < content.Length - 1 && tempLength < newLength; idx++)
 			{
-				tempLength = TextRenderer.MeasureText(content.Substring(0, idx + 1), SystemFonts.CaptionFont).Width;
-			}
+                //tempLength = TextRenderer.MeasureText(content.Substring(0, idx + 1), SystemFonts.CaptionFont).Width;
+                tempLength = MeasureDisplayStringWidth(content.Substring(0, idx + 1), SystemFonts.CaptionFont);
+            }
 
 			// Truncate substring at word
 			Int32 newIdx = content.LastIndexOf(" ", idx, idx + 1);

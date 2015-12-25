@@ -68,12 +68,12 @@
 			this.lblPercentage.Size = new System.Drawing.Size(164, 22);
 			this.lblPercentage.TabIndex = 9;
 			this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// AutoUpdateDownloadForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(444, 177);
+            // 
+            // AutoUpdateDownloadForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(444, 177);
 			this.Controls.Add(this.lblPercentage);
 			this.Controls.Add(this.lblProgress);
 			this.Controls.Add(this.progressBar);

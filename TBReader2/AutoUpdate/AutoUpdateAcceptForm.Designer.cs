@@ -38,8 +38,9 @@
 			this.lblDescription = new System.Windows.Forms.Label();
 			this.lblUpdateAvail = new DevComponents.DotNetBar.LabelX();
 			this.lblAppName = new DevComponents.DotNetBar.LabelX();
-			this.txtDescription = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+			//this.txtDescription = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lblCurVersion
@@ -170,12 +171,13 @@
 			// txtDescription
 			// 
 			this.txtDescription.BackColor = System.Drawing.Color.White;
-			this.txtDescription.BackColorRichTextBox = System.Drawing.Color.White;
+			//this.txtDescription.BackColorRichTextBox = System.Drawing.Color.White;
 			// 
 			// 
 			// 
-			this.txtDescription.BackgroundStyle.Class = "RichTextBoxBorder";
-			this.txtDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+			//this.txtDescription.BackgroundStyle.Class = "RichTextBoxBorder";
+			//this.txtDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.txtDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.txtDescription.ForeColor = System.Drawing.Color.Black;
 			this.txtDescription.Location = new System.Drawing.Point(12, 205);
@@ -187,11 +189,11 @@
 			this.txtDescription.Size = new System.Drawing.Size(370, 125);
 			this.txtDescription.TabIndex = 29;
 			this.txtDescription.TabStop = false;
-			// 
-			// AutoUpdateAcceptForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            // 
+            // AutoUpdateAcceptForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(394, 391);
 			this.Controls.Add(this.txtDescription);
 			this.Controls.Add(this.lblAppName);
@@ -232,6 +234,7 @@
 		private System.Windows.Forms.Label lblDescription;
 		private DevComponents.DotNetBar.LabelX lblUpdateAvail;
 		private DevComponents.DotNetBar.LabelX lblAppName;
-		private DevComponents.DotNetBar.Controls.RichTextBoxEx txtDescription;
-	}
+		//private DevComponents.DotNetBar.Controls.RichTextBoxEx txtDescription;
+        private System.Windows.Forms.RichTextBox txtDescription;
+    }
 }

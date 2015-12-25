@@ -154,8 +154,9 @@
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.CaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Controls.Add(this.bookName_label);
 			this.Controls.Add(this.apt_end_label);
 			this.Controls.Add(this.apt_label);
