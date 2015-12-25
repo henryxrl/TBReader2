@@ -3,7 +3,7 @@
     <version>2.3.1.0</version>
     <url>https://raw.githubusercontent.com/henryxrl/TBReader2/master/TBReader2/bin/Release/TBReader2.exe</url>
     <fileName>TBReader2.exe</fileName>
-    <md5>1D729D8471173A147997CF5AB9B8731B</md5>
+    <md5>9B8F223F9FE6EDF91693EFAE2F955B1B</md5>
     <launchArgs>
     </launchArgs>
     <description>12/24/2015 Update:
@@ -11,11 +11,13 @@
     2. NEW: Add "GenerateUpdateXML" to automate update xml generation
     3. FIXED: Title bar available pixels calculation logic
     4. FIXED: Text length calculation logic
+    5. FIXED: Unable to jump back to the current location after deleting all bookmarks
 
 12/24/2015 更新：
     1. 新增：支持高DPI
     2. 新增：新增"GenerateUpdateXML"以自动生成更新xml文件
     3. 修复：计算标题栏像素长度的逻辑
-    4. 修复：计算字符串像素长度的逻辑</description>
+    4. 修复：计算字符串像素长度的逻辑
+    5. 修复：删除所有书签后无法跳转到当前进度的问题</description>
   </update>
 </sharpUpdate>

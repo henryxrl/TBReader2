@@ -178,6 +178,9 @@
   <data name="en_bookmark_added" xml:space="preserve">
     <value>Bookmark added!</value>
   </data>
+  <data name="en_bookmark_all_deleted" xml:space="preserve">
+    <value>All bookmarks are deleted!</value>
+  </data>
   <data name="en_bookmark_delete_error" xml:space="preserve">
     <value>Error deleting current bookmark!</value>
   </data>
@@ -384,6 +387,9 @@
   </data>
   <data name="zh_bookmark_added" xml:space="preserve">
     <value>已添加书签！</value>
+  </data>
+  <data name="zh_bookmark_all_deleted" xml:space="preserve">
+    <value>所有书签都已被删除！</value>
   </data>
   <data name="zh_bookmark_delete_error" xml:space="preserve">
     <value>删除书签出错！</value>

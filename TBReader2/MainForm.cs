@@ -592,7 +592,7 @@ namespace TBReader2
 					break;
 				case "Delete":
 					deleteCurBookMark();
-					break;
+                    break;
 				case "Home":
 					lockCurWindowForDisplay();
 					break;
@@ -748,16 +748,21 @@ namespace TBReader2
 					bookmarks = tools.loadBookMarks();
 					if (bookmarks == null || bookmarks.Count == 0)
 					{
-						setCurTitleText(tools.getString("bookmark_none"));
+                        setCurTitleText(tools.getString("bookmark_all_deleted"));
 
-						// timer here to go back to reading in 3 secs
-						timer.Enabled = true;
+                        // timer here to go back to reading in 3 secs
+                        timer.Enabled = true;
 						timerCount = 2;
-						timerFlag = 2;
-					}
+						timerFlag = 0;
+                        curLineNum = prevLineNum;
+                        lineOffset = prevLineOffset;
+                        lineOffset_OLD = lineOffset;
+                        BookmarkView = false;
+
+                    }
 					else
 					{
-						bookmark_count = bookmarks.Count;
+                        bookmark_count = bookmarks.Count;
 						if (bookmark_idx >= bookmark_count - 1)
 							bookmark_idx = 0;
 						else bookmark_idx++;
@@ -765,7 +770,7 @@ namespace TBReader2
 						curLineNum = bookmarks[bookmark_idx].Item1;
 						lineOffset = bookmarks[bookmark_idx].Item2;
 						lineOffset_OLD = lineOffset;
-						jumpToLine(2);
+                        jumpToLine(2);
 					}
 				}
 				else
@@ -916,7 +921,7 @@ namespace TBReader2
                     //displayWidth = dim_w - captionButtonWidth * 6 - iconWidth * 4 - borderWidth * 2;
                     displayWidth = dim_w - captionButtonWidth * 3 - iconWidth - borderWidth * 2;
 
-                    Console.WriteLine(displayWidth);
+                    //Console.WriteLine(displayWidth);
 
                 }
 			}
