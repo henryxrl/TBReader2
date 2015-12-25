@@ -2,6 +2,7 @@
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -80,6 +81,9 @@ namespace TBReader2
 			public Int32 Right;       // x position of lower-right corner  
 			public Int32 Bottom;      // y position of lower-right corner  
 		}
+
+        [DllImport("user32.dll")]
+        private static extern Int32 GetWindowTextLength(IntPtr hWnd);
 
         // Get/set window title text
         [DllImport("user32.dll")]
@@ -753,7 +757,7 @@ namespace TBReader2
                         // timer here to go back to reading in 3 secs
                         timer.Enabled = true;
 						timerCount = 2;
-						timerFlag = 0;
+						//timerFlag = 0;    // Don't auto read here!
                         curLineNum = prevLineNum;
                         lineOffset = prevLineOffset;
                         lineOffset_OLD = lineOffset;
@@ -904,10 +908,24 @@ namespace TBReader2
 					if (result < 0) result = 0;
 					*/
 
-					//displayWidth = dim_w - GetWindowsMiscElementsSize();
-                    
-                    
-					Int32 captionButtonWidth = (Int32)Math.Ceiling(SystemInformation.CaptionButtonSize.Width + 
+                    //displayWidth = dim_w - GetWindowsMiscElementsSize();
+
+                    /*
+                    Console.WriteLine("MaxWindowTrackSize: " + SystemInformation.MaxWindowTrackSize);
+                    Console.WriteLine("MinimizedWindowSize: " + SystemInformation.MinimizedWindowSize);
+                    Console.WriteLine("MinimizedWindowSpacingSize: " + SystemInformation.MinimizedWindowSpacingSize);
+                    Console.WriteLine("MinimumWindowSize: " + SystemInformation.MinimumWindowSize);
+                    Console.WriteLine("MinWindowTrackSize: " + SystemInformation.MinWindowTrackSize);
+                    Console.WriteLine("PrimaryMonitorMaximizedWindowSize: " + SystemInformation.PrimaryMonitorMaximizedWindowSize);
+                    Console.WriteLine("ToolWindowCaptionButtonSize: " + SystemInformation.ToolWindowCaptionButtonSize);
+                    Console.WriteLine("ToolWindowCaptionHeight: " + SystemInformation.ToolWindowCaptionHeight);
+                    */
+
+                    // Gets the minimum width and height for a window, in pixels.
+                    // dim_w - minWindowWidth "should" be the available length in size, but no
+                    Int32 minWindowWidth = SystemInformation.MinimumWindowSize.Width;
+
+                    Int32 captionButtonWidth = (Int32)Math.Ceiling(SystemInformation.CaptionButtonSize.Width + 
 						System.Windows.SystemParameters.CaptionWidth);
                     //Console.WriteLine("captionButtonWidth: " + captionButtonWidth);
 					Int32 iconWidth = (Int32)Math.Ceiling(SystemInformation.SmallIconSize.Width + 
@@ -920,9 +938,11 @@ namespace TBReader2
 
                     //displayWidth = dim_w - captionButtonWidth * 6 - iconWidth * 4 - borderWidth * 2;
                     displayWidth = dim_w - captionButtonWidth * 3 - iconWidth - borderWidth * 2;
+                    //displayWidth = (Int32) (dim_w - minWindowWidth * 1.5 - iconWidth);
+                    //displayWidth = (Int32) (dim_w - minWindowWidth * 2);
 
-                    //Console.WriteLine(displayWidth);
-
+                    //Console.WriteLine("displayWidth: " + displayWidth);
+                    //Console.WriteLine("displayWidth2: " + (dim_w - minWindowWidth * 1.5 - iconWidth));
                 }
 			}
 			catch
@@ -1014,9 +1034,9 @@ namespace TBReader2
 
         private void processBook()
 		{
-			txt_book = File.ReadAllLines(txt_URL, System.Text.Encoding.Default)
+			txt_book = File.ReadAllLines(txt_URL, Encoding.Default)
 				.Where(arg => !String.IsNullOrWhiteSpace(arg)).ToArray();
-			txt_name = System.IO.Path.GetFileNameWithoutExtension(txt_URL);
+			txt_name = Path.GetFileNameWithoutExtension(txt_URL);
 			totalLineNum = txt_book.Count();
 			curLineNum = 0;
 			lineOffset = 0;
@@ -1034,7 +1054,7 @@ namespace TBReader2
 			if (!windowLocked)
 			{
 				window = GetForegroundWindow().ToInt32();
-				getActiveWindowDisplayWidth();
+                getActiveWindowDisplayWidth();
 			}
 
 			Double progress = (Double)curLineNum / (Double)totalLineNum * 100;
@@ -1154,9 +1174,9 @@ namespace TBReader2
 
 		private String GetActiveWindowTitle()
 		{
-			const Int32 nChars = 256;
+            IntPtr handle = GetForegroundWindow();
+            Int32 nChars = GetWindowTextLength(handle) + 1;
 			StringBuilder Buff = new StringBuilder(nChars);
-			IntPtr handle = GetForegroundWindow();
 
 			if (GetWindowText(handle, Buff, nChars) > 0)
 			{
@@ -1179,7 +1199,6 @@ namespace TBReader2
 			StringBuilder sb = new StringBuilder();
 			sb.Append(s);
 			SetWindowText(window, sb);
-			sb.Clear();
 		}
 
 		private void saveCurProgess()
